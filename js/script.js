@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Close mobile menu if open
-                document.querySelector('.nav-links').classList.remove('active');
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
                 
                 window.scrollTo({
                     top: targetElement.offsetTop - 70, // Offset for sticky header
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
-    if(menuBtn) {
+    if (menuBtn) {
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuBtn.setAttribute('aria-expanded', navLinks.classList.contains('active'));
@@ -47,23 +50,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Show current tab and add active class
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active-content");
-        evt.currentTarget.className += " active";
+        const targetTab = document.getElementById(tabName);
+        if (targetTab) {
+            targetTab.style.display = "block";
+            targetTab.classList.add("active-content");
+            evt.currentTarget.className += " active";
+        }
     };
 
     // Initialize first tab
-    document.getElementById("latino").style.display = "block";
+    const firstTab = document.getElementById("latino");
+    if (firstTab) {
+        firstTab.style.display = "block";
+    }
 
-    // 4. Scroll Reveal Animation (Zara-style)
+    // 4. Scroll Reveal Animation for Sections
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // Optional: unobserve to only animate once, or keep observing for repeat
                 observer.unobserve(entry.target);
             }
         });

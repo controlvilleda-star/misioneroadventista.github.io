@@ -6,10 +6,10 @@
     <title>Misionero Adventista | Fe y Esperanza</title>
     <meta name="description" content="Sitio oficial de Misionero Adventista. Eventos, himnos, películas y predicaciones para fortalecer tu fe.">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Roboto Bold para Lefties style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -19,81 +19,247 @@
 </head>
 <body>
 
-    <!-- Header Fijo -->
+    <!-- Header Fijo Simple -->
     <header class="header">
         <div class="container header-content">
-            <a href="#" class="logo">
-                <span class="icon">✝️</span> Misionero Adventista
+            <a href="#" class="logo" aria-label="Inicio Misionero Adventista">
+                MISIONERO ADVENTISTA
             </a>
             <nav class="nav">
-                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+                <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
                 <ul class="nav-links">
-                    <li><a href="#hero">Inicio</a></li>
-                    <li><a href="#himnos">Himnos</a></li>
-                    <li><a href="#peliculas">Películas</a></li>
-                    <li><a href="#predicaciones">Predicaciones</a></li>
-                    <li><a href="#evento" class="btn-highlight">Evento 2026</a></li>
+                    <li><a href="#himnos">HIMNOS</a></li>
+                    <li><a href="#peliculas">PELÍCULAS</a></li>
+                    <li><a href="#predicaciones">PREDICACIONES</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Sección 1: Hero / Publicidad Evento -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero fade-in">
+        <div class="hero-image" style="background-image: url('https://source.unsplash.com/random/1920x1080/?christian-event');"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-content fade-in">
-            <h1 class="hero-title">¡Gran Evento de Fe y Esperanza 2026!</h1>
-            <p class="hero-subtitle">Únete el 15 de marzo de 2026 | Temas: Salvación, Profecías y Vida Eterna</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh8-placeholder/viewform" target="_blank" class="btn-primary">Regístrate Aquí</a>
+        <div class="hero-content">
+            <h1 class="hero-title">¡GRAN EVENTO DE FE 2026!</h1>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh8-placeholder/viewform" target="_blank" class="btn-primary" aria-label="Regístrate para el evento">REGÍSTRATE</a>
         </div>
     </section>
 
     <!-- Sección 2: Himnos -->
     <section id="himnos" class="section">
         <div class="container">
-            <h2 class="section-title">Himnos que Elevan el Alma</h2>
+            <h2 class="section-title">HIMNOS</h2>
             <div class="video-grid">
-                <!-- Video 1 -->
+                <!-- 1 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/fIZCchsfUOo?rel=0&modestbranding=1" title="Grande es Tu Fidelidad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/bvk54h5b9U0?rel=0&modestbranding=1&autoplay=0" title="Grandioso Dios - Junior Kelly Marchena" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Grandioso Dios - Junior Kelly Marchena</h3>
+                </div>
+                <!-- 2 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/usMsrqRaGFk?rel=0&modestbranding=1&autoplay=0" title="Cristo te Sostendrá - Catalina Peña" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Cristo te Sostendrá - Catalina Peña</h3>
+                </div>
+                <!-- 3 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/3AonCCSfMt4?rel=0&modestbranding=1&autoplay=0" title="Danos Paz - Karin Brañes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Danos Paz - Karin Brañes</h3>
+                </div>
+                <!-- 4 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/ArHKKlPdd1A?rel=0&modestbranding=1&autoplay=0" title="La Voz del Señor - Edith Aravena" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>La Voz del Señor - Edith Aravena</h3>
+                </div>
+                <!-- 5 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/bS_NBxga8ck?rel=0&modestbranding=1&autoplay=0" title="Digno eres tú" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Digno eres tú</h3>
+                </div>
+                <!-- 6 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/Q97GUgz5Mo4?rel=0&modestbranding=1&autoplay=0" title="Ven Señor Jesús - Rudy Micelli" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Ven Señor Jesús - Rudy Micelli</h3>
+                </div>
+                <!-- 7 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/h6gp9UZvbt8?rel=0&modestbranding=1&autoplay=0" title="Sacrificio de Amor - Edith Aravena" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Sacrificio de Amor - Edith Aravena</h3>
+                </div>
+                <!-- 8 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/hC75G2w7LQI?rel=0&modestbranding=1&autoplay=0" title="Hazme tu siervo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Hazme tu siervo</h3>
+                </div>
+                <!-- 9 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/2Vlwk4F_ies?rel=0&modestbranding=1&autoplay=0" title="Tú dejaste tu trono" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Tú dejaste tu trono</h3>
+                </div>
+                <!-- 10 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/B6-9kAmpEW8?rel=0&modestbranding=1&autoplay=0" title="Oh Dios, mi soberano Rey" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Oh Dios, mi soberano Rey</h3>
+                </div>
+                <!-- 11 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/8l8Uf5d5zsU?rel=0&modestbranding=1&autoplay=0" title="Maravillosa Gracia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Maravillosa Gracia</h3>
+                </div>
+                <!-- 12 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/wPPS_UZ1Usk?rel=0&modestbranding=1&autoplay=0" title="Cerca de Ti Señor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Cerca de Ti Señor</h3>
+                </div>
+                <!-- 13 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/ZPpMFjAbo38?rel=0&modestbranding=1&autoplay=0" title="Más allá del sol" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Más allá del sol</h3>
+                </div>
+                <!-- 14 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw?rel=0&modestbranding=1&autoplay=0" title="Roca de la eternidad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Roca de la eternidad</h3>
+                </div>
+                <!-- 15 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/fIZCchsfUOo?rel=0&modestbranding=1&autoplay=0" title="Grande es Tu Fidelidad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Grande es Tu Fidelidad</h3>
                 </div>
-                <!-- Video 2 -->
+                <!-- 16 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/yL_tK2V2aTU?rel=0&modestbranding=1" title="Santo Espíritu Ven" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/yL_tK2V2aTU?rel=0&modestbranding=1&autoplay=0" title="Santo Espíritu Ven" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Santo Espíritu Ven</h3>
                 </div>
-                <!-- Video 3 -->
+                <!-- 17 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/AhreA82-Mxc?rel=0&modestbranding=1" title="Cuán Grande es Él" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/AhreA82-Mxc?rel=0&modestbranding=1&autoplay=0" title="Cuán Grande es Él" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Cuán Grande es Él</h3>
                 </div>
-                <!-- Video 4 -->
+                <!-- 18 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3nOqp8kG9qI?rel=0&modestbranding=1" title="Fija tus ojos en Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/3nOqp8kG9qI?rel=0&modestbranding=1&autoplay=0" title="Fija tus ojos en Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Fija tus ojos en Cristo</h3>
                 </div>
-                <!-- Video 5 -->
+                <!-- 19 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/hJ3TzpWjFVI?rel=0&modestbranding=1" title="Castillo Fuerte" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/hJ3TzpWjFVI?rel=0&modestbranding=1&autoplay=0" title="Castillo Fuerte" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Castillo Fuerte</h3>
                 </div>
-                <!-- Video 6 -->
+                <!-- 20 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CDdvReNXXSE?rel=0&modestbranding=1" title="Sublime Gracia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/CDdvReNXXSE?rel=0&modestbranding=1&autoplay=0" title="Sublime Gracia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Sublime Gracia</h3>
+                </div>
+                <!-- 21 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/bvk54h5b9U0?rel=0&modestbranding=1&autoplay=0" title="Como Jesús no hay otro amigo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Como Jesús no hay otro amigo</h3>
+                </div>
+                <!-- 22 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/usMsrqRaGFk?rel=0&modestbranding=1&autoplay=0" title="Mi Redentor es Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Mi Redentor es Cristo</h3>
+                </div>
+                <!-- 23 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/3AonCCSfMt4?rel=0&modestbranding=1&autoplay=0" title="Al andar con Jesús" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Al andar con Jesús</h3>
+                </div>
+                <!-- 24 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/ArHKKlPdd1A?rel=0&modestbranding=1&autoplay=0" title="Eterna Roca" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Eterna Roca</h3>
+                </div>
+                <!-- 25 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/bS_NBxga8ck?rel=0&modestbranding=1&autoplay=0" title="¡Alabadle!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>¡Alabadle!</h3>
+                </div>
+                <!-- 26 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/Q97GUgz5Mo4?rel=0&modestbranding=1&autoplay=0" title="Prefiero a mi Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Prefiero a mi Cristo</h3>
+                </div>
+                <!-- 27 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/h6gp9UZvbt8?rel=0&modestbranding=1&autoplay=0" title="Su amor me levantó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Su amor me levantó</h3>
+                </div>
+                <!-- 28 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/hC75G2w7LQI?rel=0&modestbranding=1&autoplay=0" title="En Jesucristo, Mártir de Paz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>En Jesucristo, Mártir de Paz</h3>
+                </div>
+                <!-- 29 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/2Vlwk4F_ies?rel=0&modestbranding=1&autoplay=0" title="Comprado con Sangre por Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Comprado con Sangre por Cristo</h3>
+                </div>
+                <!-- 30 -->
+                <div class="video-card">
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube.com/embed/B6-9kAmpEW8?rel=0&modestbranding=1&autoplay=0" title="Tuyo Soy, Jesús" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <h3>Tuyo Soy, Jesús</h3>
                 </div>
             </div>
         </div>
@@ -102,33 +268,33 @@
     <!-- Sección 3: Películas -->
     <section id="peliculas" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Películas que Inspiran la Fe</h2>
+            <h2 class="section-title">PELÍCULAS</h2>
             <div class="video-grid">
                 <!-- Película 1 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9iKawBQB0BU?rel=0&modestbranding=1" title="La Pasión de Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/9iKawBQB0BU?rel=0&modestbranding=1" title="La Pasión de Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>La Pasión de Cristo</h3>
                 </div>
                 <!-- Película 2 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bMjo5f9eiQ8?rel=0&modestbranding=1" title="Dios No Está Muerto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/bMjo5f9eiQ8?rel=0&modestbranding=1" title="Dios No Está Muerto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Dios No Está Muerto</h3>
                 </div>
                 <!-- Película 3 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/TY9Z-Wr_pZM?rel=0&modestbranding=1" title="A Prueba de Fuego" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/TY9Z-Wr_pZM?rel=0&modestbranding=1" title="A Prueba de Fuego" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>A Prueba de Fuego</h3>
                 </div>
                 <!-- Película 4 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7k3tWkY9KzM?rel=0&modestbranding=1" title="La Biblia: En el Principio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/7k3tWkY9KzM?rel=0&modestbranding=1" title="La Biblia: En el Principio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>La Biblia</h3>
                 </div>
@@ -139,11 +305,11 @@
     <!-- Sección 4: Predicaciones -->
     <section id="predicaciones" class="section">
         <div class="container">
-            <h2 class="section-title">Predicaciones que Transforman Vidas</h2>
+            <h2 class="section-title">PREDICACIONES</h2>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="openTab(event, 'latino')">Pastores Latinoamericanos</button>
-                <button class="tab-btn" onclick="openTab(event, 'europeo')">Pastores Europeos</button>
+                <button class="tab-btn active" onclick="openTab(event, 'latino')" aria-label="Ver Pastores Latinoamericanos">PASTORES LATINOAMERICANOS</button>
+                <button class="tab-btn" onclick="openTab(event, 'europeo')" aria-label="Ver Pastores Europeos">PASTORES EUROPEOS</button>
             </div>
 
             <!-- Tab Latino -->
@@ -151,27 +317,27 @@
                 <div class="video-grid">
                     <div class="video-card">
                         <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/_f-fKaTIwSA?rel=0&modestbranding=1" title="El peligro de la indecisión" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/WkZ3pZJ6tqE?rel=0&modestbranding=1" title="La Marca de la Bestia - Esteban Bohr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <h3>Alejandro Bullón - El peligro de la indecisión</h3>
+                        <h3>Esteban Bohr - La Marca de la Bestia</h3>
                     </div>
                     <div class="video-card">
                         <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/56OYj7Z-AnM?rel=0&modestbranding=1" title="Razones Para Agradecer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h3>Alejandro Bullón - Razones Para Agradecer</h3>
-                    </div>
-                     <div class="video-card">
-                        <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/WkZ3pZJ6tqE?rel=0&modestbranding=1" title="La Marca de la Bestia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h3>Esteban Bohr - Profecías</h3>
-                    </div>
-                    <div class="video-card">
-                        <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/2y0XyJ9yPq0?rel=0&modestbranding=1" title="El Santuario" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/2y0XyJ9yPq0?rel=0&modestbranding=1" title="El Santuario - Andrés Portes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
                         <h3>Andrés Portes - El Santuario</h3>
+                    </div>
+                    <div class="video-card">
+                        <div class="iframe-container">
+                            <iframe src="https://www.youtube.com/embed/6Z6m7bJwQ-I?rel=0&modestbranding=1" title="Pr. Robert Costa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h3>Robert Costa - Escrito Está</h3>
+                    </div>
+                    <div class="video-card">
+                        <div class="iframe-container">
+                            <iframe src="https://www.youtube.com/embed/M62Z8i5l8xY?rel=0&modestbranding=1" title="Pr. Joel Flores" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h3>Joel Flores - Nuevo Tiempo</h3>
                     </div>
                 </div>
             </div>
@@ -181,27 +347,27 @@
                 <div class="video-grid">
                     <div class="video-card">
                         <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/gQ8oW5oW_0U?rel=0&modestbranding=1" title="Predicación Europa 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/gQ8oW5oW_0U?rel=0&modestbranding=1" title="Pastor Daniel Bosqued" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <h3>Pastor Daniel Bosqued (España)</h3>
+                        <h3>Daniel Bosqued</h3>
                     </div>
                     <div class="video-card">
                         <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/b5y9T-1R0Yk?rel=0&modestbranding=1" title="Predicación Europa 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/b5y9T-1R0Yk?rel=0&modestbranding=1" title="Pastor Carlos Rando" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <h3>Mensaje de Fe desde Europa</h3>
+                        <h3>Carlos Rando</h3>
                     </div>
                      <div class="video-card">
                         <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/FQwIdAbPJ6I?rel=0&modestbranding=1" title="Predicación Europa 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/qZ6jX1x9q-M?rel=0&modestbranding=1" title="Pr. Roberto Badenas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <h3>Pastor Carlos Rando - La Esperanza</h3>
+                        <h3>Roberto Badenas</h3>
                     </div>
                     <div class="video-card">
                         <div class="iframe-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/c1f2I3j4k5l?rel=0&modestbranding=1" title="Predicación Europa 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/3W7oZ_8Yn3A?rel=0&modestbranding=1" title="Pr. Juan Carlos Basterra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <h3>Iglesia Adventista España</h3>
+                        <h3>Juan Carlos Basterra</h3>
                     </div>
                 </div>
             </div>
@@ -209,7 +375,7 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2026 Misionero Adventista. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Misionero Adventista.</p>
     </footer>
 
     <!-- JavaScript -->
