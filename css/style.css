@@ -23,13 +23,26 @@ html {
 }
 
 body {
+    margin: 0;
     font-family: var(--font-body);
     font-weight: 400;
     line-height: 1.6;
-    color: var(--text-color);
+    color: var(--bg-light); /* Make text lighter against dark background */
     background-color: transparent;
     overflow-x: hidden;
     cursor: url('../images/manos-cerradas.png') 16 16, auto;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 30, 0.45);
+    z-index: -5;
+    pointer-events: none;
 }
 
 /* Manos orando abiertas al clic */
@@ -86,10 +99,11 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--bg-white);
+    background: rgba(17, 17, 17, 0.85); /* Dark semi-transparent */
+    backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 20px 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 15px rgba(0,0,0,0.5);
     transition: all var(--transition-speed);
 }
 
@@ -103,7 +117,7 @@ img {
     font-family: var(--font-heading);
     font-size: 1.6rem;
     font-weight: 900;
-    color: var(--primary-color);
+    color: var(--bg-white);
     letter-spacing: -0.5px;
 }
 
@@ -116,7 +130,7 @@ img {
 .nav-links a {
     font-weight: 700;
     font-size: 0.95rem;
-    color: var(--text-color);
+    color: var(--bg-white);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -220,8 +234,9 @@ img {
     font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: 60px;
-    color: var(--primary-color);
+    color: var(--bg-white);
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 /* Video Grid - Cards sin bordes y hover 1.05 */
@@ -272,7 +287,8 @@ img {
     text-align: left;
     font-family: var(--font-body);
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--bg-white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     text-transform: none; /* Mejor lectura si no es todo mayúsculas en las tarjetas, pero The request might imply bold Roboto */
 }
 
@@ -296,7 +312,7 @@ img {
     font-size: 1.1rem;
     transition: all 0.3s;
     text-transform: uppercase;
-    color: var(--text-light);
+    color: rgba(255,255,255,0.6);
     position: relative;
 }
 
@@ -307,18 +323,18 @@ img {
     left: 0;
     width: 0%;
     height: 3px;
-    background-color: var(--text-light);
+    background-color: var(--bg-white);
     transition: width 0.3s;
 }
 
 .tab-btn.active,
 .tab-btn:hover {
-    color: var(--primary-color);
+    color: var(--bg-white);
 }
 
 .tab-btn.active::after {
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 .tab-content {
