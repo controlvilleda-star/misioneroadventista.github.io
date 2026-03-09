@@ -84,4 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
         section.classList.add('hidden-section');
         observer.observe(section);
     });
+
+    // 5. Custom Cursor Toggle
+    document.addEventListener('mousedown', () => {
+        document.body.classList.add('is-clicking');
+    });
+    
+    document.addEventListener('mouseup', () => {
+        document.body.classList.remove('is-clicking');
+    });
 });

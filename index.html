@@ -6,10 +6,10 @@
     <title>Misionero Adventista | Fe y Esperanza</title>
     <meta name="description" content="Sitio oficial de Misionero Adventista. Eventos, himnos, películas y predicaciones para fortalecer tu fe.">
     
-    <!-- Google Fonts: Roboto Bold para Lefties style -->
+    <!-- Google Fonts: Playfair Display y Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -17,7 +17,12 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✝️</text></svg>">
 </head>
-<body>
+<body class="custom-cursor">
+
+    <!-- Fondo de video verde esencia -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="videos/bg-green-essence.mp4" type="video/mp4">
+    </video>
 
     <!-- Header Fijo Simple -->
     <header class="header">
@@ -28,6 +33,7 @@
             <nav class="nav">
                 <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
                 <ul class="nav-links">
+                    <li><a href="#evento">EVENTO</a></li>
                     <li><a href="#himnos">HIMNOS</a></li>
                     <li><a href="#peliculas">PELÍCULAS</a></li>
                     <li><a href="#predicaciones">PREDICACIONES</a></li>
@@ -37,8 +43,8 @@
     </header>
 
     <!-- Sección 1: Hero / Publicidad Evento -->
-    <section id="hero" class="hero fade-in">
-        <div class="hero-image" style="background-image: url('https://source.unsplash.com/random/1920x1080/?christian-event');"></div>
+    <section id="evento" class="hero fade-in">
+        <div class="hero-image" style="background-image: url('images/hero-bg.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">¡GRAN EVENTO DE FE 2026!</h1>
@@ -280,21 +286,21 @@
                 <!-- Película 2 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/bMjo5f9eiQ8?rel=0&modestbranding=1" title="Dios No Está Muerto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/bvk54h5b9U0?rel=0&modestbranding=1" title="Dios No Está Muerto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>Dios No Está Muerto</h3>
                 </div>
                 <!-- Película 3 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/TY9Z-Wr_pZM?rel=0&modestbranding=1" title="A Prueba de Fuego" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/fIZCchsfUOo?rel=0&modestbranding=1" title="A Prueba de Fuego" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>A Prueba de Fuego</h3>
                 </div>
                 <!-- Película 4 -->
                 <div class="video-card">
                     <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/7k3tWkY9KzM?rel=0&modestbranding=1" title="La Biblia: En el Principio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/2Vlwk4F_ies?rel=0&modestbranding=1" title="La Biblia: En el Principio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h3>La Biblia</h3>
                 </div>
