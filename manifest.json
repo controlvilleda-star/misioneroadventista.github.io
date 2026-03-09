@@ -1,0 +1,9 @@
+﻿{
+  "name": "Misionero Adventista",
+  "short_name": "Misionero",
+  "description": "Sitio oficial de Misionero Adventista.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111"
+}
