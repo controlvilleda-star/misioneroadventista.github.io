@@ -1,96 +1,75 @@
+// js/script.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Smooth Scrolling
+
+    // 1. Manejo del menú móvil
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const navLinksList = document.getElementById('nav-links');
+
+    if (mobileBtn && navLinksList) {
+        mobileBtn.addEventListener('click', () => {
+            navLinksList.classList.toggle('active');
+        });
+    }
+
+    // Cerrar menú móvil al hacer clic en un enlace
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinksList.classList.contains('active')) {
+                navLinksList.classList.remove('active');
+            }
+        });
+    });
+
+    // 2. Transición suave (Smooth Scroll)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if(targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Close mobile menu if open
-                const navLinks = document.querySelector('.nav-links');
-                if (navLinks && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
-                
+            if(targetElement) {
+                // Compensar por el header fijo
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
                 window.scrollTo({
-                    top: targetElement.offsetTop - 70, // Offset for sticky header
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
             }
         });
     });
 
-    // 2. Mobile Menu Toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuBtn.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-        });
-    }
-
-    // 3. Tab Logic for Predicaciones
-    window.openTab = function(evt, tabName) {
-        // Hide all tab content
-        const tabContents = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < tabContents.length; i++) {
-            tabContents[i].style.display = "none";
-            tabContents[i].classList.remove("active-content");
+    // 3. Efecto Glass en Navbar al hacer scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
-
-        // Remove active class from buttons
-        const tabBtns = document.getElementsByClassName("tab-btn");
-        for (let i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].className = tabBtns[i].className.replace(" active", "");
-        }
-
-        // Show current tab and add active class
-        const targetTab = document.getElementById(tabName);
-        if (targetTab) {
-            targetTab.style.display = "block";
-            targetTab.classList.add("active-content");
-            evt.currentTarget.className += " active";
-        }
-    };
-
-    // Initialize first tab
-    const firstTab = document.getElementById("latino");
-    if (firstTab) {
-        firstTab.style.display = "block";
-    }
-
-    // 4. Scroll Reveal Animation for Sections
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Optional: unobserve to only animate once, or keep observing for repeat
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.add('hidden-section');
-        observer.observe(section);
-    });
-
-    // 5. Custom Cursor Toggle
-    document.addEventListener('mousedown', () => {
-        document.body.classList.add('is-clicking');
-    });
-    
-    document.addEventListener('mouseup', () => {
-        document.body.classList.remove('is-clicking');
     });
 });
+
+// 4. Lógica de Tabs
+function openTab(event, tabId) {
+    // Esconder todos los contenidos de tab
+    const tabContents = document.getElementsByClassName('tab-content');
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active-content');
+    }
+
+    // Quitar la clase active de todos los botones
+    const tabBtns = document.getElementsByClassName('tab-btn');
+    for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove('active');
+    }
+
+    // Mostrar el tab actual y agregar la clase active al botón
+    document.getElementById(tabId).classList.add('active-content');
+    event.currentTarget.classList.add('active');
+}
