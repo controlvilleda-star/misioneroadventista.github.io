@@ -74,26 +74,47 @@ function openTab(event, tabId) {
     event.currentTarget.classList.add('active');
 }
 
-// 5. Lógica de Notificaciones evento
-function activarNotificaciones() {
+// 5. Lógica de Notificaciones evento (con EmailJS)
+async function activarNotificaciones() {
     const emailInput = document.getElementById('notif-email');
     const messageDisplay = document.getElementById('notif-message');
-    
-    if (emailInput && emailInput.value) {
-        if (emailInput.value.includes('@')) {
-            messageDisplay.style.color = '#4CAF50';
-            messageDisplay.innerHTML = '¡Te has suscrito a las notificaciones con éxito!';
-            emailInput.value = '';
-            
-            setTimeout(() => {
-                messageDisplay.innerHTML = '';
-            }, 4000);
-        } else {
-            messageDisplay.style.color = '#f44336';
-            messageDisplay.innerHTML = 'Por favor, ingresa un correo electrónico válido.';
-        }
-    } else {
+    const email = emailInput.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) {
         messageDisplay.style.color = '#f44336';
-        messageDisplay.innerHTML = 'Por favor, ingresa tu correo electrónico.';
+        messageDisplay.innerText = 'Por favor, ingresa tu correo electrónico.';
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        messageDisplay.style.color = '#f44336';
+        messageDisplay.innerText = 'Por favor, ingresa un correo electrónico válido.';
+        return;
+    }
+
+    try {
+        messageDisplay.style.color = '#cccccc';
+        messageDisplay.innerText = 'Procesando...';
+
+        await emailjs.send(
+            'service_nfs2u8x', 
+            'template_hu1w4zf', 
+            { user_email: email }
+        );
+
+        messageDisplay.style.color = '#4CAF50';
+        messageDisplay.innerText = '¡Te has suscrito a las notificaciones con éxito!';
+        emailInput.value = '';
+
+        setTimeout(() => {
+            messageDisplay.innerText = '';
+        }, 4000);
+
+    } catch (error) {
+        console.error('FAILED...', error);
+        messageDisplay.style.color = '#f44336';
+        messageDisplay.innerText = 'Hubo un problema. Inténtalo de nuevo más tarde.';
     }
 }
