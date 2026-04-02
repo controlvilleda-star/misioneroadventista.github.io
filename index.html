@@ -45,10 +45,46 @@
     <!-- Sección 1: Hero / Publicidad Evento (Sagrado Corazón / Espiritual) -->
     <section id="evento" class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-content glass">
-            <h1 class="hero-title">¡GRAN EVENTO DE FE 2026!</h1>
-            <p class="hero-subtitle">Únete a nosotros para una experiencia espiritual renovadora</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh8/viewform" target="_blank" class="btn-primary" aria-label="Regístrate para el evento">REGÍSTRATE</a>
+        <div class="hero-content glass" style="max-width: 1200px; padding: 3rem; width: 90%;">
+            <div class="diptych-container" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; justify-content: space-between;">
+                
+                <!-- Panel izquierdo (50% aprox) -->
+                <div class="diptych-left" style="flex: 1 1 300px; text-align: center;">
+                    <img src="images/jesus-protestante.jpg" alt="Jesús" style="width: 100%; max-width: 380px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover;">
+                    <p style="margin-top: 1.5rem; font-family: var(--font-title); font-size: 1.2rem; font-style: italic; line-height: 1.6; color: var(--text-main);">
+                        “Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.”<br>
+                        <span style="font-size: 1rem; opacity: 0.8; font-family: var(--font-body); font-style: normal;">— Mateo 11:28</span>
+                    </p>
+                </div>
+
+                <!-- Panel derecho (50% aprox) -->
+                <div class="diptych-right" style="flex: 1 1 300px; text-align: left;">
+                    <h1 class="hero-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 0.5rem; text-align: left;">¡GRAN EVENTO DE FE 2026!</h1>
+                    <p class="hero-subtitle" style="font-size: 1.2rem; margin-bottom: 2rem; text-align: left; opacity: 0.9;">Únete a nosotros para una experiencia espiritual renovadora</p>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh8/viewform" target="_blank" class="btn-primary" aria-label="Regístrate para el evento" style="margin-bottom: 2rem; display: inline-block;">REGÍSTRATE</a>
+                    
+                    <!-- Sección de contacto -->
+                    <div style="margin-bottom: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
+                        <p style="margin-bottom: 0.5rem; font-size: 1.1rem; font-weight: 500; font-family: var(--font-title); color: var(--accent-gold);">¿Dudas o consultas?</p>
+                        <p style="margin-bottom: 1rem; opacity: 0.9;">Email: <a href="mailto:info@misioneroadventista.com" style="color: var(--text-main); text-decoration: underline;">info@misioneroadventista.com</a></p>
+                        <a href="https://wa.me/34606253016?text=quiero%20saber%20mas%20de%20Cristo" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #25D366; color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: bold; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <span style="font-size: 1.2rem;">💬</span> WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Sección de notificaciones -->
+                    <div style="padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500; font-family: var(--font-title); color: var(--accent-gold);">🔔 Activa las notificaciones del evento</h3>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <input type="email" id="notif-email" placeholder="Tu correo electrónico" style="flex: 1 1 200px; padding: 0.75rem 1rem; border: 1px solid var(--glass-border); border-radius: 30px; outline: none; font-family: var(--font-body); background: var(--glass-bg-alt); color: var(--text-main);">
+                            <button onclick="activarNotificaciones()" class="btn-primary" style="padding: 0.75rem 1.5rem; border: none; cursor: pointer; border-radius: 30px;">ACTIVAR</button>
+                        </div>
+                        <p id="notif-message" style="margin-top: 1rem; font-size: 0.95rem; min-height: 1.5rem;"></p>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </section>
 

@@ -73,3 +73,27 @@ function openTab(event, tabId) {
     document.getElementById(tabId).classList.add('active-content');
     event.currentTarget.classList.add('active');
 }
+
+// 5. Lógica de Notificaciones evento
+function activarNotificaciones() {
+    const emailInput = document.getElementById('notif-email');
+    const messageDisplay = document.getElementById('notif-message');
+    
+    if (emailInput && emailInput.value) {
+        if (emailInput.value.includes('@')) {
+            messageDisplay.style.color = '#4CAF50';
+            messageDisplay.innerHTML = '¡Te has suscrito a las notificaciones con éxito!';
+            emailInput.value = '';
+            
+            setTimeout(() => {
+                messageDisplay.innerHTML = '';
+            }, 4000);
+        } else {
+            messageDisplay.style.color = '#f44336';
+            messageDisplay.innerHTML = 'Por favor, ingresa un correo electrónico válido.';
+        }
+    } else {
+        messageDisplay.style.color = '#f44336';
+        messageDisplay.innerHTML = 'Por favor, ingresa tu correo electrónico.';
+    }
+}
