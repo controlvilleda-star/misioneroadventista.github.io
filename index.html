@@ -3,292 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misionero Adventista | Fe y Esperanza</title>
-    <meta name="description" content="Sitio oficial de Misionero Adventista. Eventos, himnos, películas y predicaciones para fortalecer tu fe, con un diseño moderno.">
+    <title>Gran Evento de la Fe</title>
     
-    <!-- Google Fonts: Playfair Display y Roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos de UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✝️</text></svg>">
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* FONDO ANIMADO GRADIENTE PASTEL OSCURO */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #1c2a38, #2e2336, #2d382f, #362325); /* Tonos pastel oscuros: azul, morado, verde oscuro, bordó */
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffffff;
+            margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ----- GLASS COMPONENT ----- */
+        .glass {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: center;
+        }
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        .glass-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: #fff;
+            padding: 14px;
+            width: 100%;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .glass-input:focus {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .glass-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+        .iframe-container {
+            position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; background: #000;
+        }
+        .iframe-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* ----- NAVIGATION ----- */
+        .page {
+            display: none;
+            animation: slideIn 0.4s ease-out forwards;
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ANIMACIONES EXTRAS */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+            50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 40px rgba(255,255,255,0.25); }
+            100% { transform: translateY(0px) scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+        }
+
+        .slide-down {
+            animation: slideDown 0.3s ease-out forwards;
+            transform-origin: top;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: scaleY(0.8) translateY(-10px); }
+            to { opacity: 1; transform: scaleY(1) translateY(0); }
+        }
+    </style>
 </head>
-<body class="custom-cursor">
+<body>
 
-    <!-- Fondo de video de usuario con dim -->
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="videos/bg-video-nuevo.mp4" type="video/mp4">
-    </video>
+    <!-- ==================== MAIN HOME PAGE ==================== -->
+    <div id="home-page" class="page active relative z-10 w-full min-h-screen">
+        
+        <!-- HERO / PORTADA (100 VH) MOBILE FIRST -->
+        <section class="min-h-[100svh] flex flex-col items-center justify-center p-6 text-center">
+            
+            <!-- Foto de Jesus Principal (El centro de atención al cargar) -->
+            <div class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-[6px] border-white/20 mb-6 floating mt-6">
+                <!-- Se asume que la imagen está en la ruta declarada -->
+                <img src="images/jesus-nuevo.jpg" alt="Jesús" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Título Principal -->
+            <h1 class="text-4xl sm:text-6xl font-black text-white mb-8 tracking-tight drop-shadow-xl uppercase leading-none">
+                GRAN EVENTO<br>DE LA FE
+            </h1>
 
-    <!-- Header Fijo Glass -->
-    <header class="header glass" id="navbar">
-        <div class="header-content">
-            <a href="#" class="logo" aria-label="Inicio Misionero Adventista">
-                MISIONERO ADVENTISTA
-            </a>
-            <nav class="nav">
-                <button class="mobile-menu-btn" aria-label="Abrir menú" id="mobile-menu-btn">☰</button>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#evento">EVENTO</a></li>
-                    <li><a href="#himnos">HIMNOS</a></li>
-                    <li><a href="#peliculas">PELÍCULAS</a></li>
-                    <li><a href="#predicaciones">PREDICACIONES</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Sección 1: Hero / Publicidad Evento (Sagrado Corazón / Espiritual) -->
-    <section id="evento" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content glass" style="max-width: 1200px; padding: 3rem; width: 90%;">
-            <div class="diptych-container" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; justify-content: space-between;">
+            <!-- Interacción Asistir -->
+            <div class="w-full max-w-sm mb-6 flex flex-col items-center">
                 
-                <!-- Panel izquierdo (50% aprox) -->
-                <div class="diptych-left" style="flex: 1 1 300px; text-align: center;">
-                    <img src="images/jesus-protestante.jpg" alt="Jesús" style="width: 100%; max-width: 380px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover;">
-                    <p style="margin-top: 1.5rem; font-family: var(--font-title); font-size: 1.2rem; font-style: italic; line-height: 1.6; color: var(--text-main);">
-                        “Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.”<br>
-                        <span style="font-size: 1rem; opacity: 0.8; font-family: var(--font-body); font-style: normal;">— Mateo 11:28</span>
-                    </p>
-                </div>
+                <!-- Boton Desplegable Principal -->
+                <button id="btn-participar" onclick="toggleParticipar()" class="glass-btn w-full px-8 py-5 text-xl font-black tracking-widest text-white shadow-[0_0_20px_rgba(0,0,0,0.3)] bg-white/10 hover:bg-white/20 flex justify-center items-center gap-3">
+                    ASISTIR <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="participar-icon"></i>
+                </button>
 
-                <!-- Panel derecho (50% aprox) -->
-                <div class="diptych-right" style="flex: 1 1 300px; text-align: left;">
-                    <h1 class="hero-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 0.5rem; text-align: left;">¡GRAN EVENTO DE FE 2026!</h1>
-                    <p class="hero-subtitle" style="font-size: 1.2rem; margin-bottom: 2rem; text-align: left; opacity: 0.9;">Únete a nosotros para una experiencia espiritual renovadora</p>
+                <!-- Menú Desplegable con 2 opciones -->
+                <div id="participar-opciones" class="hidden flex-col gap-3 mt-4 w-full slide-down">
                     
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh8/viewform" target="_blank" class="btn-primary" aria-label="Regístrate para el evento" style="margin-bottom: 2rem; display: inline-block;">REGÍSTRATE</a>
+                    <button onclick="showAsistirPanel('online')" id="btn-opt-online" class="glass-btn w-full p-4 font-bold text-white tracking-wide text-lg bg-indigo-500/20 hover:bg-indigo-500/40 border-indigo-400/40">
+                        💻 ASISTIR ONLINE
+                    </button>
                     
-                    <!-- Sección de contacto -->
-                    <div style="margin-bottom: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
-                        <p style="margin-bottom: 0.5rem; font-size: 1.1rem; font-weight: 500; font-family: var(--font-title); color: var(--accent-gold);">¿Dudas o consultas?</p>
-                        <p style="margin-bottom: 1rem; opacity: 0.9;">Email: <a href="mailto:info@misioneroadventista.com" style="color: var(--text-main); text-decoration: underline;">info@misioneroadventista.com</a></p>
-                        <a href="https://wa.me/34606253016?text=quiero%20saber%20mas%20de%20Cristo" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #25D366; color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: bold; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <span style="font-size: 1.2rem;">💬</span> WhatsApp
+                    <button onclick="showAsistirPanel('vivo')" id="btn-opt-vivo" class="glass-btn w-full p-4 font-bold text-white tracking-wide text-lg bg-emerald-500/20 hover:bg-emerald-500/40 border-emerald-400/40">
+                        📍 ASISTIR EN VIVO
+                    </button>
+                    
+                    <!-- Panel Dinámico Online (Oculto al inicio) -->
+                    <div id="panel-online" class="hidden glass p-4 mt-2 flex flex-col gap-4">
+                        <div class="iframe-container shadow-inner">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" frameborder="0"></iframe>
+                        </div>
+                        <button onclick="alert('Notificaciones activadas. Recibirás una alerta cuando entremos en vivo.')" class="glass-btn w-full p-3.5 font-bold text-yellow-400 border-yellow-500/50 flex justify-center items-center gap-2 hover:bg-yellow-500/20">
+                            <i class="fa-solid fa-bell text-lg animate-pulse"></i> RECIBIR NOTIFICACIONES
+                        </button>
+                    </div>
+
+                    <!-- Panel Dinámico En Vivo (Oculto al inicio) -->
+                    <div id="panel-vivo" class="hidden glass p-5 mt-2 flex flex-col gap-4 text-left">
+                        <h3 class="text-white font-bold text-lg mb-1 text-center">Registro Presencial</h3>
+                        <input type="text" placeholder="Nombre completo" class="glass-input">
+                        <input type="tel" placeholder="Teléfono" class="glass-input">
+                        <button onclick="alert('Te has registrado correctamente para asistir presencialmente.')" class="glass-btn w-full p-4 font-black bg-white/20 mt-1 uppercase">
+                            Registrarme
+                        </button>
+                        <a href="https://maps.google.com" target="_blank" class="glass-btn w-full p-3 font-semibold text-blue-300 border-blue-300/30 flex justify-center items-center gap-2 mt-2 bg-blue-900/40">
+                            📍 Abrir en Google Maps
                         </a>
                     </div>
 
-                    <!-- Sección de notificaciones -->
-                    <div style="padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500; font-family: var(--font-title); color: var(--accent-gold);">🔔 Activa las notificaciones del evento</h3>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <input type="email" id="notif-email" placeholder="Tu correo electrónico" style="flex: 1 1 200px; padding: 0.75rem 1rem; border: 1px solid var(--glass-border); border-radius: 30px; outline: none; font-family: var(--font-body); background: var(--glass-bg-alt); color: var(--text-main);">
-                            <button onclick="activarNotificaciones()" class="btn-primary" style="padding: 0.75rem 1.5rem; border: none; cursor: pointer; border-radius: 30px;">ACTIVAR</button>
-                        </div>
-                        <p id="notif-message" style="margin-top: 1rem; font-size: 0.95rem; min-height: 1.5rem;"></p>
+                </div>
+            </div>
+
+            <!-- Flecha animada que invita a hacer scroll hacia abajo para ver categorías -->
+            <div class="mt-auto opacity-70 flex flex-col items-center pb-4 text-white">
+                <span class="text-xs font-semibold tracking-widest uppercase mb-3 opacity-80">Categorías</span>
+                <i class="fa-solid fa-angles-down text-3xl animate-bounce"></i>
+            </div>
+        </section>
+
+        <!-- SECCIÓN INFERIOR: CATEGORÍAS IMÁGENES (Visibles haciendo scroll) -->
+        <section class="max-w-2xl mx-auto px-4 pb-24 pt-8">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                
+                <!-- Himnos (Música) -->
+                <div onclick="goPage('musica')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
+                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-[1.15] transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
+                        <img src="images/musica.jpg" class="w-full h-full object-cover" alt="Música">
                     </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase">Música</h2>
+                </div>
+                
+                <!-- Predicaciones -->
+                <div onclick="goPage('predicaciones')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
+                    <div class="relative w-24 h-24 sm:w-32 sm:h-32 mb-4 group-hover:scale-[1.15] transition-transform duration-500">
+                        <div class="w-full h-full rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
+                            <img src="images/flags.jpg" class="w-full h-full object-cover" alt="Prédicas">
+                        </div>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mt-2">Prédicas</h2>
+                </div>
+                
+                <!-- Películas (Cine) -->
+                <div onclick="goPage('cine')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
+                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-[1.15] transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Cine">
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase">Cine</h2>
+                </div>
+                
+                <!-- Literatura -->
+                <div onclick="goPage('literatura')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
+                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-[1.15] transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
+                        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Lectura">
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase">Lectura</h2>
                 </div>
                 
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Sección 2: Himnos (Max 8 Videos) -->
-    <section id="himnos" class="section">
-        <h2 class="section-title">HIMNOS</h2>
-        <div class="video-grid">
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/bvk54h5b9U0?rel=0&modestbranding=1" title="Grandioso Dios - Junior Kelly Marchena" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Grandioso Dios<br><span style="font-size: 0.9em; opacity: 0.8;">Junior Kelly Marchena</span></h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/usMsrqRaGFk?rel=0&modestbranding=1" title="Cristo te Sostendrá - Catalina Peña" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Cristo te Sostendrá<br><span style="font-size: 0.9em; opacity: 0.8;">Catalina Peña</span></h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/3AonCCSfMt4?rel=0&modestbranding=1" title="Danos Paz - Karin Brañes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Danos Paz<br><span style="font-size: 0.9em; opacity: 0.8;">Karin Brañes</span></h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/ArHKKlPdd1A?rel=0&modestbranding=1" title="La Voz del Señor - Edith Aravena" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>La Voz del Señor<br><span style="font-size: 0.9em; opacity: 0.8;">Edith Aravena</span></h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/bS_NBxga8ck?rel=0&modestbranding=1" title="Digno eres tú" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Digno eres tú</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/Q97GUgz5Mo4?rel=0&modestbranding=1" title="Ven Señor Jesús - Rudy Micelli" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Ven Señor Jesús<br><span style="font-size: 0.9em; opacity: 0.8;">Rudy Micelli</span></h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/h6gp9UZvbt8?rel=0&modestbranding=1" title="Sacrificio de Amor - Edith Aravena" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Sacrificio de Amor<br><span style="font-size: 0.9em; opacity: 0.8;">Edith Aravena</span></h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/hC75G2w7LQI?rel=0&modestbranding=1" title="Hazme tu siervo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Hazme tu siervo</h3>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sección 3: Películas -->
-    <section id="peliculas" class="section">
-        <h2 class="section-title">PELÍCULAS</h2>
-        <div class="video-grid">
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/9iKawBQB0BU?rel=0&modestbranding=1" title="La Pasión de Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>La Pasión de Cristo</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/fegvqAIHAPc?rel=0&modestbranding=1" title="Jesús de Nazaret" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Jesús de Nazaret</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/k8MFQKqaJFc?rel=0&modestbranding=1" title="Jesús (1979) Evangelio de Lucas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Jesús (1979) Evangelio de Lucas</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/X8VmyRU2taY?rel=0&modestbranding=1" title="El Evangelio según San Mateo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>El Evangelio según San Mateo</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/SfT2k4QoafY?rel=0&modestbranding=1" title="Hechos de los Apóstoles" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Hechos de los Apóstoles</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/lwavNS0f7N0?rel=0&modestbranding=1" title="Apocalipsis (Revelación)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Apocalipsis (Revelación)</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/iRXxEBTiR90?rel=0&modestbranding=1" title="Pablo, el Apóstol de Cristo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Pablo, el Apóstol de Cristo</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/EZLdPMNDK3k?rel=0&modestbranding=1" title="Pedro (película bíblica)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>Pedro (película bíblica)</h3>
-            </div>
-            <div class="video-card glass">
-                <div class="iframe-container">
-                    <iframe src="https://www.youtube.com/embed/T418DMPjOuA?rel=0&modestbranding=1" title="José el Rey de los Sueños" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <h3>José el Rey de los Sueños</h3>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sección 4: Predicaciones (Max 4 y 4 por Tab) -->
-    <section id="predicaciones" class="section">
-        <h2 class="section-title">PREDICACIONES</h2>
+    <!-- ==================== SUBPAGINAS (Ocultas por defecto) ==================== -->
+
+    <!-- SUBPAGE: MÚSICA -->
+    <div id="page-musica" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
         
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'latino')" aria-label="Ver Pastores Latinoamericanos">PASTORES LATINOAMERICANOS</button>
-            <button class="tab-btn" onclick="openTab(event, 'europeo')" aria-label="Ver Pastores Europeos">PASTORES EUROPEOS</button>
-        </div>
-
-        <!-- Tab Latino (Max 4) -->
-        <div id="latino" class="tab-content active-content">
-            <div class="video-grid">
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/Eqqlm9BMZ4E?rel=0&modestbranding=1" title="La Marca de la Bestia - Esteban Bohr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Esteban Bohr<br><span style="font-size: 0.9em; opacity: 0.8;">La Marca de la Bestia</span></h3>
-                </div>
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/yQRxgESDvpo?rel=0&modestbranding=1" title="El Santuario - Andrés Portes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Andrés Portes<br><span style="font-size: 0.9em; opacity: 0.8;">El Santuario</span></h3>
-                </div>
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/mwN7RPRJxgc?rel=0&modestbranding=1" title="Pr. Robert Costa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Robert Costa<br><span style="font-size: 0.9em; opacity: 0.8;">Escrito Está</span></h3>
-                </div>
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/6myZ1CxWTfU?rel=0&modestbranding=1" title="Pr. Joel Flores" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Joel Flores<br><span style="font-size: 0.9em; opacity: 0.8;">Nuevo Tiempo</span></h3>
-                </div>
+        <div class="flex justify-between items-center mb-10 w-full">
+            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-music text-2xl text-blue-300"></i><h2 class="text-3xl font-black text-white uppercase tracking-widest">Música</h2>
             </div>
         </div>
-
-        <!-- Tab Europeo (Max 4) -->
-        <div id="europeo" class="tab-content">
-            <div class="video-grid">
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/jZL-0XoQsQE?rel=0&modestbranding=1" title="Pastor Daniel Bosqued" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Daniel Bosqued</h3>
-                </div>
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/7R1c-2ivvGM?rel=0&modestbranding=1" title="Pastor Carlos Rando" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Carlos Rando</h3>
-                </div>
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/idKjHrAPUHo?rel=0&modestbranding=1" title="Pr. Roberto Badenas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Roberto Badenas</h3>
-                </div>
-                <div class="video-card glass">
-                    <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/UfmfsK8E8N8?rel=0&modestbranding=1" title="Pr. Juan Carlos Basterra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3>Juan Carlos Basterra</h3>
-                </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 ml:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- 8 Videos Himnos -->
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/bvk54h5b9U0" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Grandioso Dios</h3><p class="text-sm text-gray-300">Junior Kelly Marchena</p>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/usMsrqRaGFk" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Cristo te Sostendrá</h3><p class="text-sm text-gray-300">Catalina Peña</p>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/3AonCCSfMt4" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Danos Paz</h3><p class="text-sm text-gray-300">Karin Brañes</p>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/ArHKKlPdd1A" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">La Voz del Señor</h3><p class="text-sm text-gray-300">Edith Aravena</p>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/bS_NBxga8ck" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Digno eres tú</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/Q97GUgz5Mo4" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ven Señor Jesús</h3><p class="text-sm text-gray-300">Rudy Micelli</p>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/h6gp9UZvbt8" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Sacrificio de Amor</h3><p class="text-sm text-gray-300">Edith Aravena</p>
+            </div>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/hC75G2w7LQI" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Hazme tu siervo</h3>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="footer">
-        <p>&copy; 2026 Misionero Adventista. Todos los derechos reservados.</p>
-        <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.6;">Diseño hecho con elegancia espiritual y glassmorphism.</p>
-    </footer>
+    <!-- SUBPAGE: CINE -->
+    <div id="page-cine" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-10 w-full">
+            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-video text-2xl text-red-300"></i><h2 class="text-3xl font-black text-white uppercase tracking-widest">Cine</h2>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- 8 Peliculas -->
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/9iKawBQB0BU" allowfullscreen></iframe></div><h3 class="font-bold text-white">La Pasión de Cristo</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/fegvqAIHAPc" allowfullscreen></iframe></div><h3 class="font-bold text-white">Jesús de Nazaret</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/k8MFQKqaJFc" allowfullscreen></iframe></div><h3 class="font-bold text-white">Jesús (1979)</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/X8VmyRU2taY" allowfullscreen></iframe></div><h3 class="font-bold text-white">Evangelio s/ San Mateo</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/SfT2k4QoafY" allowfullscreen></iframe></div><h3 class="font-bold text-white">Hechos de los Apóstoles</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/lwavNS0f7N0" allowfullscreen></iframe></div><h3 class="font-bold text-white">Apocalipsis</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/iRXxEBTiR90" allowfullscreen></iframe></div><h3 class="font-bold text-white">Pablo, Apóstol de Cristo</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/EZLdPMNDK3k" allowfullscreen></iframe></div><h3 class="font-bold text-white">Pedro</h3></div>
+        </div>
+    </div>
 
-    <!-- Cargar SDK de EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init({
-                publicKey: "QdPE70BwTQD_ND8wQ"
-            });
-        })();
+
+    <!-- SUBPAGE: PREDICACIONES -->
+    <div id="page-predicaciones" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-8 w-full">
+            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-globe text-2xl text-green-300"></i><h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest hidden sm:block">Prédicas</h2>
+            </div>
+        </div>
+        
+        <!-- Pestañas de Pastores -->
+        <div class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-2xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+            <button onclick="switchPredTab('latam')" id="btn-tab-latam" class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide">
+                LATAM
+            </button>
+            <button onclick="switchPredTab('euro')" id="btn-tab-euro" class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide">
+                EUROPA
+            </button>
+        </div>
+
+        <div id="tab-latam" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Predicaciones Latam -->
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/Eqqlm9BMZ4E" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">La Marca de la Bestia</h3><p class="text-sm text-gray-300">Esteban Bohr</p></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/yQRxgESDvpo" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">El Santuario</h3><p class="text-sm text-gray-300">Andrés Portes</p></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/mwN7RPRJxgc" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Escrito Está</h3><p class="text-sm text-gray-300">Robert Costa</p></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/6myZ1CxWTfU" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Nuevo Tiempo</h3><p class="text-sm text-gray-300">Joel Flores</p></div>
+        </div>
+        
+        <div id="tab-euro" class="hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Predicaciones Europa -->
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/jZL-0XoQsQE" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Daniel Bosqued</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/7R1c-2ivvGM" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Carlos Rando</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/idKjHrAPUHo" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Roberto Badenas</h3></div>
+            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/UfmfsK8E8N8" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Juan Carlos Basterra</h3></div>
+        </div>
+    </div>
+
+    <!-- SUBPAGE: LITERATURA -->
+    <div id="page-literatura" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-10 w-full">
+            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-book-open text-2xl text-yellow-300"></i><h2 class="text-3xl font-black text-white uppercase tracking-widest">Lectura</h2>
+            </div>
+        </div>
+        
+        <div class="glass p-12 text-center flex flex-col items-center">
+            <div class="w-24 h-24 rounded-full border-4 border-white/20 mb-6 flex justify-center items-center shadow-lg floating">
+                <i class="fa-solid fa-book-open text-5xl text-white"></i>
+            </div>
+            <h3 class="text-3xl font-black text-white mb-3">Colección en Preparación</h3>
+            <p class="text-gray-300 text-lg max-w-md mx-auto">Pronto agregaremos nuestra biblioteca de libros y ensayos adventistas para fortalecer la fe en estos últimos días.</p>
+        </div>
+    </div>
+
+
+    <!-- ==================== LÓGICA JAVASCRIPT ==================== -->
+    <script>
+        // DOM Elements
+        const homePage = document.getElementById('home-page');
+        const pages = document.querySelectorAll('.page');
+        const asisOpciones = document.getElementById('participar-opciones');
+        const asisIcon = document.getElementById('participar-icon');
+        const panelOnline = document.getElementById('panel-online');
+        const panelVivo = document.getElementById('panel-vivo');
+        
+        // ---- Navegación Subpáginas ----
+        function goHome() {
+            pages.forEach(p => p.classList.remove('active'));
+            homePage.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        function goPage(pageId) {
+            pages.forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + pageId);
+            if(target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+        }
+
+        // ---- Lógica del Botón "ASISTIR" (Desplegable) ----
+        function toggleParticipar() {
+            if (asisOpciones.classList.contains('hidden')) {
+                asisOpciones.classList.remove('hidden');
+                asisIcon.style.transform = "rotate(180deg)";
+            } else {
+                asisOpciones.classList.add('hidden');
+                asisIcon.style.transform = "rotate(0deg)";
+                // Ocultar internos si se esconde por completo
+                panelOnline.classList.add('hidden');
+                panelVivo.classList.add('hidden');
+                
+                document.getElementById('btn-opt-online').classList.remove('bg-indigo-500/40', 'border-white');
+                document.getElementById('btn-opt-vivo').classList.remove('bg-emerald-500/40', 'border-white');
+            }
+        }
+
+        function showAsistirPanel(type) {
+            const btnOnline = document.getElementById('btn-opt-online');
+            const btnVivo = document.getElementById('btn-opt-vivo');
+
+            if(type === 'online') {
+                if(!panelOnline.classList.contains('hidden')) {
+                    // Si ya estaba abierto, ciérralo
+                    panelOnline.classList.add('hidden');
+                    btnOnline.classList.remove('bg-indigo-500/40', 'border-white');
+                    return;
+                }
+                panelVivo.classList.add('hidden');
+                panelOnline.classList.remove('hidden');
+                btnOnline.classList.add('bg-indigo-500/40', 'border-white');
+                btnVivo.classList.remove('bg-emerald-500/40', 'border-white');
+            } else {
+                if(!panelVivo.classList.contains('hidden')) {
+                    // Si ya estaba abierto, ciérralo
+                    panelVivo.classList.add('hidden');
+                    btnVivo.classList.remove('bg-emerald-500/40', 'border-white');
+                    return;
+                }
+                panelOnline.classList.add('hidden');
+                panelVivo.classList.remove('hidden');
+                btnVivo.classList.add('bg-emerald-500/40', 'border-white');
+                btnOnline.classList.remove('bg-indigo-500/40', 'border-white');
+            }
+        }
+
+        // ---- Lógica Pestañas Predicaciones ----
+        function switchPredTab(type) {
+            const tabLatam = document.getElementById('tab-latam');
+            const tabEuro = document.getElementById('tab-euro');
+            const btnLatam = document.getElementById('btn-tab-latam');
+            const btnEuro = document.getElementById('btn-tab-euro');
+
+            if(type === 'latam') {
+                tabEuro.classList.add('hidden');
+                tabEuro.classList.remove('grid');
+                tabLatam.classList.remove('hidden');
+                tabLatam.classList.add('grid');
+                
+                btnLatam.classList.add('bg-white/20', 'border-white/30', 'text-white');
+                btnLatam.classList.remove('border-transparent', 'text-white/50');
+                btnEuro.classList.remove('bg-white/20', 'border-white/30', 'text-white');
+                btnEuro.classList.add('border-transparent', 'text-white/50');
+            } else {
+                tabLatam.classList.add('hidden');
+                tabLatam.classList.remove('grid');
+                tabEuro.classList.remove('hidden');
+                tabEuro.classList.add('grid');
+                
+                btnEuro.classList.add('bg-white/20', 'border-white/30', 'text-white');
+                btnEuro.classList.remove('border-transparent', 'text-white/50');
+                btnLatam.classList.remove('bg-white/20', 'border-white/30', 'text-white');
+                btnLatam.classList.add('border-transparent', 'text-white/50');
+            }
+        }
     </script>
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
 </body>
 </html>

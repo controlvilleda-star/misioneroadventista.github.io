@@ -391,3 +391,149 @@ body {
         padding: 1rem;
     }
 }
+
+/* =========================================
+   Linktree Styles
+========================================= */
+
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 119, 0.4);
+    margin-bottom: 1rem;
+}
+
+.bio {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+.links-container .link-card:nth-child(1) { animation-delay: 0.1s; }
+.links-container .link-card:nth-child(2) { animation-delay: 0.2s; }
+.links-container .link-card:nth-child(3) { animation-delay: 0.3s; }
+.links-container .link-card:nth-child(4) { animation-delay: 0.4s; }
+.links-container .link-card:nth-child(5) { animation-delay: 0.5s; }
+
+.link-card i {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    width: 30px;
+    text-align: center;
+    margin-right: 1.2rem;
+}
+
+.link-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(212, 175, 119, 0.4);
+}
+
+.link-card.highlight {
+    background: linear-gradient(135deg, rgba(212, 175, 119, 0.2), rgba(10, 10, 10, 0.8));
+    border-color: var(--accent-gold);
+}
+
+/* Predicas Button Background */
+.predicas-card {
+    position: relative;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)), url('../images/flags.jpg');
+    background-size: cover;
+    background-position: center;
+    border-color: var(--accent-gold) !important;
+    overflow: hidden;
+}
+
+.predicas-card:hover {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('../images/flags.jpg');
+    box-shadow: 0 10px 30px rgba(212, 175, 119, 0.3);
+}
+
+.predicas-card span, .predicas-card i {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+}
+
+/* Musica Button Background */
+.musica-card {
+    position: relative;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)), url('../images/musica.jpg');
+    background-size: cover;
+    background-position: center;
+    border-color: var(--accent-gold) !important;
+    overflow: hidden;
+}
+
+.musica-card:hover {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('../images/musica.jpg');
+    box-shadow: 0 10px 30px rgba(212, 175, 119, 0.3);
+}
+
+.musica-card span, .musica-card i {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--accent-gold);
+    transform: scale(1.2);
+    text-shadow: 0 0 15px rgba(212, 175, 119, 0.5);
+}
