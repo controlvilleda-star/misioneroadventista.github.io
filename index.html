@@ -164,19 +164,28 @@
                         <div class="iframe-container shadow-inner">
                             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" frameborder="0"></iframe>
                         </div>
-                        <button onclick="alert('Notificaciones activadas. Recibirás una alerta cuando entremos en vivo.')" class="glass-btn w-full p-3.5 font-bold text-yellow-400 border-yellow-500/50 flex justify-center items-center gap-2 hover:bg-yellow-500/20">
-                            <i class="fa-solid fa-bell text-lg animate-pulse"></i> RECIBIR NOTIFICACIONES
-                        </button>
+                        <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
+                            <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
+                            <input type="hidden" name="subject" value="Nueva suscripción de notificaciones">
+                            <input type="email" name="email" placeholder="Correo electrónico" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <button type="submit" class="glass-btn w-full p-3.5 font-bold text-yellow-400 border-yellow-500/50 flex justify-center items-center gap-2 hover:bg-yellow-500/20">
+                                <i class="fa-solid fa-bell text-lg animate-pulse"></i> RECIBIR NOTIFICACIONES
+                            </button>
+                        </form>
                     </div>
 
                     <!-- Panel Dinámico En Vivo (Oculto al inicio) -->
                     <div id="panel-vivo" class="hidden glass p-5 mt-2 flex flex-col gap-4 text-left">
                         <h3 class="text-white font-bold text-lg mb-1 text-center">Registro Presencial</h3>
-                        <input type="text" placeholder="Nombre completo" class="glass-input">
-                        <input type="tel" placeholder="Teléfono" class="glass-input">
-                        <button onclick="alert('Te has registrado correctamente para asistir presencialmente.')" class="glass-btn w-full p-4 font-black bg-white/20 mt-1 uppercase">
-                            Registrarme
-                        </button>
+                        <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4 w-full">
+                            <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
+                            <input type="hidden" name="subject" value="Nuevo registro presencial">
+                            <input type="text" name="name" placeholder="Nombre completo" required class="glass-input">
+                            <input type="tel" name="phone" placeholder="Teléfono" required class="glass-input">
+                            <button type="submit" class="glass-btn w-full p-4 font-black bg-white/20 mt-1 uppercase">
+                                Registrarme
+                            </button>
+                        </form>
                         
                         <h3 class="text-white font-bold text-sm mt-2 text-center uppercase tracking-wider text-blue-200">Ubicación del Evento</h3>
                         <div class="iframe-container shadow-inner" style="padding-bottom: 70%;">
@@ -200,9 +209,28 @@
                     <i class="fa-solid fa-book-bible text-5xl mb-4 text-yellow-300 drop-shadow-lg group-hover:scale-110 transition-transform duration-500"></i>
                     <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Literatura Gratuita</h3>
                     <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Solicita hoy mismo tu ejemplar impreso y recíbelo en la comodidad de tu hogar.</p>
-                    <button onclick="alert('Formulario para envío de literatura en desarrollo')" class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-yellow-500/40 bg-yellow-500/20 hover:bg-yellow-500/40 flex items-center gap-2 w-full justify-center">
+                    
+                    <!-- Boton Principal que despliega el formulario -->
+                    <button id="btn-pedir" onclick="toggleFormLiteratura()" class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-yellow-500/40 bg-yellow-500/20 hover:bg-yellow-500/40 flex items-center gap-2 w-full justify-center">
                         <i class="fa-solid fa-paper-plane"></i> PEDIR AHORA
                     </button>
+
+                    <!-- Formulario Desplegable para Webhook (Web3Forms/Formspree/Zapier) -->
+                    <div id="form-literatura" class="hidden w-full mt-4 slide-down z-10 relative">
+                        <!-- Reemplaza la URL en 'action' con tu endpoint de Webhook -->
+                        <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
+                            <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
+                            <input type="hidden" name="subject" value="Nueva solicitud de literatura">
+                            
+                            <input type="text" name="name" placeholder="Nombre completo" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <input type="email" name="email" placeholder="Correo electrónico" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <textarea name="address" placeholder="Dirección completa" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40 resize-none h-20"></textarea>
+                            
+                            <button type="submit" class="glass-btn w-full p-3 font-bold text-white bg-yellow-500/40 hover:bg-yellow-500/60 border-yellow-400/50 text-sm tracking-wider uppercase mt-1">
+                                Enviar Solicitud
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Lado Derecho: Contacto y Redes -->
@@ -236,41 +264,39 @@
         </section>
 
         <!-- SECCIÓN INFERIOR: CATEGORÍAS IMÁGENES (Visibles haciendo scroll) -->
-        <section class="max-w-2xl mx-auto px-4 pb-24 pt-8">
-            <div class="grid grid-cols-2 gap-4 sm:gap-6">
+        <section class="max-w-4xl mx-auto px-4 pb-24 pt-8">
+            <div class="grid grid-cols-2 gap-4 sm:gap-8">
                 
                 <!-- Himnos (Música) -->
-                <div onclick="goPage('musica')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
-                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-[1.15] transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
-                        <img src="images/musica.jpg" class="w-full h-full object-cover" alt="Música">
+                <div onclick="goPage('musica')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                        <img src="images/musica_adventista.png" class="w-full h-full object-cover" alt="Música">
                     </div>
-                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase">Música</h2>
+                    <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Música</h2>
                 </div>
                 
                 <!-- Predicaciones -->
-                <div onclick="goPage('predicaciones')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
-                    <div class="relative w-24 h-24 sm:w-32 sm:h-32 mb-4 group-hover:scale-[1.15] transition-transform duration-500">
-                        <div class="w-full h-full rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
-                            <img src="images/flags.jpg" class="w-full h-full object-cover" alt="Prédicas">
-                        </div>
+                <div onclick="goPage('predicaciones')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                        <img src="images/flags.jpg" class="w-full h-full object-cover" alt="Prédicas">
                     </div>
-                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mt-2">Prédicas</h2>
+                    <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Prédicas</h2>
                 </div>
                 
                 <!-- Películas (Cine) -->
-                <div onclick="goPage('cine')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
-                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-[1.15] transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
-                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Cine">
+                <div onclick="goPage('cine')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                        <img src="images/cine_cristiano.png" class="w-full h-full object-cover" alt="Cine">
                     </div>
-                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase">Cine</h2>
+                    <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Cine</h2>
                 </div>
                 
                 <!-- Literatura -->
-                <div onclick="goPage('literatura')" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group aspect-square shadow-xl relative overflow-hidden">
-                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-[1.15] transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)] border-[3px] border-white/20">
-                        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Lectura">
+                <div onclick="goPage('literatura')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                        <img src="images/literatura_adventista.png" class="w-full h-full object-cover" alt="Lectura">
                     </div>
-                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase">Lectura</h2>
+                    <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Lectura</h2>
                 </div>
                 
             </div>
@@ -340,88 +366,48 @@
             <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/ZPpMFjAbo38" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Música Adventista</h3></div>
             <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Música Adventista</h3></div>
 
-            <!-- Videos Facebook -->
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (1)</p>
-                <a href="https://www.facebook.com/share/v/17HASWdVfD/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <!-- Videos Anteriormente de Facebook -->
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (1)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (2)</p>
-                <a href="https://www.facebook.com/share/v/1TzVG4Z2Dy/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (2)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (3)</p>
-                <a href="https://www.facebook.com/share/v/1DWVLoRhjc/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (3)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (4)</p>
-                <a href="https://www.facebook.com/share/v/1ESVs4zBZw/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (4)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (5)</p>
-                <a href="https://www.facebook.com/share/v/1DPY66Ctq6/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (5)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (6)</p>
-                <a href="https://www.facebook.com/share/v/1AwQFaB3h8/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (6)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (7)</p>
-                <a href="https://www.facebook.com/share/v/1B4aTdws7Q/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (7)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <i class="fa-brands fa-facebook text-5xl text-blue-500 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Video en Facebook</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver alabanza (8)</p>
-                <a href="https://www.facebook.com/share/v/1VWp15VNHm/?mibextid=wwXIfr" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-blue-500/50 hover:bg-blue-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-play mr-2"></i> Ver Video
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver alabanza (8)</h3>
             </div>
 
-            <!-- Links Google Drive / Google Photos -->
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.1)]">
-                <i class="fa-brands fa-google-drive text-5xl text-yellow-400 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Música en Google</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver vídeo en Google (1)</p>
-                <a href="https://share.google/wT0woyXB5DP4OD631" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-yellow-500/50 hover:bg-yellow-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-external-link-alt mr-2"></i> Abrir Enlace
-                </a>
+            <!-- Videos Anteriormente de Google Drive/Photos -->
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver vídeo en Google (1)</h3>
             </div>
-            <div class="glass p-4 rounded-2xl flex flex-col justify-center items-center text-center aspect-auto sm:aspect-square md:aspect-auto h-full border border-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.1)]">
-                <i class="fa-brands fa-google-drive text-5xl text-yellow-400 mb-4 drop-shadow-md"></i>
-                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-wide">Música en Google</h3>
-                <p class="text-xs text-gray-300 mb-4">Ver vídeo en Google (2)</p>
-                <a href="https://share.google/Fu8MAJvhJ9AxA7ubt" target="_blank" class="glass-btn px-6 py-3 font-bold text-sm text-white border-yellow-500/50 hover:bg-yellow-600/30 w-full mt-auto">
-                    <i class="fa-solid fa-external-link-alt mr-2"></i> Abrir Enlace
-                </a>
+            <div class="glass p-4 rounded-2xl flex flex-col">
+                <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/TNYcW7Fi7mw" frameborder="0" allowfullscreen></iframe></div>
+                <h3 class="text-lg font-bold text-white">Ver vídeo en Google (2)</h3>
             </div>
         </div>
     </div>
@@ -460,11 +446,13 @@
         
         <!-- Pestañas de Pastores -->
         <div class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-2xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-            <button onclick="switchPredTab('latam')" id="btn-tab-latam" class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide">
+            <button onclick="switchPredTab('latam')" id="btn-tab-latam" class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Latin_America_%28orthographic_projection%29.svg/256px-Latin_America_%28orthographic_projection%29.svg.png" alt="Latam" class="w-5 h-5 sm:w-6 sm:h-6 object-cover rounded-full border border-white/30 shadow-sm bg-white/10">
                 LATAM
             </button>
-            <button onclick="switchPredTab('euro')" id="btn-tab-euro" class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide">
-                EUROPA
+            <button onclick="switchPredTab('euro')" id="btn-tab-euro" class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/256px-Bandera_de_Espa%C3%B1a.svg.png" alt="España" class="w-5 h-5 sm:w-6 sm:h-6 object-cover rounded-full border border-white/30 shadow-sm bg-white/10">
+                ESPAÑA
             </button>
         </div>
 
@@ -486,7 +474,7 @@
     </div>
 
     <!-- SUBPAGE: LITERATURA -->
-    <div id="page-literatura" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-4xl mx-auto">
+    <div id="page-literatura" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
         <div class="flex justify-between items-center mb-10 w-full">
             <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
             <div class="flex items-center gap-3">
@@ -494,12 +482,33 @@
             </div>
         </div>
         
-        <div class="glass p-12 text-center flex flex-col items-center">
-            <div class="w-24 h-24 rounded-full border-4 border-white/20 mb-6 flex justify-center items-center shadow-lg floating">
-                <i class="fa-solid fa-book-open text-5xl text-white"></i>
-            </div>
-            <h3 class="text-3xl font-black text-white mb-3">Colección en Preparación</h3>
-            <p class="text-gray-300 text-lg max-w-md mx-auto">Pronto agregaremos nuestra biblioteca de libros y ensayos adventistas para fortalecer la fe en estos últimos días.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Biblia Online (YouVersion) -->
+            <a href="https://www.bible.com/es/" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-white/5 flex justify-center items-center">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/df/e2/a4dfe25c-bb1c-d784-fc17-73b30602052f/AppIcon-0-0-1x_U007emarketing-0-5-0-85-220.png/512x512bb.jpg" class="w-full h-full object-cover" alt="Santa Biblia App">
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Santa Biblia</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm">YouVersion Online</p>
+            </a>
+            
+            <!-- Escritos EGW -->
+            <a href="https://m.egwwritings.org/es" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-white/5 flex justify-center items-center relative">
+                    <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple116/v4/a5/89/34/a5893450-4d43-5cd7-6d60-b6ec7f86eb4b/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" class="w-full h-full object-cover" alt="Escritos EGW App">
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Escritos EGW</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm">Sitio Oficial EGW</p>
+            </a>
+
+            <!-- Escuela Sabática -->
+            <a href="https://sabbath-school.adventech.io/es/" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-white/5 flex justify-center items-center relative">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/a3/9d/22a39d89-b883-9366-eb52-db2f190ab726/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg" class="w-full h-full object-cover" alt="Escuela Sabática App">
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">Escuela Sabática</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm mt-2">Lección de Estudiantes</p>
+            </a>
         </div>
     </div>
 
@@ -603,6 +612,26 @@
                 btnEuro.classList.remove('border-transparent', 'text-white/50');
                 btnLatam.classList.remove('bg-white/20', 'border-white/30', 'text-white');
                 btnLatam.classList.add('border-transparent', 'text-white/50');
+            }
+        }
+
+        // ---- Lógica del Formulario Literatura ----
+        function toggleFormLiteratura() {
+            const formContainer = document.getElementById('form-literatura');
+            const btn = document.getElementById('btn-pedir');
+            
+            if (formContainer.classList.contains('hidden')) {
+                // Mostrar Formulario
+                formContainer.classList.remove('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> CANCELAR';
+                btn.classList.add('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
+                btn.classList.remove('bg-yellow-500/20', 'border-yellow-500/40', 'hover:bg-yellow-500/40');
+            } else {
+                // Ocultar Formulario
+                formContainer.classList.add('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> PEDIR AHORA';
+                btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
+                btn.classList.add('bg-yellow-500/20', 'border-yellow-500/40', 'hover:bg-yellow-500/40');
             }
         }
     </script>
