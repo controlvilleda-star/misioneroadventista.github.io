@@ -268,32 +268,32 @@
             <div class="grid grid-cols-2 gap-4 sm:gap-8">
                 
                 <!-- Himnos (Música) -->
-                <div onclick="goPage('musica')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                <div onclick="goPage('musica')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/musica_adventista.png" class="w-full h-full object-cover" alt="Música">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Música</h2>
                 </div>
                 
                 <!-- Predicaciones -->
-                <div onclick="goPage('predicaciones')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                <div onclick="goPage('predicaciones')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/flags.jpg" class="w-full h-full object-cover" alt="Prédicas">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Prédicas</h2>
                 </div>
                 
                 <!-- Películas (Cine) -->
-                <div onclick="goPage('cine')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                <div onclick="goPage('cine')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/cine_cristiano.png" class="w-full h-full object-cover" alt="Cine">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Cine</h2>
                 </div>
                 
                 <!-- Literatura -->
-                <div onclick="goPage('literatura')" class="glass p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-36 h-36 sm:w-56 sm:h-56 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden mb-4 sm:mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+                <div onclick="goPage('literatura')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/literatura_adventista.png" class="w-full h-full object-cover" alt="Lectura">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Lectura</h2>
@@ -310,14 +310,27 @@
     <!-- SUBPAGE: MÚSICA -->
     <div id="page-musica" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
         
-        <div class="flex justify-between items-center mb-10 w-full">
-            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-music text-2xl text-blue-300"></i><h2 class="text-3xl font-black text-white uppercase tracking-widest">Música</h2>
-            </div>
+        <div class="flex justify-start items-center mb-10 w-full">
+            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+                <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-music text-2xl sm:text-3xl text-blue-300"></i>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Música</h2>
+                </div>
+            </button>
         </div>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Pestañas de Música -->
+        <div class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-2xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+            <button onclick="switchMusicTab('himnos')" id="btn-tab-himnos" class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
+                <i class="fa-solid fa-book-open"></i> HIMNOS
+            </button>
+            <button onclick="switchMusicTab('cantos')" id="btn-tab-cantos" class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
+                <i class="fa-solid fa-microphone-lines"></i> CANTOS
+            </button>
+        </div>
+
+        <div id="tab-himnos" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <!-- 8 Videos Himnos Originales -->
             <div class="glass p-4 rounded-2xl flex flex-col">
                 <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/bvk54h5b9U0" frameborder="0" allowfullscreen></iframe></div>
@@ -351,7 +364,9 @@
                 <div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/hC75G2w7LQI" frameborder="0" allowfullscreen></iframe></div>
                 <h3 class="text-lg font-bold text-white">Hazme tu siervo</h3>
             </div>
-            
+        </div>
+
+        <div id="tab-cantos" class="hidden grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <!-- Nuevos Videos YouTube -->
             <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/wIPCePkVn6M" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Música Adventista</h3></div>
             <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/7dl075TS0vg" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Música Adventista</h3></div>
@@ -414,14 +429,17 @@
 
     <!-- SUBPAGE: CINE -->
     <div id="page-cine" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-10 w-full">
-            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-video text-2xl text-red-300"></i><h2 class="text-3xl font-black text-white uppercase tracking-widest">Cine</h2>
-            </div>
+        <div class="flex justify-start items-center mb-10 w-full">
+            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+                <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-video text-2xl sm:text-3xl text-red-300"></i>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Cine</h2>
+                </div>
+            </button>
         </div>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <!-- 8 Peliculas -->
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/9iKawBQB0BU" allowfullscreen></iframe></div><h3 class="font-bold text-white">La Pasión de Cristo</h3></div>
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/fegvqAIHAPc" allowfullscreen></iframe></div><h3 class="font-bold text-white">Jesús de Nazaret</h3></div>
@@ -437,26 +455,27 @@
 
     <!-- SUBPAGE: PREDICACIONES -->
     <div id="page-predicaciones" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-8 w-full">
-            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-globe text-2xl text-green-300"></i><h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest hidden sm:block">Prédicas</h2>
-            </div>
+        <div class="flex justify-start items-center mb-8 w-full">
+            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+                <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-globe text-2xl sm:text-3xl text-green-300"></i>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Prédicas</h2>
+                </div>
+            </button>
         </div>
         
         <!-- Pestañas de Pastores -->
         <div class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-2xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)]">
             <button onclick="switchPredTab('latam')" id="btn-tab-latam" class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Latin_America_%28orthographic_projection%29.svg/256px-Latin_America_%28orthographic_projection%29.svg.png" alt="Latam" class="w-5 h-5 sm:w-6 sm:h-6 object-cover rounded-full border border-white/30 shadow-sm bg-white/10">
-                LATAM
+                <span class="text-xl">🌎</span> LATAM
             </button>
             <button onclick="switchPredTab('euro')" id="btn-tab-euro" class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/256px-Bandera_de_Espa%C3%B1a.svg.png" alt="España" class="w-5 h-5 sm:w-6 sm:h-6 object-cover rounded-full border border-white/30 shadow-sm bg-white/10">
-                ESPAÑA
+                <span class="text-xl">🇪🇸</span> ESPAÑA
             </button>
         </div>
 
-        <div id="tab-latam" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div id="tab-latam" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <!-- Predicaciones Latam -->
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/Eqqlm9BMZ4E" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">La Marca de la Bestia</h3><p class="text-sm text-gray-300">Esteban Bohr</p></div>
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/yQRxgESDvpo" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">El Santuario</h3><p class="text-sm text-gray-300">Andrés Portes</p></div>
@@ -464,7 +483,7 @@
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/6myZ1CxWTfU" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Nuevo Tiempo</h3><p class="text-sm text-gray-300">Joel Flores</p></div>
         </div>
         
-        <div id="tab-euro" class="hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div id="tab-euro" class="hidden grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <!-- Predicaciones Europa -->
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/jZL-0XoQsQE" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Daniel Bosqued</h3></div>
             <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/7R1c-2ivvGM" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Carlos Rando</h3></div>
@@ -475,18 +494,21 @@
 
     <!-- SUBPAGE: LITERATURA -->
     <div id="page-literatura" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-10 w-full">
-            <button onclick="goHome()" class="glass-btn px-5 py-3 font-bold flex items-center gap-2 uppercase text-sm"><i class="fa-solid fa-arrow-left"></i> Volver</button>
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-book-open text-2xl text-yellow-300"></i><h2 class="text-3xl font-black text-white uppercase tracking-widest">Lectura</h2>
-            </div>
+        <div class="flex justify-start items-center mb-10 w-full">
+            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+                <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-book-open text-2xl sm:text-3xl text-yellow-300"></i>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Lectura</h2>
+                </div>
+            </button>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Biblia Online (YouVersion) -->
             <a href="https://www.bible.com/es/" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-white/5 flex justify-center items-center">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/df/e2/a4dfe25c-bb1c-d784-fc17-73b30602052f/AppIcon-0-0-1x_U007emarketing-0-5-0-85-220.png/512x512bb.jpg" class="w-full h-full object-cover" alt="Santa Biblia App">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex justify-center items-center">
+                    <i class="fa-solid fa-book-bible text-6xl text-purple-200 drop-shadow-md"></i>
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Santa Biblia</h2>
                 <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm">YouVersion Online</p>
@@ -494,8 +516,8 @@
             
             <!-- Escritos EGW -->
             <a href="https://m.egwwritings.org/es" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-white/5 flex justify-center items-center relative">
-                    <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple116/v4/a5/89/34/a5893450-4d43-5cd7-6d60-b6ec7f86eb4b/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" class="w-full h-full object-cover" alt="Escritos EGW App">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex justify-center items-center relative">
+                    <i class="fa-solid fa-feather-pointed text-6xl text-blue-200 drop-shadow-md"></i>
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Escritos EGW</h2>
                 <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm">Sitio Oficial EGW</p>
@@ -503,8 +525,8 @@
 
             <!-- Escuela Sabática -->
             <a href="https://sabbath-school.adventech.io/es/" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-white/5 flex justify-center items-center relative">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/a3/9d/22a39d89-b883-9366-eb52-db2f190ab726/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg" class="w-full h-full object-cover" alt="Escuela Sabática App">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex justify-center items-center relative">
+                    <i class="fa-solid fa-book-open-reader text-6xl text-green-200 drop-shadow-md"></i>
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">Escuela Sabática</h2>
                 <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm mt-2">Lección de Estudiantes</p>
@@ -612,6 +634,36 @@
                 btnEuro.classList.remove('border-transparent', 'text-white/50');
                 btnLatam.classList.remove('bg-white/20', 'border-white/30', 'text-white');
                 btnLatam.classList.add('border-transparent', 'text-white/50');
+            }
+        }
+
+        // ---- Lógica Pestañas Música ----
+        function switchMusicTab(type) {
+            const tabHimnos = document.getElementById('tab-himnos');
+            const tabCantos = document.getElementById('tab-cantos');
+            const btnHimnos = document.getElementById('btn-tab-himnos');
+            const btnCantos = document.getElementById('btn-tab-cantos');
+
+            if(type === 'himnos') {
+                tabCantos.classList.add('hidden');
+                tabCantos.classList.remove('grid');
+                tabHimnos.classList.remove('hidden');
+                tabHimnos.classList.add('grid');
+                
+                btnHimnos.classList.add('bg-white/20', 'border-white/30', 'text-white');
+                btnHimnos.classList.remove('border-transparent', 'text-white/50');
+                btnCantos.classList.remove('bg-white/20', 'border-white/30', 'text-white');
+                btnCantos.classList.add('border-transparent', 'text-white/50');
+            } else {
+                tabHimnos.classList.add('hidden');
+                tabHimnos.classList.remove('grid');
+                tabCantos.classList.remove('hidden');
+                tabCantos.classList.add('grid');
+                
+                btnCantos.classList.add('bg-white/20', 'border-white/30', 'text-white');
+                btnCantos.classList.remove('border-transparent', 'text-white/50');
+                btnHimnos.classList.remove('bg-white/20', 'border-white/30', 'text-white');
+                btnHimnos.classList.add('border-transparent', 'text-white/50');
             }
         }
 
