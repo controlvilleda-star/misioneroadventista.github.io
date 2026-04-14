@@ -129,10 +129,14 @@
         <!-- HERO / PORTADA (100 VH) MOBILE FIRST -->
         <section class="min-h-[100svh] flex flex-col items-center justify-center p-6 text-center">
             
-            <!-- Foto de Jesus Principal (El centro de atención al cargar) -->
-            <div class="w-[26rem] h-[26rem] sm:w-[32rem] sm:h-[32rem] max-w-[90vw] max-h-[90vw] aspect-square rounded-full overflow-hidden border-[8px] border-white/20 mb-8 floating mt-8 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex-shrink-0 mx-auto">
-                <!-- Se asume que la imagen está en la ruta declarada -->
-                <img src="images/jesus-nuevo.jpg" alt="Jesús" class="w-full h-full object-cover">
+            <!-- Foto interactiva de Jesus (Con Video) -->
+            <div id="jesus-container" onclick="playJesusVideo()" class="relative w-[26rem] h-[26rem] sm:w-[32rem] sm:h-[32rem] max-w-[90vw] max-h-[90vw] aspect-square rounded-full overflow-hidden border-[8px] border-white/20 mb-8 floating mt-8 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex-shrink-0 cursor-pointer mx-auto group">
+                
+                <!-- Imagen original -->
+                <img id="jesus-img" src="images/jesus-nuevo.jpg" alt="Jesús" class="absolute inset-0 w-full h-full object-cover z-10">
+                
+                <!-- Video superpuesto (oculto por defecto) -->
+                <video id="jesus-video" src="images/jesus.mp4" playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-20 opacity-0 cursor-pointer" onended="stopJesusVideo()"></video>
             </div>
             
             <!-- Título Principal -->
@@ -200,11 +204,11 @@
                 </div>
             </div>
 
-            <!-- Cuadro Díptico (Literatura y Contacto) -->
-            <div class="glass w-full max-w-4xl mx-auto my-12 overflow-hidden rounded-3xl flex flex-col md:flex-row shadow-[0_15px_40px_rgba(0,0,0,0.4)] border border-white/20">
+            <!-- Cuadro Tríptico (Literatura, Oración y Contacto) -->
+            <div class="glass w-full max-w-6xl mx-auto my-12 overflow-hidden rounded-3xl grid grid-cols-1 md:grid-cols-3 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border border-white/20">
                 
-                <!-- Lado Izquierdo: Literatura Impresa -->
-                <div class="w-full md:w-1/2 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                <!-- Columna Izquierda: Literatura Impresa -->
+                <div class="w-full p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <i class="fa-solid fa-book-bible text-5xl mb-4 text-yellow-300 drop-shadow-lg group-hover:scale-110 transition-transform duration-500"></i>
                     <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Literatura Gratuita</h3>
@@ -217,7 +221,6 @@
 
                     <!-- Formulario Desplegable para Webhook (Web3Forms/Formspree/Zapier) -->
                     <div id="form-literatura" class="hidden w-full mt-4 slide-down z-10 relative">
-                        <!-- Reemplaza la URL en 'action' con tu endpoint de Webhook -->
                         <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
                             <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
                             <input type="hidden" name="subject" value="Nueva solicitud de literatura">
@@ -233,8 +236,34 @@
                     </div>
                 </div>
 
-                <!-- Lado Derecho: Contacto y Redes -->
-                <div class="w-full md:w-1/2 p-8 md:p-10 flex flex-col items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-500 relative overflow-hidden">
+                <!-- Columna Centro: Pedido de Oración -->
+                <div class="w-full p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <i class="fa-solid fa-hands-praying text-5xl mb-4 text-purple-300 drop-shadow-lg group-hover:scale-110 transition-transform duration-500"></i>
+                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Pedido de Oración</h3>
+                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Déjanos tus peticiones y nuestro equipo estará orando por ti cada día.</p>
+                    
+                    <button id="btn-orar" onclick="toggleFormOracion()" class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-purple-500/40 bg-purple-500/20 hover:bg-purple-500/40 flex items-center gap-2 w-full justify-center">
+                        <i class="fa-solid fa-heart"></i> SOLICITAR
+                    </button>
+
+                    <div id="form-oracion" class="hidden w-full mt-4 slide-down z-10 relative">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
+                            <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
+                            <input type="hidden" name="subject" value="Nuevo pedido de oración">
+                            
+                            <input type="text" name="name" placeholder="Tu nombre (opcional)" class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <textarea name="message" placeholder="¿Por qué deseas que oremos?" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40 resize-none h-20"></textarea>
+                            
+                            <button type="submit" class="glass-btn w-full p-3 font-bold text-white bg-purple-500/40 hover:bg-purple-500/60 border-purple-400/50 text-sm tracking-wider uppercase mt-1">
+                                Enviar Petición
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Contacto y Redes -->
+                <div class="w-full p-8 md:p-10 flex flex-col items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-500 relative overflow-hidden">
                     <h3 class="text-xl font-black text-white mb-2 tracking-widest uppercase">Contáctanos</h3>
                     <p class="text-sm text-gray-400 mb-6 text-center font-light">Únete a nuestra comunidad digital</p>
                     
@@ -685,6 +714,50 @@
                 btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.add('bg-yellow-500/20', 'border-yellow-500/40', 'hover:bg-yellow-500/40');
             }
+        }
+
+        // ---- Lógica del Formulario Oración ----
+        function toggleFormOracion() {
+            const formContainer = document.getElementById('form-oracion');
+            const btn = document.getElementById('btn-orar');
+            
+            if (formContainer.classList.contains('hidden')) {
+                // Mostrar Formulario
+                formContainer.classList.remove('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> CANCELAR';
+                btn.classList.add('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
+                btn.classList.remove('bg-purple-500/20', 'border-purple-500/40', 'hover:bg-purple-500/40');
+            } else {
+                // Ocultar Formulario
+                formContainer.classList.add('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-heart"></i> SOLICITAR';
+                btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
+                btn.classList.add('bg-purple-500/20', 'border-purple-500/40', 'hover:bg-purple-500/40');
+            }
+        }
+        // ---- Lógica del Video Interactivo Jesús ----
+        function playJesusVideo() {
+            const video = document.getElementById('jesus-video');
+
+            // Si ya está reproduciendo, no hacer nada
+            if(video.style.opacity === '1') return;
+
+            // Entrada al video inmediata, sin transición (Corte limpio)
+            video.style.transition = 'none';
+            video.currentTime = 0;
+            video.play().catch(e => console.log('El navegador bloqueó la reproducción:', e));
+
+            video.style.opacity = '1';
+        }
+
+        function stopJesusVideo() {
+            const video = document.getElementById('jesus-video');
+
+            // Transición suave y lenta (Crossfade Dissolve) para el retorno a la imagen base
+            video.style.transition = 'opacity 1.5s ease-in-out';
+            
+            // Se desvanece el video y emerge sutilmente la imagen base original que está debajo
+            video.style.opacity = '0';
         }
     </script>
 </body>
