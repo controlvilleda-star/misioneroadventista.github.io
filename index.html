@@ -444,65 +444,132 @@
         </div>
 
         <!-- Seccion: Radios -->
-        <div id="tab-radios" class="hidden grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div id="tab-radios" class="hidden flex-col gap-10 max-w-6xl mx-auto w-full">
             
-            <!-- ESPAÑA -->
-            <div class="glass p-8 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-5 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                    <img src="https://flagcdn.com/w160/es.png" alt="España" class="w-full h-full object-cover opacity-80">
-                </div>
-                <h3 class="text-2xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Hope Media</h3>
-                <p class="text-sm text-yellow-300 font-bold tracking-widest mb-6 relative z-10">ESPAÑA</p>
-                <div class="w-full relative z-10">
-                    <a href="https://hopemedia.es/" target="_blank" rel="noopener noreferrer" class="py-3 px-6 bg-yellow-600/30 hover:bg-yellow-500/50 border border-yellow-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs">
-                        <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
-                    </a>
+            <!-- STREAMS DIRECTOS (ESPAÑA & USA) -->
+            <div class="w-full">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 justify-center">
+                    <!-- ÁVILA - SEGOVIA -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Ávila - Segovia</h3>
+                        <button onclick="toggleRadio('radio-avsg', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-avsg" src="https://rtvmgrb.org/reproductor/avsg/" preload="none"></audio>
+                    </div>
+
+                    <!-- LANZAROTE 1 -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Lanzarote 1</h3>
+                        <button onclick="toggleRadio('radio-lanzarote1', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-lanzarote1" src="https://rtvmgrb.org/reproductor/lanzarote1/" preload="none"></audio>
+                    </div>
+
+                    <!-- LANZAROTE 2 -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Lanzarote 2</h3>
+                        <button onclick="toggleRadio('radio-lanzarote2', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-lanzarote2" src="https://rtvmgrb.org/reproductor/lanzarote2/" preload="none"></audio>
+                    </div>
+
+                    <!-- PALENCIA -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Palencia</h3>
+                        <button onclick="toggleRadio('radio-palencia', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-palencia" src="https://rtvmgrb.org/reproductor/palencia/" preload="none"></audio>
+                    </div>
+
+                    <!-- SALAMANCA -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Salamanca</h3>
+                        <button onclick="toggleRadio('radio-salamanca', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-salamanca" src="https://rtvmgrb.org/reproductor/salamanca/" preload="none"></audio>
+                    </div>
+
+                    <!-- ZAMORA -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Zamora</h3>
+                        <button onclick="toggleRadio('radio-zamora', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-zamora" src="https://rtvmgrb.org/reproductor/zamora/" preload="none"></audio>
+                    </div>
+
+                    <!-- ESTADOS UNIDOS -->
+                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-blue-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Radio MV (USA)</h3>
+                        <button onclick="toggleRadio('radio-usa', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/us.png');">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                        </button>
+                        <audio id="radio-usa" src="http://stream.radiomv.com/spanish/stream.mp3" preload="none"></audio>
+                    </div>
                 </div>
             </div>
 
-            <!-- PERÚ -->
-            <div class="glass p-8 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-red-500/30 transition-colors">
-                <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-5 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                    <img src="https://flagcdn.com/w160/pe.png" alt="Perú" class="w-full h-full object-cover opacity-80">
-                </div>
-                <h3 class="text-2xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo Tiempo</h3>
-                <p class="text-sm text-red-300 font-bold tracking-widest mb-6 relative z-10">PERÚ</p>
-                <div class="w-full relative z-10">
-                    <a href="https://www.nuevotiempo.org/radio/" target="_blank" rel="noopener noreferrer" class="py-3 px-6 bg-red-600/30 hover:bg-red-500/50 border border-red-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs">
-                        <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
-                    </a>
-                </div>
-            </div>
+            <!-- OTRAS EMISORAS (ENLACES WEB) -->
+            <div class="w-full mt-4">
+                <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 opacity-90 border-l-4 border-white/50 pl-3">Otras Emisoras (Web)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Hope Media ESPAÑA -->
+                    <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
+                            <img src="https://flagcdn.com/w160/es.png" alt="España" class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Hope Media</h3>
+                        <p class="text-xs text-yellow-300 font-bold tracking-widest mb-4 relative z-10">ESPAÑA</p>
+                        <a href="https://hopemedia.es/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-5 bg-yellow-600/30 hover:bg-yellow-500/50 border border-yellow-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
+                            <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
+                        </a>
+                    </div>
 
-            <!-- BOLIVIA -->
-            <div class="glass p-8 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-green-500/30 transition-colors">
-                <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-5 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                    <img src="https://flagcdn.com/w160/bo.png" alt="Bolivia" class="w-full h-full object-cover opacity-80">
-                </div>
-                <h3 class="text-2xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo Tiempo</h3>
-                <p class="text-sm text-green-300 font-bold tracking-widest mb-6 relative z-10">BOLIVIA</p>
-                <div class="w-full relative z-10">
-                    <a href="https://www.nuevotiempo.org/bolivia/" target="_blank" rel="noopener noreferrer" class="py-3 px-6 bg-green-600/30 hover:bg-green-500/50 border border-green-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs">
-                        <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
-                    </a>
-                </div>
-            </div>
+                    <!-- PERÚ -->
+                    <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-red-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
+                            <img src="https://flagcdn.com/w160/pe.png" alt="Perú" class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo Tiempo</h3>
+                        <p class="text-xs text-red-300 font-bold tracking-widest mb-4 relative z-10">PERÚ</p>
+                        <a href="https://www.nuevotiempo.org/radio/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-5 bg-red-600/30 hover:bg-red-500/50 border border-red-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
+                            <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
+                        </a>
+                    </div>
 
-            <!-- USA -->
-            <div class="glass p-8 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-blue-500/30 transition-colors">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-5 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                    <img src="https://flagcdn.com/w160/us.png" alt="USA" class="w-full h-full object-cover opacity-80">
-                </div>
-                <h3 class="text-2xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Radio MV</h3>
-                <p class="text-sm text-blue-300 font-bold tracking-widest mb-6 relative z-10">ESTADOS UNIDOS</p>
-                <div class="w-full relative z-10">
-                    <audio controls controlsList="nodownload" class="w-full h-12 rounded-full invert-[0.8] contrast-125 saturate-0" preload="none">
-                        <source src="http://stream.radiomv.com/spanish/stream.mp3" type="audio/mpeg">
-                    </audio>
+                    <!-- BOLIVIA -->
+                    <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-green-500/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
+                            <img src="https://flagcdn.com/w160/bo.png" alt="Bolivia" class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo Tiempo</h3>
+                        <p class="text-xs text-green-300 font-bold tracking-widest mb-4 relative z-10">BOLIVIA</p>
+                        <a href="https://www.nuevotiempo.org/bolivia/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-5 bg-green-600/30 hover:bg-green-500/50 border border-green-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
+                            <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -777,7 +844,7 @@
             
             document.getElementById('tab-himnos').classList.remove('grid');
             document.getElementById('tab-cantos').classList.remove('grid');
-            document.getElementById('tab-radios').classList.remove('grid');
+            document.getElementById('tab-radios').classList.remove('flex');
 
             let btnHimnos = document.getElementById('btn-tab-himnos');
             let btnCantos = document.getElementById('btn-tab-cantos');
@@ -800,7 +867,7 @@
                 btnCantos.className = activeClass;
             } else if (tab === 'radios') {
                 document.getElementById('tab-radios').classList.remove('hidden');
-                document.getElementById('tab-radios').classList.add('grid');
+                document.getElementById('tab-radios').classList.add('flex');
                 btnRadios.className = activeClass;
             }
         }
@@ -887,6 +954,44 @@
             
             // Se desvanece el video y emerge sutilmente la imagen base original que está debajo
             video.style.opacity = '0';
+        }
+
+        // ---- Lógica Reproductor Radio Custom ----
+        let currentRadioAudio = null;
+        let currentRadioIcon = null;
+
+        function toggleRadio(id, btn) {
+            const audio = document.getElementById(id);
+            const icon = btn.querySelector('i');
+
+            // Si hay otro audio sonando, lo pausamos
+            if (currentRadioAudio && currentRadioAudio !== audio) {
+                currentRadioAudio.pause();
+                if (currentRadioIcon) {
+                    currentRadioIcon.classList.remove('fa-pause', 'fa-beat-fade');
+                    currentRadioIcon.classList.add('fa-play');
+                }
+            }
+
+            if (audio.paused) {
+                // Reiniciar fuente para evitar lag de buffer al reconectar un stream en vivo
+                audio.load();
+                audio.play().then(() => {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause', 'fa-beat-fade');
+                    currentRadioAudio = audio;
+                    currentRadioIcon = icon;
+                }).catch(e => {
+                    console.error("Error reproduciendo el audio:", e);
+                    alert("No se pudo conectar a la estación de radio.");
+                });
+            } else {
+                audio.pause();
+                icon.classList.remove('fa-pause', 'fa-beat-fade');
+                icon.classList.add('fa-play');
+                currentRadioAudio = null;
+                currentRadioIcon = null;
+            }
         }
     </script>
 </body>
