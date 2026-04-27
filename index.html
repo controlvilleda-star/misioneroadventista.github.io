@@ -119,6 +119,31 @@
             from { opacity: 0; transform: scaleY(0.8) translateY(-10px); }
             to { opacity: 1; transform: scaleY(1) translateY(0); }
         }
+
+        /* Efecto Burbuja que revienta */
+        .col-card {
+            isolation: isolate;
+        }
+        .col-card > * {
+            position: relative;
+            z-index: 10;
+        }
+        .col-card > .bubble-wrapper {
+            z-index: 1;
+        }
+        .bubble-bg {
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: center;
+        }
+        .col-card.expanded .bubble-bg {
+            transform: scale(25) !important;
+            opacity: 0.15;
+            border-color: transparent;
+            border-width: 0;
+            box-shadow: none;
+            filter: blur(2px);
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -208,9 +233,16 @@
             <div class="glass w-full max-w-[85rem] mx-auto my-12 overflow-hidden rounded-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border border-white/20">
                 
                 <!-- Columna 1: Literatura Impresa -->
-                <div class="w-full p-8 md:p-10 border-b md:border-r lg:border-b-0 border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <i class="fa-solid fa-book-bible text-5xl mb-4 text-yellow-300 drop-shadow-lg group-hover:scale-110 transition-transform duration-500"></i>
+                <div id="col-literatura" class="col-card w-full p-8 md:p-10 border-b md:border-r lg:border-b-0 border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                    <div class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
+                        <div class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:scale-110">
+                            <img src="images/literatura.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform duration-500">
+                            <img src="images/literatura.jpg" alt="Literatura Gratuita" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                     <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Literatura Gratuita</h3>
                     <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Solicita hoy mismo tu ejemplar impreso y recíbelo en la comodidad de tu hogar.</p>
                     
@@ -237,9 +269,16 @@
                 </div>
 
                 <!-- Columna 2: Pedido de Oración -->
-                <div class="w-full p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <i class="fa-solid fa-hands-praying text-5xl mb-4 text-purple-300 drop-shadow-lg group-hover:scale-110 transition-transform duration-500"></i>
+                <div id="col-oracion" class="col-card w-full p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                    <div class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
+                        <div class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-110">
+                            <img src="images/oracion_nina.png" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-110 transition-transform duration-500">
+                            <img src="images/oracion_nina.png" alt="Pedido de Oración" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                     <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Pedido de Oración</h3>
                     <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Déjanos tus peticiones y nuestro equipo estará orando por ti cada día.</p>
                     
@@ -263,9 +302,16 @@
                 </div>
 
                 <!-- Columna 3: Estudios Bíblicos -->
-                <div class="w-full p-8 md:p-10 border-b md:border-b-0 md:border-r lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <i class="fa-solid fa-book-open-reader text-5xl mb-4 text-blue-300 drop-shadow-lg group-hover:scale-110 transition-transform duration-500"></i>
+                <div id="col-estudios" class="col-card w-full p-8 md:p-10 border-b md:border-b-0 md:border-r lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                    <div class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
+                        <div class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110">
+                            <img src="images/fe_de_jesus.png" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110 transition-transform duration-500">
+                            <img src="images/fe_de_jesus.png" alt="Estudios Bíblicos" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                     <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Estudios Bíblicos</h3>
                     <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Aprende más de la Biblia solicitando estudios bíblicos personalizados.</p>
                     
@@ -350,7 +396,7 @@
                 <!-- Literatura -->
                 <div onclick="goPage('literatura')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
                     <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
-                        <img src="images/literatura_adventista.png" class="w-full h-full object-cover" alt="Lectura">
+                        <img src="images/libro_28_creencias.jpg" class="w-full h-full object-cover" alt="Lectura">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Lectura</h2>
                 </div>
@@ -683,32 +729,41 @@
             </button>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             <!-- Biblia Online (YouVersion) -->
-            <a href="https://www.bible.com/es/" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex justify-center items-center">
-                    <i class="fa-solid fa-book-bible text-6xl text-purple-200 drop-shadow-md"></i>
+            <a href="https://www.bible.com/es/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex justify-center items-center">
+                    <i class="fa-solid fa-book-bible text-5xl text-purple-200 drop-shadow-md"></i>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Santa Biblia</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm">YouVersion Online</p>
+                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Santa Biblia</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs">YouVersion Online</p>
             </a>
             
             <!-- Escritos EGW -->
-            <a href="https://m.egwwritings.org/es" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex justify-center items-center relative">
-                    <i class="fa-solid fa-feather-pointed text-6xl text-blue-200 drop-shadow-md"></i>
+            <a href="https://m.egwwritings.org/es" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex justify-center items-center relative">
+                    <i class="fa-solid fa-feather-pointed text-5xl text-blue-200 drop-shadow-md"></i>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Escritos EGW</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm">Sitio Oficial EGW</p>
+                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Escritos EGW</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs">Sitio Oficial EGW</p>
             </a>
 
             <!-- Escuela Sabática -->
-            <a href="https://sabbath-school.adventech.io/es/" target="_blank" class="glass p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-8 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex justify-center items-center relative">
-                    <i class="fa-solid fa-book-open-reader text-6xl text-green-200 drop-shadow-md"></i>
+            <a href="https://sabbath-school.adventech.io/es/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex justify-center items-center relative">
+                    <i class="fa-solid fa-book-open-reader text-5xl text-green-200 drop-shadow-md"></i>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">Escuela Sabática</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-4 py-1.5 rounded-full text-sm mt-2">Lección de Estudiantes</p>
+                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">Escuela Sabática</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">Lección de Estudiantes</p>
+            </a>
+
+            <!-- 28 Creencias -->
+            <a href="https://institucional.adventistas.org/es/nuestras-crencias/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex justify-center items-center relative">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Seventh-day_Adventist_Church_logo.svg" alt="Logo Adventista" class="w-32 h-auto sm:w-48 brightness-0 invert drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" style="clip-path: inset(0 0 38% 0); transform: translateY(15%) scale(1.2);">
+                </div>
+                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">28 Creencias</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">Creencias Fundamentales</p>
             </a>
         </div>
     </div>
@@ -724,9 +779,19 @@
         const panelOnline = document.getElementById('panel-online');
         const panelVivo = document.getElementById('panel-vivo');
         
-        // ---- Navegación Subpáginas (Historial y Gestos Android) ----
-        window.history.replaceState({ page: 'home' }, '', window.location.pathname);
+        // ---- Inicialización basada en la URL (al recargar) ----
+        document.addEventListener("DOMContentLoaded", () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById('page-' + hash)) {
+                window.history.replaceState({ page: hash }, '', '#' + hash);
+                showPageUI(hash);
+            } else {
+                window.history.replaceState({ page: 'home' }, '', window.location.pathname);
+                showHomeUI();
+            }
+        });
 
+        // ---- Navegación Subpáginas (Historial y Gestos Android) ----
         window.addEventListener('popstate', function(event) {
             if (event.state && event.state.page && event.state.page !== 'home') {
                 showPageUI(event.state.page);
@@ -876,16 +941,19 @@
         function toggleFormLiteratura() {
             const formContainer = document.getElementById('form-literatura');
             const btn = document.getElementById('btn-pedir');
+            const col = document.getElementById('col-literatura');
             
             if (formContainer.classList.contains('hidden')) {
                 // Mostrar Formulario
                 formContainer.classList.remove('hidden');
+                col.classList.add('expanded');
                 btn.innerHTML = '<i class="fa-solid fa-xmark"></i> CANCELAR';
                 btn.classList.add('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.remove('bg-yellow-500/20', 'border-yellow-500/40', 'hover:bg-yellow-500/40');
             } else {
                 // Ocultar Formulario
                 formContainer.classList.add('hidden');
+                col.classList.remove('expanded');
                 btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> PEDIR AHORA';
                 btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.add('bg-yellow-500/20', 'border-yellow-500/40', 'hover:bg-yellow-500/40');
@@ -896,16 +964,19 @@
         function toggleFormOracion() {
             const formContainer = document.getElementById('form-oracion');
             const btn = document.getElementById('btn-orar');
+            const col = document.getElementById('col-oracion');
             
             if (formContainer.classList.contains('hidden')) {
                 // Mostrar Formulario
                 formContainer.classList.remove('hidden');
+                col.classList.add('expanded');
                 btn.innerHTML = '<i class="fa-solid fa-xmark"></i> CANCELAR';
                 btn.classList.add('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.remove('bg-purple-500/20', 'border-purple-500/40', 'hover:bg-purple-500/40');
             } else {
                 // Ocultar Formulario
                 formContainer.classList.add('hidden');
+                col.classList.remove('expanded');
                 btn.innerHTML = '<i class="fa-solid fa-heart"></i> SOLICITAR';
                 btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.add('bg-purple-500/20', 'border-purple-500/40', 'hover:bg-purple-500/40');
@@ -916,16 +987,19 @@
         function toggleFormEstudios() {
             const formContainer = document.getElementById('form-estudios');
             const btn = document.getElementById('btn-estudios');
+            const col = document.getElementById('col-estudios');
             
             if (formContainer.classList.contains('hidden')) {
                 // Mostrar Formulario
                 formContainer.classList.remove('hidden');
+                col.classList.add('expanded');
                 btn.innerHTML = '<i class="fa-solid fa-xmark"></i> CANCELAR';
                 btn.classList.add('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.remove('bg-blue-500/20', 'border-blue-500/40', 'hover:bg-blue-500/40');
             } else {
                 // Ocultar Formulario
                 formContainer.classList.add('hidden');
+                col.classList.remove('expanded');
                 btn.innerHTML = '<i class="fa-solid fa-graduation-cap"></i> SOLICITAR';
                 btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'hover:bg-red-500/40');
                 btn.classList.add('bg-blue-500/20', 'border-blue-500/40', 'hover:bg-blue-500/40');
