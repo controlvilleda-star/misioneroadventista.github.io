@@ -764,7 +764,7 @@
             <!-- 28 Creencias -->
             <a href="https://institucional.adventistas.org/es/nuestras-crencias/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
                 <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex justify-center items-center relative">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Seventh-day_Adventist_Church_logo.svg" alt="Logo Adventista" class="w-32 h-auto sm:w-48 brightness-0 invert drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" style="clip-path: inset(0 0 38% 0); transform: translateY(15%) scale(1.2);">
+                    <img src="images/logo_adventista.png" alt="Logo Adventista" class="w-full h-full object-cover">
                 </div>
                 <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">28 Creencias</h2>
                 <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">Creencias Fundamentales</p>
@@ -1034,21 +1034,33 @@
             video.style.opacity = '0';
         }
 
+        // Activar el video en el PRIMER click en cualquier parte de la página
+        document.body.addEventListener('click', function() {
+            playJesusVideo();
+        }, { once: true });
+
         // ---- Lógica Reproductor Radio Custom ----
         let currentRadioAudio = null;
         let currentRadioIcon = null;
 
-        function toggleRadio(id, btn) {
-            const audio = document.getElementById(id);
-            const icon = btn.querySelector('i');
-
-            // Si hay otro audio sonando, lo pausamos
-            if (currentRadioAudio && currentRadioAudio !== audio) {
+        function stopRadios() {
+            if (currentRadioAudio) {
                 currentRadioAudio.pause();
                 if (currentRadioIcon) {
                     currentRadioIcon.classList.remove('fa-pause', 'fa-beat-fade', 'fa-spinner', 'fa-spin');
                     currentRadioIcon.classList.add('fa-play');
                 }
+                currentRadioAudio = null;
+                currentRadioIcon = null;
+            }
+        }
+
+        function toggleRadio(id, btn) {
+            const audio = document.getElementById(id);
+            const icon = btn.querySelector('i');
+
+            if (currentRadioAudio && currentRadioAudio !== audio) {
+                stopRadios();
             }
 
             if (audio.paused) {
@@ -1056,12 +1068,15 @@
                 icon.classList.remove('fa-play');
                 icon.classList.add('fa-spinner', 'fa-spin');
 
-                // Forzar reconexión para streamings en vivo (evitar caché/stale data)
-                let currentSrc = audio.src;
-                audio.src = '';
-                audio.load();
-                audio.src = currentSrc;
-                audio.load();
+                // Forzar reconexión para streamings en vivo sin caché
+                let baseSrc = audio.getAttribute('data-src');
+                if (!baseSrc) {
+                    baseSrc = audio.src;
+                    audio.setAttribute('data-src', baseSrc);
+                }
+                // Añadir un timestamp asegurando conexión fresca
+                audio.src = baseSrc.split('?')[0] + '?t=' + new Date().getTime();
+                audio.load(); // Es importante hacer load despues de setear el src
 
                 let playPromise = audio.play();
                 if (playPromise !== undefined) {
@@ -1071,44 +1086,32 @@
                         currentRadioAudio = audio;
                         currentRadioIcon = icon;
                     }).catch(e => {
-                        // Intento de recuperación si falla la primera vez (común en iOS/Safary o conexiones lentas)
-                        setTimeout(() => {
-                            audio.play().then(() => {
-                                icon.classList.remove('fa-spinner', 'fa-spin');
-                                icon.classList.add('fa-pause', 'fa-beat-fade');
-                                currentRadioAudio = audio;
-                                currentRadioIcon = icon;
-                            }).catch(err => {
-                                console.error("Error reproduciendo el audio:", err);
-                                icon.classList.remove('fa-spinner', 'fa-spin');
-                                icon.classList.add('fa-play');
-                            });
-                        }, 800);
+                        console.error("Error reproduciendo el audio:", e);
+                        icon.classList.remove('fa-spinner', 'fa-spin');
+                        icon.classList.add('fa-play');
+                        // Intento de fallback
+                        setTimeout(() => audio.play(), 500);
                     });
                 }
             } else {
-                audio.pause();
-                icon.classList.remove('fa-pause', 'fa-beat-fade', 'fa-spinner', 'fa-spin');
-                icon.classList.add('fa-play');
-                currentRadioAudio = null;
-                currentRadioIcon = null;
+                stopRadios();
             }
         }
 
         // ---- Detener radios al reproducir un embed de video ----
         window.addEventListener('blur', function() {
-            // Cuando la ventana pierde el foco y el elemento activo es un iframe (ej: video de YouTube)
+            // Cuando la ventana pierde el foco (ej: clic en iframe de YouTube)
             if (document.activeElement instanceof HTMLIFrameElement) {
-                if (currentRadioAudio) {
-                    currentRadioAudio.pause();
-                    if (currentRadioIcon) {
-                        currentRadioIcon.classList.remove('fa-pause', 'fa-beat-fade', 'fa-spinner', 'fa-spin');
-                        currentRadioIcon.classList.add('fa-play');
-                    }
-                    currentRadioAudio = null;
-                    currentRadioIcon = null;
-                }
+                stopRadios();
             }
+        });
+        
+        // Refuerzo: detener radios si el usuario pone el cursor sobre un reproductor de video
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('iframe').forEach(ifr => {
+                ifr.addEventListener('mouseenter', stopRadios);
+                ifr.addEventListener('touchstart', stopRadios);
+            });
         });
     </script>
 </body>
