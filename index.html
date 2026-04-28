@@ -155,7 +155,7 @@
         <section class="min-h-[100svh] flex flex-col items-center justify-center p-6 text-center">
             
             <!-- Foto interactiva de Jesus (Con Video) -->
-            <div id="jesus-container" onclick="playJesusVideo()" class="relative w-[26rem] h-[26rem] sm:w-[32rem] sm:h-[32rem] max-w-[90vw] max-h-[90vw] aspect-square rounded-full overflow-hidden border-[8px] border-white/20 mb-8 floating mt-8 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex-shrink-0 cursor-pointer mx-auto group">
+            <div id="jesus-container" onclick="playJesusVideo()" class="relative w-[80vw] sm:w-[24rem] md:w-[28rem] lg:w-[32rem] aspect-square rounded-full overflow-hidden border-[8px] border-white/20 mb-8 floating mt-8 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex-shrink-0 cursor-pointer mx-auto group">
                 
                 <!-- Imagen original -->
                 <img id="jesus-img" src="images/jesus-nuevo.jpg" alt="Jesús" class="absolute inset-0 w-full h-full object-cover z-10">
@@ -165,12 +165,12 @@
             </div>
             
             <!-- Título Principal -->
-            <h1 class="text-4xl sm:text-6xl font-black text-white mb-8 tracking-tight drop-shadow-xl uppercase leading-none">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-8 tracking-tight drop-shadow-xl uppercase leading-none">
                 GRAN EVENTO<br>DE LA FE
             </h1>
 
             <!-- Interacción Asistir -->
-            <div class="w-full max-w-sm mb-6 flex flex-col items-center">
+            <div class="w-full max-w-md lg:max-w-lg mb-6 flex flex-col items-center">
                 
                 <!-- Boton Desplegable Principal -->
                 <button id="btn-participar" onclick="toggleParticipar()" class="glass-btn w-full px-8 py-5 text-xl font-black tracking-widest text-white shadow-[0_0_20px_rgba(0,0,0,0.3)] bg-white/10 hover:bg-white/20 flex justify-center items-center gap-3">
@@ -366,8 +366,8 @@
         </section>
 
         <!-- SECCIÓN INFERIOR: CATEGORÍAS IMÁGENES (Visibles haciendo scroll) -->
-        <section class="max-w-4xl mx-auto px-4 pb-24 pt-8">
-            <div class="grid grid-cols-2 gap-4 sm:gap-8">
+        <section class="max-w-6xl mx-auto px-4 pb-24 pt-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                 
                 <!-- Himnos (Música) -->
                 <div onclick="goPage('musica')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
