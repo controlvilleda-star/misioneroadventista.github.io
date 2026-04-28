@@ -222,10 +222,10 @@
                         
                         <h3 class="text-white font-bold text-sm mt-2 text-center uppercase tracking-wider text-blue-200">Ubicación del Evento</h3>
                         <div class="iframe-container shadow-inner" style="padding-bottom: 70%;">
-                            <iframe src="https://maps.google.com/maps?cid=10467215263177673341&output=embed&z=15" frameborder="0" loading="lazy" allowfullscreen style="border:0;"></iframe>
+                            <iframe src="https://maps.google.com/maps?q=Iglesia+Adventista+del+Séptimo+Día+Tallers+Barcelona&output=embed&z=15" frameborder="0" loading="lazy" allowfullscreen style="border:0;"></iframe>
                         </div>
 
-                        <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a2f4147a33a9:0x914303a3084f8a7d?sa=X&ved=1t:8290&ictx=111" target="_blank" class="glass-btn w-full p-3 font-semibold text-blue-300 border-blue-300/30 flex justify-center items-center gap-2 mt-2 bg-blue-900/40">
+                        <a href="https://www.google.com/maps/search/Iglesia+Adventista+del+S%C3%A9ptimo+D%C3%ADa+Tallers+Barcelona" target="_blank" class="glass-btn w-full p-3 font-semibold text-blue-300 border-blue-300/30 flex justify-center items-center gap-2 mt-2 bg-blue-900/40">
                             📍 Abrir en Google Maps
                         </a>
                     </div>
@@ -1046,31 +1046,70 @@
             if (currentRadioAudio && currentRadioAudio !== audio) {
                 currentRadioAudio.pause();
                 if (currentRadioIcon) {
-                    currentRadioIcon.classList.remove('fa-pause', 'fa-beat-fade');
+                    currentRadioIcon.classList.remove('fa-pause', 'fa-beat-fade', 'fa-spinner', 'fa-spin');
                     currentRadioIcon.classList.add('fa-play');
                 }
             }
 
             if (audio.paused) {
-                // Reiniciar fuente para evitar lag de buffer al reconectar un stream en vivo
+                // Mostrar estado de carga
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-spinner', 'fa-spin');
+
+                // Forzar reconexión para streamings en vivo (evitar caché/stale data)
+                let currentSrc = audio.src;
+                audio.src = '';
                 audio.load();
-                audio.play().then(() => {
-                    icon.classList.remove('fa-play');
-                    icon.classList.add('fa-pause', 'fa-beat-fade');
-                    currentRadioAudio = audio;
-                    currentRadioIcon = icon;
-                }).catch(e => {
-                    console.error("Error reproduciendo el audio:", e);
-                    alert("No se pudo conectar a la estación de radio.");
-                });
+                audio.src = currentSrc;
+                audio.load();
+
+                let playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        icon.classList.remove('fa-spinner', 'fa-spin');
+                        icon.classList.add('fa-pause', 'fa-beat-fade');
+                        currentRadioAudio = audio;
+                        currentRadioIcon = icon;
+                    }).catch(e => {
+                        // Intento de recuperación si falla la primera vez (común en iOS/Safary o conexiones lentas)
+                        setTimeout(() => {
+                            audio.play().then(() => {
+                                icon.classList.remove('fa-spinner', 'fa-spin');
+                                icon.classList.add('fa-pause', 'fa-beat-fade');
+                                currentRadioAudio = audio;
+                                currentRadioIcon = icon;
+                            }).catch(err => {
+                                console.error("Error reproduciendo el audio:", err);
+                                icon.classList.remove('fa-spinner', 'fa-spin');
+                                icon.classList.add('fa-play');
+                            });
+                        }, 800);
+                    });
+                }
             } else {
                 audio.pause();
-                icon.classList.remove('fa-pause', 'fa-beat-fade');
+                icon.classList.remove('fa-pause', 'fa-beat-fade', 'fa-spinner', 'fa-spin');
                 icon.classList.add('fa-play');
                 currentRadioAudio = null;
                 currentRadioIcon = null;
             }
         }
+
+        // ---- Detener radios al reproducir un embed de video ----
+        window.addEventListener('blur', function() {
+            // Cuando la ventana pierde el foco y el elemento activo es un iframe (ej: video de YouTube)
+            if (document.activeElement instanceof HTMLIFrameElement) {
+                if (currentRadioAudio) {
+                    currentRadioAudio.pause();
+                    if (currentRadioIcon) {
+                        currentRadioIcon.classList.remove('fa-pause', 'fa-beat-fade', 'fa-spinner', 'fa-spin');
+                        currentRadioIcon.classList.add('fa-play');
+                    }
+                    currentRadioAudio = null;
+                    currentRadioIcon = null;
+                }
+            }
+        });
     </script>
 </body>
 </html>
