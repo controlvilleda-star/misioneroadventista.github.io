@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gran Evento de la Fe</title>
-    
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome para iconos de UI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         * {
             -webkit-tap-highlight-color: transparent;
@@ -20,7 +18,7 @@
         /* FONDO ANIMADO GRADIENTE PASTEL OSCURO */
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(-45deg, #1c2a38, #2e2336, #2d382f, #362325); /* Tonos pastel oscuros: azul, morado, verde oscuro, bordó */
+            background: linear-gradient(-45deg, #1c2a38, #2e2336, #2d382f, #362325);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #ffffff;
@@ -30,9 +28,17 @@
         }
 
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* ----- GLASS COMPONENT ----- */
@@ -55,11 +61,13 @@
             cursor: pointer;
             text-align: center;
         }
+
         .glass-btn:hover {
             background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
+
         .glass-btn:active {
             transform: translateY(0) scale(0.98);
         }
@@ -74,17 +82,32 @@
             outline: none;
             transition: border 0.3s;
         }
+
         .glass-input:focus {
             border-color: rgba(255, 255, 255, 0.6);
             background: rgba(255, 255, 255, 0.15);
         }
-        .glass-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
 
         .iframe-container {
-            position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; background: #000;
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
         }
+
         .iframe-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* ----- NAVIGATION ----- */
@@ -92,49 +115,81 @@
             display: none;
             animation: slideIn 0.4s ease-out forwards;
         }
+
         .page.active {
             display: block;
         }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* ANIMACIONES EXTRAS */
         .floating {
             animation: float 6s ease-in-out infinite;
         }
+
         @keyframes float {
-            0% { transform: translateY(0px) scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.1); }
-            50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 40px rgba(255,255,255,0.25); }
-            100% { transform: translateY(0px) scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+            0% {
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+
+            50% {
+                transform: translateY(-12px) scale(1.02);
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+            }
+
+            100% {
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            }
         }
 
         .slide-down {
             animation: slideDown 0.3s ease-out forwards;
             transform-origin: top;
         }
+
         @keyframes slideDown {
-            from { opacity: 0; transform: scaleY(0.8) translateY(-10px); }
-            to { opacity: 1; transform: scaleY(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scaleY(0.8) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scaleY(1) translateY(0);
+            }
         }
 
         /* Efecto Burbuja que revienta */
         .col-card {
             isolation: isolate;
         }
-        .col-card > * {
+
+        .col-card>* {
             position: relative;
             z-index: 10;
         }
-        .col-card > .bubble-wrapper {
+
+        .col-card>.bubble-wrapper {
             z-index: 1;
         }
+
         .bubble-bg {
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             transform-origin: center;
         }
+
         .col-card.expanded .bubble-bg {
             transform: scale(25) !important;
             opacity: 0.15;
@@ -362,71 +417,75 @@
         }
     </style>
 </head>
+
 <body>
 
-    <!-- ==================== MAIN HOME PAGE ==================== -->
     <div id="home-page" class="page active relative z-10 w-full min-h-screen">
-        
-        <!-- HERO / PORTADA (100 VH) MOBILE FIRST -->
+
         <section class="min-h-[100svh] flex flex-col items-center justify-center p-6 text-center">
-            
-            <!-- Foto interactiva de Jesus (Con Video) -->
-            <div id="jesus-container" onclick="playJesusVideo()" class="relative w-[80vw] sm:w-[24rem] md:w-[28rem] lg:w-[32rem] aspect-square rounded-full overflow-hidden border-[8px] border-white/20 mb-8 floating mt-8 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex-shrink-0 cursor-pointer mx-auto group">
-                
-                <!-- Imagen original -->
-                <img id="jesus-img" src="images/jesus-nuevo.jpg" alt="Jesús" class="absolute inset-0 w-full h-full object-cover z-10">
-                
-                <!-- Video superpuesto (oculto por defecto) -->
-                <video id="jesus-video" src="images/jesus.mp4" playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-20 opacity-0 cursor-pointer" onended="stopJesusVideo()"></video>
+
+            <div id="jesus-container" onclick="playJesusVideo()"
+                class="relative w-[80vw] sm:w-[24rem] md:w-[28rem] lg:w-[32rem] aspect-square rounded-full overflow-hidden border-[8px] border-white/20 mb-8 floating mt-8 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex-shrink-0 cursor-pointer mx-auto group">
+
+                <img id="jesus-img" src="images/jesus-nuevo.jpg" alt="Jesús"
+                    class="absolute inset-0 w-full h-full object-cover z-10">
+
+                <video id="jesus-video" src="images/jesus.mp4" playsinline preload="auto"
+                    class="absolute inset-0 w-full h-full object-cover z-20 opacity-0 cursor-pointer"
+                    onended="stopJesusVideo()"></video>
             </div>
-            
-            <!-- Título Principal -->
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-8 tracking-tight drop-shadow-xl uppercase leading-none">
+
+            <h1
+                class="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-8 tracking-tight drop-shadow-xl uppercase leading-none">
                 GRAN EVENTO<br>DE LA FE
             </h1>
 
-            <!-- Interacción Asistir -->
             <div class="w-full max-w-md lg:max-w-lg mb-6 flex flex-col items-center">
-                
-                <!-- Boton Desplegable Principal -->
-                <button id="btn-participar" onclick="toggleParticipar()" class="glass-btn w-full px-8 py-5 text-xl font-black tracking-widest text-white shadow-[0_0_20px_rgba(0,0,0,0.3)] bg-white/10 hover:bg-white/20 flex justify-center items-center gap-3">
-                    ASISTIR <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="participar-icon"></i>
+
+                <button id="btn-participar" onclick="toggleParticipar()"
+                    class="glass-btn w-full px-8 py-5 text-xl font-black tracking-widest text-white shadow-[0_0_20px_rgba(0,0,0,0.3)] bg-white/10 hover:bg-white/20 flex justify-center items-center gap-3">
+                    ASISTIR <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"
+                        id="participar-icon"></i>
                 </button>
 
-                <!-- Menú Desplegable con 2 opciones -->
                 <div id="participar-opciones" class="hidden flex-col gap-3 mt-4 w-full slide-down">
-                    
-                    <button onclick="showAsistirPanel('online')" id="btn-opt-online" class="glass-btn w-full p-4 font-bold text-white tracking-wide text-lg bg-indigo-500/20 hover:bg-indigo-500/40 border-indigo-400/40">
+
+                    <button onclick="showAsistirPanel('online')" id="btn-opt-online"
+                        class="glass-btn w-full p-4 font-bold text-white tracking-wide text-lg bg-indigo-500/20 hover:bg-indigo-500/40 border-indigo-400/40">
                         💻 ASISTIR ONLINE
                     </button>
-                    
-                    <button onclick="showAsistirPanel('vivo')" id="btn-opt-vivo" class="glass-btn w-full p-4 font-bold text-white tracking-wide text-lg bg-emerald-500/20 hover:bg-emerald-500/40 border-emerald-400/40">
+
+                    <button onclick="showAsistirPanel('vivo')" id="btn-opt-vivo"
+                        class="glass-btn w-full p-4 font-bold text-white tracking-wide text-lg bg-emerald-500/20 hover:bg-emerald-500/40 border-emerald-400/40">
                         📍 ASISTIR EN VIVO
                     </button>
-                    
-                    <!-- Panel Dinámico Online (Oculto al inicio) -->
+
                     <div id="panel-online" class="hidden mt-4 flex flex-col gap-4 w-full">
                         <div class="w-[100vw] ml-[calc(-50vw+50%)] bg-black shadow-2xl z-20 border-y border-white/20">
                             <div class="iframe-container rounded-none">
-                                <iframe id="iframe-online" data-src="https://www.youtube.com/embed/live_stream?channel=UCFqRy7pWgY3Yii43GyjtAuA&autoplay=1" src="" allow="autoplay; encrypted-media" frameborder="0" allowfullscreen></iframe>
+                                <iframe id="iframe-online"
+                                    data-src="https://www.youtube.com/embed/live_stream?channel=UCFqRy7pWgY3Yii43GyjtAuA&autoplay=1"
+                                    src="" allow="autoplay; encrypted-media" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="glass p-4 w-full rounded-2xl">
                             <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
                                 <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
                                 <input type="hidden" name="subject" value="Nueva suscripción de notificaciones">
-                                <input type="email" name="email" placeholder="Correo electrónico" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                                <button type="submit" class="glass-btn w-full p-3.5 font-bold text-yellow-400 border-yellow-500/50 flex justify-center items-center gap-2 hover:bg-yellow-500/20">
+                                <input type="email" name="email" placeholder="Correo electrónico" required
+                                    class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                                <button type="submit"
+                                    class="glass-btn w-full p-3.5 font-bold text-yellow-400 border-yellow-500/50 flex justify-center items-center gap-2 hover:bg-yellow-500/20">
                                     <i class="fa-solid fa-bell text-lg animate-pulse"></i> RECIBIR NOTIFICACIONES
                                 </button>
                             </form>
                         </div>
                     </div>
 
-                    <!-- Panel Dinámico En Vivo (Oculto al inicio) -->
                     <div id="panel-vivo" class="hidden glass p-5 mt-2 flex flex-col gap-4 text-left">
                         <h3 class="text-white font-bold text-lg mb-1 text-center">Registro Presencial</h3>
-                        <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4 w-full">
+                        <form action="https://api.web3forms.com/submit" method="POST"
+                            class="flex flex-col gap-4 w-full">
                             <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
                             <input type="hidden" name="subject" value="Nuevo registro presencial">
                             <input type="text" name="name" placeholder="Nombre completo" required class="glass-input">
@@ -435,13 +494,19 @@
                                 Registrarme
                             </button>
                         </form>
-                        
-                        <h3 class="text-white font-bold text-sm mt-2 text-center uppercase tracking-wider text-blue-200">Ubicación del Evento</h3>
+
+                        <h3
+                            class="text-white font-bold text-sm mt-2 text-center uppercase tracking-wider text-blue-200">
+                            Ubicación del Evento</h3>
                         <div class="iframe-container shadow-inner" style="padding-bottom: 70%;">
-                            <iframe src="https://maps.google.com/maps?q=Iglesia+Adventista+del+Séptimo+Día+Tallers+Barcelona&output=embed&z=15" frameborder="0" loading="lazy" allowfullscreen style="border:0;"></iframe>
+                            <iframe
+                                src="https://maps.google.com/maps?q=Iglesia+Adventista+del+Séptimo+Día+Tallers+Barcelona&output=embed&z=15"
+                                frameborder="0" loading="lazy" allowfullscreen style="border:0;"></iframe>
                         </div>
 
-                        <a href="https://www.google.com/maps/search/Iglesia+Adventista+del+S%C3%A9ptimo+D%C3%ADa+Tallers+Barcelona" target="_blank" class="glass-btn w-full p-3 font-semibold text-blue-300 border-blue-300/30 flex justify-center items-center gap-2 mt-2 bg-blue-900/40">
+                        <a href="https://www.google.com/maps/search/Iglesia+Adventista+del+S%C3%A9ptimo+D%C3%ADa+Tallers+Barcelona"
+                            target="_blank"
+                            class="glass-btn w-full p-3 font-semibold text-blue-300 border-blue-300/30 flex justify-center items-center gap-2 mt-2 bg-blue-900/40">
                             📍 Abrir en Google Maps
                         </a>
                     </div>
@@ -449,60 +514,80 @@
                 </div>
             </div>
 
-            <!-- Cuadro Informativo (Literatura, Oración, Estudios y Contacto) -->
-            <div class="glass w-full max-w-[85rem] mx-auto my-12 overflow-hidden rounded-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border border-white/20">
-                
-                <!-- Columna 1: Literatura Impresa -->
-                <div id="col-literatura" class="col-card w-full p-8 md:p-10 border-b md:border-r lg:border-b-0 border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-                    <div class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
-                        <div class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:scale-110">
+            <div
+                class="glass w-full max-w-[85rem] mx-auto my-12 overflow-hidden rounded-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border border-white/20">
+
+                <div id="col-literatura"
+                    class="col-card w-full p-8 md:p-10 border-b md:border-r lg:border-b-0 border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+                    </div>
+                    <div
+                        class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
+                        <div
+                            class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:scale-110">
                             <img src="images/literatura.jpg" class="w-full h-full object-cover">
                         </div>
-                        <div class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform duration-500">
-                            <img src="images/literatura.jpg" alt="Literatura Gratuita" class="w-full h-full object-cover">
+                        <div
+                            class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform duration-500">
+                            <img src="images/literatura.jpg" alt="Literatura Gratuita"
+                                class="w-full h-full object-cover">
                         </div>
                     </div>
-                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Literatura Gratuita</h3>
-                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Solicita hoy mismo tu ejemplar impreso y recíbelo en la comodidad de tu hogar.</p>
-                    
-                    <!-- Boton Principal que despliega el formulario -->
-                    <button id="btn-pedir" onclick="toggleFormLiteratura()" class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-yellow-500/40 bg-yellow-500/20 hover:bg-yellow-500/40 flex items-center gap-2 w-full justify-center">
+                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Literatura
+                        Gratuita</h3>
+                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Solicita hoy
+                        mismo tu ejemplar impreso y recíbelo en la comodidad de tu hogar.</p>
+
+                    <button id="btn-pedir" onclick="toggleFormLiteratura()"
+                        class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-yellow-500/40 bg-yellow-500/20 hover:bg-yellow-500/40 flex items-center gap-2 w-full justify-center">
                         <i class="fa-solid fa-paper-plane"></i> PEDIR AHORA
                     </button>
 
-                    <!-- Formulario Desplegable para Webhook (Web3Forms/Formspree/Zapier) -->
                     <div id="form-literatura" class="hidden w-full mt-4 slide-down z-10 relative">
                         <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
                             <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
                             <input type="hidden" name="subject" value="Nueva solicitud de literatura">
-                            
-                            <input type="text" name="name" placeholder="Nombre completo" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                            <input type="email" name="email" placeholder="Correo electrónico" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                            <textarea name="address" placeholder="Dirección completa" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40 resize-none h-20"></textarea>
-                            
-                            <button type="submit" class="glass-btn w-full p-3 font-bold text-white bg-yellow-500/40 hover:bg-yellow-500/60 border-yellow-400/50 text-sm tracking-wider uppercase mt-1">
+
+                            <input type="text" name="name" placeholder="Nombre completo" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <input type="email" name="email" placeholder="Correo electrónico" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <textarea name="address" placeholder="Dirección completa" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40 resize-none h-20"></textarea>
+
+                            <button type="submit"
+                                class="glass-btn w-full p-3 font-bold text-white bg-yellow-500/40 hover:bg-yellow-500/60 border-yellow-400/50 text-sm tracking-wider uppercase mt-1">
                                 Enviar Solicitud
                             </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Columna 2: Pedido de Oración -->
-                <div id="col-oracion" class="col-card w-full p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-                    <div class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
-                        <div class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-110">
+                <div id="col-oracion"
+                    class="col-card w-full p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+                    </div>
+                    <div
+                        class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
+                        <div
+                            class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-110">
                             <img src="images/oracion_nina.png" class="w-full h-full object-cover">
                         </div>
-                        <div class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-110 transition-transform duration-500">
-                            <img src="images/oracion_nina.png" alt="Pedido de Oración" class="w-full h-full object-cover">
+                        <div
+                            class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-110 transition-transform duration-500">
+                            <img src="images/oracion_nina.png" alt="Pedido de Oración"
+                                class="w-full h-full object-cover">
                         </div>
                     </div>
-                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Pedido de Oración</h3>
-                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Déjanos tus peticiones y nuestro equipo estará orando por ti cada día.</p>
-                    
-                    <button id="btn-orar" onclick="toggleFormOracion()" class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-purple-500/40 bg-purple-500/20 hover:bg-purple-500/40 flex items-center gap-2 w-full justify-center">
+                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Pedido de
+                        Oración</h3>
+                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Déjanos tus
+                        peticiones y nuestro equipo estará orando por ti cada día.</p>
+
+                    <button id="btn-orar" onclick="toggleFormOracion()"
+                        class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-purple-500/40 bg-purple-500/20 hover:bg-purple-500/40 flex items-center gap-2 w-full justify-center">
                         <i class="fa-solid fa-heart"></i> SOLICITAR
                     </button>
 
@@ -510,32 +595,44 @@
                         <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
                             <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
                             <input type="hidden" name="subject" value="Nuevo pedido de oración">
-                            
-                            <input type="text" name="name" placeholder="Tu nombre (opcional)" class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                            <textarea name="message" placeholder="¿Por qué deseas que oremos?" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40 resize-none h-20"></textarea>
-                            
-                            <button type="submit" class="glass-btn w-full p-3 font-bold text-white bg-purple-500/40 hover:bg-purple-500/60 border-purple-400/50 text-sm tracking-wider uppercase mt-1">
+
+                            <input type="text" name="name" placeholder="Tu nombre (opcional)"
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <textarea name="message" placeholder="¿Por qué deseas que oremos?" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40 resize-none h-20"></textarea>
+
+                            <button type="submit"
+                                class="glass-btn w-full p-3 font-bold text-white bg-purple-500/40 hover:bg-purple-500/60 border-purple-400/50 text-sm tracking-wider uppercase mt-1">
                                 Enviar Petición
                             </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Columna 3: Estudios Bíblicos -->
-                <div id="col-estudios" class="col-card w-full p-8 md:p-10 border-b md:border-b-0 md:border-r lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-                    <div class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
-                        <div class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110">
+                <div id="col-estudios"
+                    class="col-card w-full p-8 md:p-10 border-b md:border-b-0 md:border-r lg:border-b-0 lg:border-r border-white/10 flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 transition-colors duration-500 relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+                    </div>
+                    <div
+                        class="bubble-wrapper w-24 h-24 sm:w-28 sm:h-28 mb-4 flex-shrink-0 relative flex items-center justify-center">
+                        <div
+                            class="bubble-bg absolute inset-0 rounded-full overflow-hidden border-[4px] border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110">
                             <img src="images/fe_de_jesus.png" class="w-full h-full object-cover">
                         </div>
-                        <div class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110 transition-transform duration-500">
-                            <img src="images/fe_de_jesus.png" alt="Estudios Bíblicos" class="w-full h-full object-cover">
+                        <div
+                            class="bubble-static absolute inset-0 rounded-full overflow-hidden border-[4px] border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110 transition-transform duration-500">
+                            <img src="images/fe_de_jesus.png" alt="Estudios Bíblicos"
+                                class="w-full h-full object-cover">
                         </div>
                     </div>
-                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Estudios Bíblicos</h3>
-                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Aprende más de la Biblia solicitando estudios bíblicos personalizados.</p>
-                    
-                    <button id="btn-estudios" onclick="toggleFormEstudios()" class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-blue-500/40 bg-blue-500/20 hover:bg-blue-500/40 flex items-center gap-2 w-full justify-center">
+                    <h3 class="text-2xl font-black text-white mb-3 tracking-widest text-center uppercase">Estudios
+                        Bíblicos</h3>
+                    <p class="text-sm text-gray-300 text-center mb-6 opacity-90 leading-relaxed font-light">Aprende más
+                        de la Biblia solicitando estudios bíblicos personalizados.</p>
+
+                    <button id="btn-estudios" onclick="toggleFormEstudios()"
+                        class="glass-btn px-8 py-4 font-black text-sm tracking-widest text-white border-blue-500/40 bg-blue-500/20 hover:bg-blue-500/40 flex items-center gap-2 w-full justify-center">
                         <i class="fa-solid fa-graduation-cap"></i> SOLICITAR
                     </button>
 
@@ -543,165 +640,179 @@
                         <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3">
                             <input type="hidden" name="access_key" value="32d02e7b-572f-4b7f-95d5-99a4db58b0f7">
                             <input type="hidden" name="subject" value="Nueva solicitud de estudio bíblico">
-                            
-                            <input type="text" name="name" placeholder="Nombre completo" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                            <input type="tel" name="phone" placeholder="Teléfono / WhatsApp" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                            <input type="email" name="email" placeholder="Correo electrónico" required class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
-                            
-                            <button type="submit" class="glass-btn w-full p-3 font-bold text-white bg-blue-500/40 hover:bg-blue-500/60 border-blue-400/50 text-sm tracking-wider uppercase mt-1">
+
+                            <input type="text" name="name" placeholder="Nombre completo" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <input type="tel" name="phone" placeholder="Teléfono / WhatsApp" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+                            <input type="email" name="email" placeholder="Correo electrónico" required
+                                class="glass-input text-sm py-3 bg-black/20 focus:bg-black/40">
+
+                            <button type="submit"
+                                class="glass-btn w-full p-3 font-bold text-white bg-blue-500/40 hover:bg-blue-500/60 border-blue-400/50 text-sm tracking-wider uppercase mt-1">
                                 Enviar Solicitud
                             </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Columna 4: Contacto y Redes -->
-                <div class="w-full p-8 md:p-10 flex flex-col items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-500 relative overflow-hidden">
+                <div
+                    class="w-full p-8 md:p-10 flex flex-col items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-500 relative overflow-hidden">
                     <h3 class="text-xl font-black text-white mb-2 tracking-widest uppercase">Contáctanos</h3>
                     <p class="text-sm text-gray-400 mb-6 text-center font-light">Únete a nuestra comunidad digital</p>
-                    
+
                     <div class="flex justify-center gap-4 mb-6">
-                        <a href="#" aria-label="Instagram" class="w-14 h-14 rounded-full glass-btn flex items-center justify-center text-2xl text-pink-400 hover:text-white hover:bg-pink-500/60 border-pink-500/30 transition-all duration-300 hover:scale-110">
+                        <a href="#" aria-label="Instagram"
+                            class="w-14 h-14 rounded-full glass-btn flex items-center justify-center text-2xl text-pink-400 hover:text-white hover:bg-pink-500/60 border-pink-500/30 transition-all duration-300 hover:scale-110">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/34606253016" aria-label="WhatsApp" target="_blank" class="w-14 h-14 rounded-full glass-btn flex items-center justify-center text-2xl text-green-400 hover:text-white hover:bg-green-500/60 border-green-500/30 transition-all duration-300 hover:scale-110">
+                        <a href="https://wa.me/34606253016" aria-label="WhatsApp" target="_blank"
+                            class="w-14 h-14 rounded-full glass-btn flex items-center justify-center text-2xl text-green-400 hover:text-white hover:bg-green-500/60 border-green-500/30 transition-all duration-300 hover:scale-110">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
-                        <a href="#" aria-label="YouTube" class="w-14 h-14 rounded-full glass-btn flex items-center justify-center text-2xl text-red-500 hover:text-white hover:bg-red-600/60 border-red-500/30 transition-all duration-300 hover:scale-110">
+                        <a href="#" aria-label="YouTube"
+                            class="w-14 h-14 rounded-full glass-btn flex items-center justify-center text-2xl text-red-500 hover:text-white hover:bg-red-600/60 border-red-500/30 transition-all duration-300 hover:scale-110">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
                     </div>
-                    
-                    <a href="mailto:info@misioneroadventista.com" class="glass-btn w-full px-6 py-3 font-bold text-sm text-blue-200 hover:text-white border-blue-400/30 hover:bg-blue-600/30 flex items-center gap-3 justify-center transition-all">
+
+                    <a href="mailto:info@misioneroadventista.com"
+                        class="glass-btn w-full px-6 py-3 font-bold text-sm text-blue-200 hover:text-white border-blue-400/30 hover:bg-blue-600/30 flex items-center gap-3 justify-center transition-all">
                         <i class="fa-solid fa-envelope"></i> Enviar Email
                     </a>
                 </div>
             </div>
 
-            <!-- Flecha animada que invita a hacer scroll hacia abajo para ver categorías -->
             <div class="mt-auto opacity-70 flex flex-col items-center pb-4 text-white">
                 <span class="text-xs font-semibold tracking-widest uppercase mb-3 opacity-80">Categorías</span>
                 <i class="fa-solid fa-angles-down text-3xl animate-bounce"></i>
             </div>
         </section>
 
-        <!-- SECCIÓN INFERIOR: CATEGORÍAS IMÁGENES (Visibles haciendo scroll) -->
         <section class="max-w-6xl mx-auto px-4 pb-24 pt-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-                
-                <!-- Himnos (Música) -->
-                <div onclick="goPage('musica')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+
+                <div onclick="goPage('musica')"
+                    class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div
+                        class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/musica_adventista.png" class="w-full h-full object-cover" alt="Música">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Música</h2>
                 </div>
-                
-                <!-- Predicaciones -->
-                <div onclick="goPage('predicaciones')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+
+                <div onclick="goPage('predicaciones')"
+                    class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div
+                        class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/flags.jpg" class="w-full h-full object-cover" alt="Prédicas">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Prédicas</h2>
                 </div>
-                
-                <!-- Películas (Cine) -->
-                <div onclick="goPage('cine')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+
+                <div onclick="goPage('cine')"
+                    class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div
+                        class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/cine_cristiano.png" class="w-full h-full object-cover" alt="Cine">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Cine</h2>
                 </div>
-                
-                <!-- Literatura -->
-                <div onclick="goPage('literatura')" class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
-                    <div class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
+
+                <div onclick="goPage('literatura')"
+                    class="glass p-3 sm:p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-1">
+                    <div
+                        class="w-[96%] sm:w-[94%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-[4px] border-white/20">
                         <img src="images/libro_28_creencias.jpg" class="w-full h-full object-cover" alt="Lectura">
                     </div>
                     <h2 class="text-xl sm:text-3xl font-black text-white tracking-widest uppercase">Lectura</h2>
                 </div>
-                
+
             </div>
         </section>
     </div>
 
-
-
-    <!-- ==================== SUBPAGINAS (Ocultas por defecto) ==================== -->
-
-    <!-- SUBPAGE: MÚSICA -->
     <div id="page-musica" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
-        
+
         <div class="flex justify-start items-center mb-10 w-full">
-            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+            <button onclick="goHome()"
+                class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
                 <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-music text-2xl sm:text-3xl text-blue-300"></i>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Música</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">
+                        Música</h2>
                 </div>
-            </button>
-        </div>
-        
-        <!-- Pestañas de Música -->
-        <div class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-4xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)] gap-1">
-            <button onclick="switchMusicTab('cantos')" id="btn-tab-cantos" class="w-1/3 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2">
-                <i class="fa-solid fa-microphone-lines"></i> <span class="hidden sm:inline">CANTOS</span><span class="sm:hidden">CANTOS</span>
-            </button>
-            <button onclick="switchMusicTab('himnos')" id="btn-tab-himnos" class="w-1/3 py-3 rounded-xl font-bold border border-transparent text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2">
-                <i class="fa-solid fa-book-open"></i> <span class="hidden sm:inline">HIMNOS</span><span class="sm:hidden">HIMNOS</span>
-            </button>
-            <button onclick="switchMusicTab('radios')" id="btn-tab-radios" class="w-1/3 py-3 rounded-xl font-bold border border-transparent text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2">
-                <i class="fa-solid fa-broadcast-tower"></i> <span class="hidden sm:inline">RADIOS</span><span class="sm:hidden">RADIOS</span>
             </button>
         </div>
 
-<<<<<<< HEAD
-        <div id="tab-himnos" class="grid grid-cols-1 gap-8">
-            <div class="glass p-5 sm:p-6 rounded-[2rem] flex flex-col">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-black text-white tracking-wide uppercase">Playlist Himnario Adventista</h3>
-                        <p class="text-sm text-gray-300 mt-1">Reproductor en español con los himnos del nuevo himnario adventista.</p>
-                    </div>
-                    <a href="https://www.youtube.com/playlist?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs" target="_blank" class="glass-btn px-5 py-3 text-sm font-bold text-white/90 border-white/20 hover:bg-white/15">
-                        Abrir playlist
-                    </a>
-                </div>
-                <div class="iframe-container rounded-[1.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.35)]">
-                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs" title="Playlist Himnario Adventista en español" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-=======
+        <div
+            class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-4xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)] gap-1">
+            <button onclick="switchMusicTab('cantos')" id="btn-tab-cantos"
+                class="w-1/3 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2">
+                <i class="fa-solid fa-microphone-lines"></i> <span class="hidden sm:inline">CANTOS</span><span
+                    class="sm:hidden">CANTOS</span>
+            </button>
+            <button onclick="switchMusicTab('himnos')" id="btn-tab-himnos"
+                class="w-1/3 py-3 rounded-xl font-bold border border-transparent text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2">
+                <i class="fa-solid fa-book-open"></i> <span class="hidden sm:inline">HIMNOS</span><span
+                    class="sm:hidden">HIMNOS</span>
+            </button>
+            <button onclick="switchMusicTab('radios')" id="btn-tab-radios"
+                class="w-1/3 py-3 rounded-xl font-bold border border-transparent text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2">
+                <i class="fa-solid fa-broadcast-tower"></i> <span class="hidden sm:inline">RADIOS</span><span
+                    class="sm:hidden">RADIOS</span>
+            </button>
+        </div>
+
         <div id="tab-cantos" class="flex flex-col gap-8">
             <div class="xperia-cantos-shell p-4 sm:p-6">
                 <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6 relative z-10">
                     <div>
                         <h3 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-wider">Cantos</h3>
-                        <p class="text-sm sm:text-base text-gray-300 mt-2 max-w-2xl">Selecciona un canto desde la lista para cargarlo en el reproductor principal y seguir navegando con una interfaz clara y rápida.</p>
+                        <p class="text-sm sm:text-base text-gray-300 mt-2 max-w-2xl">Selecciona un canto desde la lista
+                            para cargarlo en el reproductor principal y seguir navegando con una interfaz clara y
+                            rápida.</p>
                     </div>
                     <div class="glass px-4 py-3 rounded-2xl text-left min-w-[15rem] relative z-10">
-                        <p id="xperia-cantos-counter" class="text-[0.72rem] uppercase tracking-[0.35em] text-blue-200/70 mb-1">01 / 16</p>
+                        <p id="xperia-cantos-counter"
+                            class="text-[0.72rem] uppercase tracking-[0.35em] text-blue-200/70 mb-1">01 / 16</p>
                         <h4 id="xperia-cantos-title" class="text-lg font-black text-white leading-tight">A tus pies</h4>
-                        <p id="xperia-cantos-artist" class="text-sm text-gray-300 mt-1">Miel San Marcos ft. Christine D'Clario</p>
+                        <p id="xperia-cantos-artist" class="text-sm text-gray-300 mt-1">Miel San Marcos ft. Christine
+                            D'Clario</p>
                     </div>
                 </div>
                 <div id="xperia-cantos-player-card" class="xperia-cantos-player p-4 sm:p-5 relative z-10">
-                    <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] gap-5 items-stretch">
-                        <div class="iframe-container rounded-[1.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.35)]">
-                            <iframe id="xperia-cantos-player" src="https://www.youtube.com/embed/T07Yraic6oQ" title="Reproductor de cantos" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div
+                        class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] gap-5 items-stretch">
+                        <div
+                            class="iframe-container rounded-[1.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.35)]">
+                            <iframe id="xperia-cantos-player" src="https://www.youtube.com/embed/T07Yraic6oQ"
+                                title="Reproductor de cantos" frameborder="0" allow="autoplay; encrypted-media"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="flex flex-col justify-between gap-4">
                             <div class="glass rounded-[1.5rem] p-5">
-                                <p class="text-[0.72rem] uppercase tracking-[0.4em] text-blue-200/70 mb-2">Reproducción Activa</p>
-                                <h4 class="text-2xl font-black text-white leading-tight mb-2">Navega la lista y reproduce desde arriba</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">El reproductor principal siempre queda como referencia de la sección. Elige un canto en la lista y volverás aquí automáticamente para ver el video grande.</p>
+                                <p class="text-[0.72rem] uppercase tracking-[0.4em] text-blue-200/70 mb-2">Reproducción
+                                    Activa</p>
+                                <h4 class="text-2xl font-black text-white leading-tight mb-2">Navega la lista y
+                                    reproduce desde arriba</h4>
+                                <p class="text-sm text-gray-300 leading-relaxed">El reproductor principal siempre queda
+                                    como referencia de la sección. Elige un canto en la lista y volverás aquí
+                                    automáticamente para ver el video grande.</p>
                             </div>
                             <div class="flex flex-col sm:flex-row gap-3">
-                                <button type="button" class="xperia-scroll-btn w-full sm:w-auto px-4" onclick="stepCantosSelection(-1)" aria-label="Canto anterior">
+                                <button type="button" class="xperia-scroll-btn w-full sm:w-auto px-4"
+                                    onclick="stepCantosSelection(-1)" aria-label="Canto anterior">
                                     <i class="fa-solid fa-chevron-left text-sm"></i> Anterior
                                 </button>
-                                <button type="button" class="xperia-scroll-btn w-full sm:w-auto px-4" onclick="stepCantosSelection(1)" aria-label="Siguiente canto">
+                                <button type="button" class="xperia-scroll-btn w-full sm:w-auto px-4"
+                                    onclick="stepCantosSelection(1)" aria-label="Siguiente canto">
                                     Siguiente <i class="fa-solid fa-chevron-right text-sm"></i>
                                 </button>
-                                <a id="xperia-cantos-open-link" href="https://youtu.be/T07Yraic6oQ?si=rNtPBwJpRG9h8qOh" target="_blank" class="glass-btn w-full px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-white border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center gap-3">
+                                <a id="xperia-cantos-open-link" href="https://youtu.be/T07Yraic6oQ?si=rNtPBwJpRG9h8qOh"
+                                    target="_blank"
+                                    class="glass-btn w-full px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-white border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center gap-3">
                                     <i class="fa-solid fa-circle-play text-base"></i> Abrir en YouTube
                                 </a>
                             </div>
@@ -712,115 +823,240 @@
                 <div class="xperia-cantos-stage mt-5 relative z-10">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <div>
-                            <h4 class="text-lg sm:text-xl font-black text-white uppercase tracking-wide">Lista de cantos</h4>
-                            <p class="text-sm text-gray-300 mt-1">Toca un canto para cargarlo y volver al reproductor principal.</p>
+                            <h4 class="text-lg sm:text-xl font-black text-white uppercase tracking-wide">Lista de cantos
+                            </h4>
+                            <p class="text-sm text-gray-300 mt-1">Toca un canto para cargarlo y volver al reproductor
+                                principal.</p>
                         </div>
-                        <button type="button" class="glass-btn px-4 py-3 text-sm font-bold text-white border-white/20 bg-white/10 hover:bg-white/15" onclick="scrollMusicTop()">
+                        <button type="button"
+                            class="glass-btn px-4 py-3 text-sm font-bold text-white border-white/20 bg-white/10 hover:bg-white/15"
+                            onclick="scrollMusicTop()">
                             Volver al reproductor
                         </button>
                     </div>
                     <div class="xperia-cantos-track">
                         <div class="xperia-cantos-focus"></div>
                         <div id="xperia-cantos-list" class="xperia-cantos-list">
-                            <button type="button" class="xperia-canto-entry active" data-embed="https://www.youtube.com/embed/T07Yraic6oQ" data-link="https://youtu.be/T07Yraic6oQ?si=rNtPBwJpRG9h8qOh" data-title="A tus pies" data-artist="Miel San Marcos ft. Christine D'Clario" onclick="selectCanto(0)">
-                                <span class="xperia-canto-index">01</span><img src="https://i.ytimg.com/vi/T07Yraic6oQ/hqdefault.jpg" alt="A tus pies" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">A tus pies</span><span class="xperia-canto-artist">Miel San Marcos ft. Christine D'Clario</span></span><i class="fa-solid fa-circle-play text-white/70"></i>
+                            <button type="button" class="xperia-canto-entry active"
+                                data-embed="https://www.youtube.com/embed/T07Yraic6oQ"
+                                data-link="https://youtu.be/T07Yraic6oQ?si=rNtPBwJpRG9h8qOh" data-title="A tus pies"
+                                data-artist="Miel San Marcos ft. Christine D'Clario" onclick="selectCanto(0)">
+                                <span class="xperia-canto-index">01</span><img
+                                    src="https://i.ytimg.com/vi/T07Yraic6oQ/hqdefault.jpg" alt="A tus pies"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">A tus pies</span><span
+                                        class="xperia-canto-artist">Miel San Marcos ft. Christine
+                                        D'Clario</span></span><i class="fa-solid fa-circle-play text-white/70"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/wIPCePkVn6M" data-link="https://youtu.be/wIPCePkVn6M?si=V4CMqgJiQ1NkVhxd" data-title="El Amor" data-artist="Roy Araya (Heme Aquí)" onclick="selectCanto(1)">
-                                <span class="xperia-canto-index">02</span><img src="https://i.ytimg.com/vi/wIPCePkVn6M/hqdefault.jpg" alt="El Amor" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">El Amor</span><span class="xperia-canto-artist">Roy Araya (Heme Aquí)</span></span><i class="fa-solid fa-circle-play text-white/70"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/wIPCePkVn6M"
+                                data-link="https://youtu.be/wIPCePkVn6M?si=V4CMqgJiQ1NkVhxd" data-title="El Amor"
+                                data-artist="Roy Araya (Heme Aquí)" onclick="selectCanto(1)">
+                                <span class="xperia-canto-index">02</span><img
+                                    src="https://i.ytimg.com/vi/wIPCePkVn6M/hqdefault.jpg" alt="El Amor"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">El Amor</span><span class="xperia-canto-artist">Roy
+                                        Araya (Heme Aquí)</span></span><i
+                                    class="fa-solid fa-circle-play text-white/70"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/7dl075TS0vg" data-link="https://youtu.be/7dl075TS0vg?si=qIq9j4Ngd0Upumqa" data-title="Dios, Tan Solo Dios" data-artist="Marcelo Constanzo (Heme Aquí)" onclick="selectCanto(2)">
-                                <span class="xperia-canto-index">03</span><img src="https://i.ytimg.com/vi/7dl075TS0vg/hqdefault.jpg" alt="Dios, Tan Solo Dios" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Dios, Tan Solo Dios</span><span class="xperia-canto-artist">Marcelo Constanzo (Heme Aquí)</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/7dl075TS0vg"
+                                data-link="https://youtu.be/7dl075TS0vg?si=qIq9j4Ngd0Upumqa"
+                                data-title="Dios, Tan Solo Dios" data-artist="Marcelo Constanzo (Heme Aquí)"
+                                onclick="selectCanto(2)">
+                                <span class="xperia-canto-index">03</span><img
+                                    src="https://i.ytimg.com/vi/7dl075TS0vg/hqdefault.jpg" alt="Dios, Tan Solo Dios"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Dios, Tan Solo Dios</span><span
+                                        class="xperia-canto-artist">Marcelo Constanzo (Heme Aquí)</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/EC24B5ebis8" data-link="https://youtu.be/EC24B5ebis8?si=BoAubVVK8zRTo1TA" data-title="Jesucristo Rey" data-artist="Canto de adoración" onclick="selectCanto(3)">
-                                <span class="xperia-canto-index">04</span><img src="https://i.ytimg.com/vi/EC24B5ebis8/hqdefault.jpg" alt="Jesucristo Rey" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Jesucristo Rey</span><span class="xperia-canto-artist">Canto de adoración</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/EC24B5ebis8"
+                                data-link="https://youtu.be/EC24B5ebis8?si=BoAubVVK8zRTo1TA" data-title="Jesucristo Rey"
+                                data-artist="Canto de adoración" onclick="selectCanto(3)">
+                                <span class="xperia-canto-index">04</span><img
+                                    src="https://i.ytimg.com/vi/EC24B5ebis8/hqdefault.jpg" alt="Jesucristo Rey"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Jesucristo Rey</span><span
+                                        class="xperia-canto-artist">Canto de adoración</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/m-e72DrL_c4" data-link="https://youtu.be/m-e72DrL_c4?si=jMvke4jJDpw304gR" data-title="De Rodillas" data-artist="Rafaela Pinho" onclick="selectCanto(4)">
-                                <span class="xperia-canto-index">05</span><img src="https://i.ytimg.com/vi/m-e72DrL_c4/hqdefault.jpg" alt="De Rodillas" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">De Rodillas</span><span class="xperia-canto-artist">Rafaela Pinho</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/m-e72DrL_c4"
+                                data-link="https://youtu.be/m-e72DrL_c4?si=jMvke4jJDpw304gR" data-title="De Rodillas"
+                                data-artist="Rafaela Pinho" onclick="selectCanto(4)">
+                                <span class="xperia-canto-index">05</span><img
+                                    src="https://i.ytimg.com/vi/m-e72DrL_c4/hqdefault.jpg" alt="De Rodillas"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">De Rodillas</span><span
+                                        class="xperia-canto-artist">Rafaela Pinho</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/THSATM9dkok" data-link="https://youtu.be/THSATM9dkok?si=hQJ0Tmb6lHPfFhXl" data-title="Salmo 121" data-artist="Tony Avila" onclick="selectCanto(5)">
-                                <span class="xperia-canto-index">06</span><img src="https://i.ytimg.com/vi/THSATM9dkok/hqdefault.jpg" alt="Salmo 121 de Tony Avila" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Salmo 121</span><span class="xperia-canto-artist">Tony Avila</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/THSATM9dkok"
+                                data-link="https://youtu.be/THSATM9dkok?si=hQJ0Tmb6lHPfFhXl" data-title="Salmo 121"
+                                data-artist="Tony Avila" onclick="selectCanto(5)">
+                                <span class="xperia-canto-index">06</span><img
+                                    src="https://i.ytimg.com/vi/THSATM9dkok/hqdefault.jpg" alt="Salmo 121 de Tony Avila"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Salmo 121</span><span
+                                        class="xperia-canto-artist">Tony Avila</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/nTi5VpQlI6U" data-link="https://youtu.be/nTi5VpQlI6U?si=cNDzzIwQTmqvuCbk" data-title="No temeré" data-artist="Heme Aquí" onclick="selectCanto(6)">
-                                <span class="xperia-canto-index">07</span><img src="https://i.ytimg.com/vi/nTi5VpQlI6U/hqdefault.jpg" alt="No temeré" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">No temeré</span><span class="xperia-canto-artist">Heme Aquí</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/nTi5VpQlI6U"
+                                data-link="https://youtu.be/nTi5VpQlI6U?si=cNDzzIwQTmqvuCbk" data-title="No temeré"
+                                data-artist="Heme Aquí" onclick="selectCanto(6)">
+                                <span class="xperia-canto-index">07</span><img
+                                    src="https://i.ytimg.com/vi/nTi5VpQlI6U/hqdefault.jpg" alt="No temeré"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">No temeré</span><span
+                                        class="xperia-canto-artist">Heme Aquí</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/bvk54h5b9U0" data-link="https://youtu.be/bvk54h5b9U0?si=X8p0-cDgo2Ebxs0T" data-title="Grandioso Dios" data-artist="Junior Kelly Marchena" onclick="selectCanto(7)">
-                                <span class="xperia-canto-index">08</span><img src="https://i.ytimg.com/vi/bvk54h5b9U0/hqdefault.jpg" alt="Grandioso Dios" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Grandioso Dios</span><span class="xperia-canto-artist">Junior Kelly Marchena</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/bvk54h5b9U0"
+                                data-link="https://youtu.be/bvk54h5b9U0?si=X8p0-cDgo2Ebxs0T" data-title="Grandioso Dios"
+                                data-artist="Junior Kelly Marchena" onclick="selectCanto(7)">
+                                <span class="xperia-canto-index">08</span><img
+                                    src="https://i.ytimg.com/vi/bvk54h5b9U0/hqdefault.jpg" alt="Grandioso Dios"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Grandioso Dios</span><span
+                                        class="xperia-canto-artist">Junior Kelly Marchena</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/usMsrqRaGFk" data-link="https://youtu.be/usMsrqRaGFk?si=ZF_OW9roYlUW_B2b" data-title="Cristo te Sostendrá" data-artist="Catalina Peña (Heme Aquí)" onclick="selectCanto(8)">
-                                <span class="xperia-canto-index">09</span><img src="https://i.ytimg.com/vi/usMsrqRaGFk/hqdefault.jpg" alt="Cristo te Sostendrá" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Cristo te Sostendrá</span><span class="xperia-canto-artist">Catalina Peña (Heme Aquí)</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/usMsrqRaGFk"
+                                data-link="https://youtu.be/usMsrqRaGFk?si=ZF_OW9roYlUW_B2b"
+                                data-title="Cristo te Sostendrá" data-artist="Catalina Peña (Heme Aquí)"
+                                onclick="selectCanto(8)">
+                                <span class="xperia-canto-index">09</span><img
+                                    src="https://i.ytimg.com/vi/usMsrqRaGFk/hqdefault.jpg" alt="Cristo te Sostendrá"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Cristo te Sostendrá</span><span
+                                        class="xperia-canto-artist">Catalina Peña (Heme Aquí)</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/3AonCCSfMt4" data-link="https://youtu.be/3AonCCSfMt4?si=qqC3INq9Fhp1I8yZ" data-title="Danos Paz" data-artist="Karin Brañes" onclick="selectCanto(9)">
-                                <span class="xperia-canto-index">10</span><img src="https://i.ytimg.com/vi/3AonCCSfMt4/hqdefault.jpg" alt="Danos Paz" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Danos Paz</span><span class="xperia-canto-artist">Karin Brañes</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/3AonCCSfMt4"
+                                data-link="https://youtu.be/3AonCCSfMt4?si=qqC3INq9Fhp1I8yZ" data-title="Danos Paz"
+                                data-artist="Karin Brañes" onclick="selectCanto(9)">
+                                <span class="xperia-canto-index">10</span><img
+                                    src="https://i.ytimg.com/vi/3AonCCSfMt4/hqdefault.jpg" alt="Danos Paz"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Danos Paz</span><span
+                                        class="xperia-canto-artist">Karin Brañes</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/ArHKKlPdd1A" data-link="https://youtu.be/ArHKKlPdd1A?si=LoF7b67BwkWBgMe-" data-title="La voz del Señor" data-artist="Edith Aravena" onclick="selectCanto(10)">
-                                <span class="xperia-canto-index">11</span><img src="https://i.ytimg.com/vi/ArHKKlPdd1A/hqdefault.jpg" alt="La voz del Señor" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">La voz del Señor</span><span class="xperia-canto-artist">Edith Aravena</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/ArHKKlPdd1A"
+                                data-link="https://youtu.be/ArHKKlPdd1A?si=LoF7b67BwkWBgMe-"
+                                data-title="La voz del Señor" data-artist="Edith Aravena" onclick="selectCanto(10)">
+                                <span class="xperia-canto-index">11</span><img
+                                    src="https://i.ytimg.com/vi/ArHKKlPdd1A/hqdefault.jpg" alt="La voz del Señor"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">La voz del Señor</span><span
+                                        class="xperia-canto-artist">Edith Aravena</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/bS_NBxga8ck" data-link="https://youtu.be/bS_NBxga8ck?si=F1qLTFqkAEEAGx3s" data-title="Ya Nunca Más" data-artist="Merlyn Sanchez" onclick="selectCanto(11)">
-                                <span class="xperia-canto-index">12</span><img src="https://i.ytimg.com/vi/bS_NBxga8ck/hqdefault.jpg" alt="Ya Nunca Más" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Ya Nunca Más</span><span class="xperia-canto-artist">Merlyn Sanchez</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/bS_NBxga8ck"
+                                data-link="https://youtu.be/bS_NBxga8ck?si=F1qLTFqkAEEAGx3s" data-title="Ya Nunca Más"
+                                data-artist="Merlyn Sanchez" onclick="selectCanto(11)">
+                                <span class="xperia-canto-index">12</span><img
+                                    src="https://i.ytimg.com/vi/bS_NBxga8ck/hqdefault.jpg" alt="Ya Nunca Más"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Ya Nunca Más</span><span
+                                        class="xperia-canto-artist">Merlyn Sanchez</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/Q97GUgz5Mo4" data-link="https://youtu.be/Q97GUgz5Mo4?si=Zyp1rgSFvl6qo1Xf" data-title="Ven Señor Jesús" data-artist="Rudy Micelli" onclick="selectCanto(12)">
-                                <span class="xperia-canto-index">13</span><img src="https://i.ytimg.com/vi/Q97GUgz5Mo4/hqdefault.jpg" alt="Ven Señor Jesús" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Ven Señor Jesús</span><span class="xperia-canto-artist">Rudy Micelli</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/Q97GUgz5Mo4"
+                                data-link="https://youtu.be/Q97GUgz5Mo4?si=Zyp1rgSFvl6qo1Xf"
+                                data-title="Ven Señor Jesús" data-artist="Rudy Micelli" onclick="selectCanto(12)">
+                                <span class="xperia-canto-index">13</span><img
+                                    src="https://i.ytimg.com/vi/Q97GUgz5Mo4/hqdefault.jpg" alt="Ven Señor Jesús"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Ven Señor Jesús</span><span
+                                        class="xperia-canto-artist">Rudy Micelli</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/h6gp9UZvbt8" data-link="https://youtu.be/h6gp9UZvbt8?si=_Jk0HRfFgFCcxieg" data-title="Sacrificio de Amor" data-artist="Canto de adoración" onclick="selectCanto(13)">
-                                <span class="xperia-canto-index">14</span><img src="https://i.ytimg.com/vi/h6gp9UZvbt8/hqdefault.jpg" alt="Sacrificio de Amor" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Sacrificio de Amor</span><span class="xperia-canto-artist">Canto de adoración</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/h6gp9UZvbt8"
+                                data-link="https://youtu.be/h6gp9UZvbt8?si=_Jk0HRfFgFCcxieg"
+                                data-title="Sacrificio de Amor" data-artist="Canto de adoración"
+                                onclick="selectCanto(13)">
+                                <span class="xperia-canto-index">14</span><img
+                                    src="https://i.ytimg.com/vi/h6gp9UZvbt8/hqdefault.jpg" alt="Sacrificio de Amor"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">Sacrificio de Amor</span><span
+                                        class="xperia-canto-artist">Canto de adoración</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/hC75G2w7LQI" data-link="https://youtu.be/hC75G2w7LQI?si=pmL1YEpfX0oDn14P" data-title="Salmo 121" data-artist="Versión adicional" onclick="selectCanto(14)">
-                                <span class="xperia-canto-index">15</span><img src="https://i.ytimg.com/vi/hC75G2w7LQI/hqdefault.jpg" alt="Salmo 121 versión adicional" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">Salmo 121</span><span class="xperia-canto-artist">Versión adicional</span></span><i class="fa-solid fa-circle-play text-cyan-200/80"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/hC75G2w7LQI"
+                                data-link="https://youtu.be/hC75G2w7LQI?si=pmL1YEpfX0oDn14P" data-title="Salmo 121"
+                                data-artist="Versión adicional" onclick="selectCanto(14)">
+                                <span class="xperia-canto-index">15</span><img
+                                    src="https://i.ytimg.com/vi/hC75G2w7LQI/hqdefault.jpg"
+                                    alt="Salmo 121 versión adicional" class="xperia-canto-thumb"><span
+                                    class="xperia-canto-copy"><span class="xperia-canto-title">Salmo 121</span><span
+                                        class="xperia-canto-artist">Versión adicional</span></span><i
+                                    class="fa-solid fa-circle-play text-cyan-200/80"></i>
                             </button>
-                            <button type="button" class="xperia-canto-entry" data-embed="https://www.youtube.com/embed/2Vlwk4F_ies" data-link="https://youtu.be/2Vlwk4F_ies?si=BGpQtk4k3Jkn5nVE" data-title="El Cielo Te Espera" data-artist="Canto Tema JA UMCH 2024" onclick="selectCanto(15)">
-                                <span class="xperia-canto-index">16</span><img src="https://i.ytimg.com/vi/2Vlwk4F_ies/hqdefault.jpg" alt="El Cielo Te Espera" class="xperia-canto-thumb"><span class="xperia-canto-copy"><span class="xperia-canto-title">El Cielo Te Espera</span><span class="xperia-canto-artist">Canto Tema JA UMCH 2024</span></span><i class="fa-solid fa-circle-play text-white/70"></i>
+                            <button type="button" class="xperia-canto-entry"
+                                data-embed="https://www.youtube.com/embed/2Vlwk4F_ies"
+                                data-link="https://youtu.be/2Vlwk4F_ies?si=BGpQtk4k3Jkn5nVE"
+                                data-title="El Cielo Te Espera" data-artist="Canto Tema JA UMCH 2024"
+                                onclick="selectCanto(15)">
+                                <span class="xperia-canto-index">16</span><img
+                                    src="https://i.ytimg.com/vi/2Vlwk4F_ies/hqdefault.jpg" alt="El Cielo Te Espera"
+                                    class="xperia-canto-thumb"><span class="xperia-canto-copy"><span
+                                        class="xperia-canto-title">El Cielo Te Espera</span><span
+                                        class="xperia-canto-artist">Canto Tema JA UMCH 2024</span></span><i
+                                    class="fa-solid fa-circle-play text-white/70"></i>
                             </button>
                         </div>
                     </div>
->>>>>>> 035c523 (tu mensaje aquí)
                 </div>
             </div>
         </div>
 
-<<<<<<< HEAD
-        <div id="tab-cantos" class="hidden grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            <!-- YouTube Cantos -->
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/T07Yraic6oQ" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">A tus pies</h3><p class="text-sm text-gray-300">Miel San Marcos ft. Christine D'Clario</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/wIPCePkVn6M" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">El Amor</h3><p class="text-sm text-gray-300">Roy Araya (Heme Aquí)</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/7dl075TS0vg" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Dios, Tan Solo Dios</h3><p class="text-sm text-gray-300">Marcelo Constanzo (Heme Aquí)</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/EC24B5ebis8" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Jesucristo Rey</h3></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/m-e72DrL_c4" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">De Rodillas</h3><p class="text-sm text-gray-300">Rafaela Pinho</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/THSATM9dkok" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Salmo 121</h3><p class="text-sm text-gray-300">Tony Avila</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/nTi5VpQlI6U" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">No temeré</h3><p class="text-sm text-gray-300">Heme Aquí</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/bvk54h5b9U0" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Grandioso Dios</h3></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/usMsrqRaGFk" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Cristo te Sostendrá</h3><p class="text-sm text-gray-300">Catalina Peña (Heme Aquí)</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/3AonCCSfMt4" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Danos Paz</h3><p class="text-sm text-gray-300">Karin Brañes</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/ArHKKlPdd1A" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">La voz del Señor</h3><p class="text-sm text-gray-300">Edith Aravena</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/bS_NBxga8ck" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Ya Nunca Más</h3><p class="text-sm text-gray-300">Merlyn Sanchez</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/Q97GUgz5Mo4" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Ven Señor Jesús</h3><p class="text-sm text-gray-300">Rudy Micelli</p></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/h6gp9UZvbt8" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Sacrificio de Amor</h3></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/hC75G2w7LQI" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">Salmo 121</h3></div>
-            <div class="glass p-4 rounded-2xl flex flex-col"><div class="iframe-container mb-4"><iframe src="https://www.youtube.com/embed/2Vlwk4F_ies" frameborder="0" allowfullscreen></iframe></div><h3 class="text-lg font-bold text-white">El Cielo Te Espera</h3><p class="text-sm text-gray-300">Canto Tema JA UMCH 2024</p></div>
-=======
         <div id="tab-himnos" class="hidden grid-cols-1 gap-8">
             <div class="himnario-link-card p-6 sm:p-8">
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.8fr)] gap-6 items-center">
+                <div
+                    class="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.8fr)] gap-6 items-center">
                     <div>
                         <p class="text-[0.72rem] uppercase tracking-[0.45em] text-blue-200/80 mb-3">Nuevo Himnario</p>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-wide">Acceso directo al himnario web</h3>
-                        <p class="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">Abre el himnario completo para buscar letras, números y contenidos del repertorio adventista desde una interfaz pensada específicamente para consulta rápida.</p>
+                        <h3 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-wide">Acceso directo al
+                            himnario web</h3>
+                        <p class="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">Abre el himnario completo
+                            para buscar letras, números y contenidos del repertorio adventista desde una interfaz
+                            pensada específicamente para consulta rápida.</p>
                         <div class="flex flex-col sm:flex-row gap-3 mt-5">
-                            <a href="https://www.nuevohimnario.com/" target="_blank" class="glass-btn px-5 py-4 text-sm font-black uppercase tracking-[0.25em] text-blue-100 border-blue-300/30 bg-blue-500/15 hover:bg-blue-500/25 flex items-center justify-center gap-3">
+                            <a href="https://www.nuevohimnario.com/" target="_blank"
+                                class="glass-btn px-5 py-4 text-sm font-black uppercase tracking-[0.25em] text-blue-100 border-blue-300/30 bg-blue-500/15 hover:bg-blue-500/25 flex items-center justify-center gap-3">
                                 <i class="fa-solid fa-book-open"></i> Abrir Nuevo Himnario
                             </a>
-                            <a href="https://www.youtube.com/playlist?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs" target="_blank" class="glass-btn px-5 py-4 text-sm font-bold text-white/90 border-white/20 hover:bg-white/15 flex items-center justify-center gap-3">
+                            <a href="https://www.youtube.com/playlist?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs"
+                                target="_blank"
+                                class="glass-btn px-5 py-4 text-sm font-bold text-white/90 border-white/20 hover:bg-white/15 flex items-center justify-center gap-3">
                                 <i class="fa-solid fa-headphones"></i> Escuchar playlist
                             </a>
                         </div>
                     </div>
-                    <a href="https://www.nuevohimnario.com/" target="_blank" class="glass rounded-[1.75rem] p-6 flex flex-col justify-between min-h-[16rem] bg-white/5 hover:bg-white/10 transition-colors">
-                        <div class="w-16 h-16 rounded-2xl bg-blue-400/15 border border-blue-200/20 flex items-center justify-center text-blue-100 shadow-[0_0_30px_rgba(96,165,250,0.18)]">
+                    <a href="https://www.nuevohimnario.com/" target="_blank"
+                        class="glass rounded-[1.75rem] p-6 flex flex-col justify-between min-h-[16rem] bg-white/5 hover:bg-white/10 transition-colors">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-blue-400/15 border border-blue-200/20 flex items-center justify-center text-blue-100 shadow-[0_0_30px_rgba(96,165,250,0.18)]">
                             <i class="fa-solid fa-book-open text-2xl"></i>
                         </div>
                         <div>
                             <p class="text-xs uppercase tracking-[0.35em] text-slate-400 mb-2">Web recomendada</p>
                             <h4 class="text-2xl font-black text-white">nuevohimnario.com</h4>
-                            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Botón directo y congruente para consultar el himnario en una experiencia más enfocada a lectura.</p>
+                            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Botón directo y congruente para
+                                consultar el himnario en una experiencia más enfocada a lectura.</p>
                         </div>
                     </a>
                 </div>
@@ -830,152 +1066,221 @@
                 <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
                     <div>
                         <p class="text-[0.72rem] uppercase tracking-[0.45em] text-white/60 mb-3">Playlist</p>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-wide">Himnario en YouTube</h3>
-                        <p class="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">Aqui queda otra vez el reproductor embebido del himnario para escuchar la playlist sin salir de esta seccion.</p>
+                        <h3 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-wide">Himnario en
+                            YouTube</h3>
+                        <p class="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">Aqui queda otra vez el
+                            reproductor embebido del himnario para escuchar la playlist sin salir de esta seccion.</p>
                     </div>
-                    <a href="https://www.youtube.com/playlist?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs" target="_blank" class="glass-btn px-5 py-4 text-sm font-bold text-white/90 border-white/20 hover:bg-white/15 flex items-center justify-center gap-3">
+                    <a href="https://www.youtube.com/playlist?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs" target="_blank"
+                        class="glass-btn px-5 py-4 text-sm font-bold text-white/90 border-white/20 hover:bg-white/15 flex items-center justify-center gap-3">
                         <i class="fa-solid fa-play"></i> Abrir playlist en YouTube
                     </a>
                 </div>
-                <div class="mt-6 aspect-video overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/30 shadow-[0_18px_35px_rgba(0,0,0,0.3)]">
-                    <iframe
-                        src="https://www.youtube.com/embed/videoseries?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs"
-                        title="Playlist del himnario adventista en YouTube"
-                        class="w-full h-full"
-                        loading="lazy"
+                <div
+                    class="mt-6 aspect-video overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/30 shadow-[0_18px_35px_rgba(0,0,0,0.3)]">
+                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLgp3jS3mSB4YZVCTiPt0YVvo6qoVyAPAs"
+                        title="Playlist del himnario adventista en YouTube" class="w-full h-full" loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen>
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                     </iframe>
                 </div>
             </div>
->>>>>>> 035c523 (tu mensaje aquí)
         </div>
 
-        <!-- Seccion: Radios -->
         <div id="tab-radios" class="hidden flex-col gap-10 max-w-6xl mx-auto w-full">
-            
-            <!-- STREAMS DIRECTOS (ESPAÑA & USA) -->
+
             <div class="w-full">
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 justify-center">
-                    <!-- ÁVILA - SEGOVIA -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Ávila - Segovia</h3>
-                        <button onclick="toggleRadio('radio-avsg', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Ávila - Segovia</h3>
+                        <button onclick="toggleRadio('radio-avsg', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/es.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
                         <audio id="radio-avsg" src="https://rtvmgrb.org/reproductor/avsg/" preload="none"></audio>
                     </div>
 
-                    <!-- LANZAROTE 1 -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Lanzarote 1</h3>
-                        <button onclick="toggleRadio('radio-lanzarote1', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Lanzarote 1</h3>
+                        <button onclick="toggleRadio('radio-lanzarote1', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/es.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
-                        <audio id="radio-lanzarote1" src="https://rtvmgrb.org/reproductor/lanzarote1/" preload="none"></audio>
+                        <audio id="radio-lanzarote1" src="https://rtvmgrb.org/reproductor/lanzarote1/"
+                            preload="none"></audio>
                     </div>
 
-                    <!-- LANZAROTE 2 -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Lanzarote 2</h3>
-                        <button onclick="toggleRadio('radio-lanzarote2', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Lanzarote 2</h3>
+                        <button onclick="toggleRadio('radio-lanzarote2', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/es.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
-                        <audio id="radio-lanzarote2" src="https://rtvmgrb.org/reproductor/lanzarote2/" preload="none"></audio>
+                        <audio id="radio-lanzarote2" src="https://rtvmgrb.org/reproductor/lanzarote2/"
+                            preload="none"></audio>
                     </div>
 
-                    <!-- PALENCIA -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Palencia</h3>
-                        <button onclick="toggleRadio('radio-palencia', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Palencia</h3>
+                        <button onclick="toggleRadio('radio-palencia', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/es.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
-                        <audio id="radio-palencia" src="https://rtvmgrb.org/reproductor/palencia/" preload="none"></audio>
+                        <audio id="radio-palencia" src="https://rtvmgrb.org/reproductor/palencia/"
+                            preload="none"></audio>
                     </div>
 
-                    <!-- SALAMANCA -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Salamanca</h3>
-                        <button onclick="toggleRadio('radio-salamanca', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Salamanca</h3>
+                        <button onclick="toggleRadio('radio-salamanca', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/es.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
-                        <audio id="radio-salamanca" src="https://rtvmgrb.org/reproductor/salamanca/" preload="none"></audio>
+                        <audio id="radio-salamanca" src="https://rtvmgrb.org/reproductor/salamanca/"
+                            preload="none"></audio>
                     </div>
 
-                    <!-- ZAMORA -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Zamora</h3>
-                        <button onclick="toggleRadio('radio-zamora', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/es.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Zamora</h3>
+                        <button onclick="toggleRadio('radio-zamora', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/es.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
                         <audio id="radio-zamora" src="https://rtvmgrb.org/reproductor/zamora/" preload="none"></audio>
                     </div>
 
-                    <!-- ESTADOS UNIDOS -->
-                    <div class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-blue-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <h3 class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">Radio MV (USA)</h3>
-                        <button onclick="toggleRadio('radio-usa', this)" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden" style="background-image: url('https://flagcdn.com/w160/us.png');">
+                    <div
+                        class="glass p-5 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-blue-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h3
+                            class="text-xs font-black text-white uppercase tracking-widest relative z-10 mb-4 h-10 flex items-center justify-center leading-tight">
+                            Radio MV (USA)</h3>
+                        <button onclick="toggleRadio('radio-usa', this)"
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] relative z-10 border-4 border-white/20 focus:outline-none bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://flagcdn.com/w160/us.png');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
-                            <i class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
+                            <i
+                                class="fa-solid fa-play text-3xl sm:text-4xl text-white ml-1.5 relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"></i>
                         </button>
                         <audio id="radio-usa" src="http://stream.radiomv.com/spanish/stream.mp3" preload="none"></audio>
                     </div>
                 </div>
             </div>
 
-            <!-- OTRAS EMISORAS (ENLACES WEB) -->
             <div class="w-full mt-4">
-                <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 opacity-90 border-l-4 border-white/50 pl-3">Otras Emisoras (Web)</h3>
+                <h3
+                    class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 opacity-90 border-l-4 border-white/50 pl-3">
+                    Otras Emisoras (Web)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Hope Media ESPAÑA -->
-                    <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                            <img src="https://flagcdn.com/w160/es.png" alt="España" class="w-full h-full object-cover opacity-80">
+                    <div
+                        class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-yellow-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         </div>
-                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Hope Media</h3>
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
+                            <img src="https://flagcdn.com/w160/es.png" alt="España"
+                                class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Hope
+                            Media</h3>
                         <p class="text-xs text-yellow-300 font-bold tracking-widest mb-4 relative z-10">ESPAÑA</p>
-                        <a href="https://hopemedia.es/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-5 bg-yellow-600/30 hover:bg-yellow-500/50 border border-yellow-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
+                        <a href="https://hopemedia.es/" target="_blank" rel="noopener noreferrer"
+                            class="py-2.5 px-5 bg-yellow-600/30 hover:bg-yellow-500/50 border border-yellow-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
                             <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
                         </a>
                     </div>
 
-                    <!-- PERÚ -->
-                    <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-red-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                            <img src="https://flagcdn.com/w160/pe.png" alt="Perú" class="w-full h-full object-cover opacity-80">
+                    <div
+                        class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-red-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         </div>
-                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo Tiempo</h3>
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
+                            <img src="https://flagcdn.com/w160/pe.png" alt="Perú"
+                                class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo
+                            Tiempo</h3>
                         <p class="text-xs text-red-300 font-bold tracking-widest mb-4 relative z-10">PERÚ</p>
-                        <a href="https://www.nuevotiempo.org/radio/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-5 bg-red-600/30 hover:bg-red-500/50 border border-red-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
+                        <a href="https://www.nuevotiempo.org/radio/" target="_blank" rel="noopener noreferrer"
+                            class="py-2.5 px-5 bg-red-600/30 hover:bg-red-500/50 border border-red-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
                             <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
                         </a>
                     </div>
 
-                    <!-- BOLIVIA -->
-                    <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-green-500/30 transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
-                            <img src="https://flagcdn.com/w160/bo.png" alt="Bolivia" class="w-full h-full object-cover opacity-80">
+                    <div
+                        class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group border border-white/10 hover:border-green-500/30 transition-colors">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         </div>
-                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo Tiempo</h3>
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10 overflow-hidden">
+                            <img src="https://flagcdn.com/w160/bo.png" alt="Bolivia"
+                                class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <h3 class="text-xl font-black text-white uppercase tracking-widest relative z-10 mb-1">Nuevo
+                            Tiempo</h3>
                         <p class="text-xs text-green-300 font-bold tracking-widest mb-4 relative z-10">BOLIVIA</p>
-                        <a href="https://www.nuevotiempo.org/bolivia/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-5 bg-green-600/30 hover:bg-green-500/50 border border-green-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
+                        <a href="https://www.nuevotiempo.org/bolivia/" target="_blank" rel="noopener noreferrer"
+                            class="py-2.5 px-5 bg-green-600/30 hover:bg-green-500/50 border border-green-500/50 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 block uppercase tracking-wider text-xs relative z-10">
                             <i class="fa-solid fa-headphones mr-2"></i> Escuchar Web
                         </a>
                     </div>
@@ -985,154 +1290,251 @@
         </div>
     </div>
 
-    <!-- SUBPAGE: CINE -->
     <div id="page-cine" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
         <div class="flex justify-start items-center mb-10 w-full">
-            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+            <button onclick="goHome()"
+                class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
                 <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-video text-2xl sm:text-3xl text-red-300"></i>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Cine & TV</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Cine
+                        & TV</h2>
                 </div>
             </button>
         </div>
-        
-        <!-- SECCIÓN TV EN VIVO -->
-        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 border-l-4 border-red-500 pl-3">TV en Vivo (24/7)</h3>
+
+        <h3
+            class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 border-l-4 border-red-500 pl-3">
+            TV en Vivo (24/7)</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <!-- Nuevo Tiempo TV 24/7 -->
             <div class="glass p-8 rounded-2xl flex flex-col items-center justify-center text-center">
-                <div class="w-24 h-24 mb-6 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
-                    <i class="fa-solid fa-satellite-dish text-5xl text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"></i>
+                <div
+                    class="w-24 h-24 mb-6 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
+                    <i
+                        class="fa-solid fa-satellite-dish text-5xl text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"></i>
                 </div>
-                <h3 class="font-bold text-white uppercase text-2xl mb-2 inline-flex items-center gap-2"><span class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>Nuevo Tiempo TV</h3>
-                <p class="text-sm text-gray-300 mb-8 px-4 font-medium leading-relaxed">Disfruta de la señal en vivo directamente en la plataforma oficial.</p>
-                <a href="https://www.nuevotiempo.org/tv/" target="_blank" rel="noopener noreferrer" class="py-4 px-8 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-widest text-sm flex items-center justify-center gap-3 w-full sm:w-auto mt-auto">
+                <h3 class="font-bold text-white uppercase text-2xl mb-2 inline-flex items-center gap-2"><span
+                        class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>Nuevo Tiempo TV</h3>
+                <p class="text-sm text-gray-300 mb-8 px-4 font-medium leading-relaxed">Disfruta de la señal en vivo
+                    directamente en la plataforma oficial.</p>
+                <a href="https://www.nuevotiempo.org/tv/" target="_blank" rel="noopener noreferrer"
+                    class="py-4 px-8 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-widest text-sm flex items-center justify-center gap-3 w-full sm:w-auto mt-auto">
                     <i class="fa-solid fa-play"></i> Ver Transmisión
                 </a>
             </div>
 
-            <!-- 3ABN Latino 24/7 -->
             <div class="glass p-8 rounded-2xl flex flex-col items-center justify-center text-center">
-                <div class="w-24 h-24 mb-6 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
+                <div
+                    class="w-24 h-24 mb-6 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
                     <i class="fa-solid fa-tv text-5xl text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"></i>
                 </div>
-                <h3 class="font-bold text-white uppercase text-2xl mb-2 inline-flex items-center gap-2"><span class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>3ABN Latino</h3>
-                <p class="text-sm text-gray-300 mb-8 px-4 font-medium leading-relaxed">Disfruta de la programación en vivo de la red 3ABN.</p>
-                <a href="https://3abnlatino.tv/" target="_blank" rel="noopener noreferrer" class="py-4 px-8 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-widest text-sm flex items-center justify-center gap-3 w-full sm:w-auto mt-auto">
+                <h3 class="font-bold text-white uppercase text-2xl mb-2 inline-flex items-center gap-2"><span
+                        class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>3ABN Latino</h3>
+                <p class="text-sm text-gray-300 mb-8 px-4 font-medium leading-relaxed">Disfruta de la programación en
+                    vivo de la red 3ABN.</p>
+                <a href="https://3abnlatino.tv/" target="_blank" rel="noopener noreferrer"
+                    class="py-4 px-8 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-widest text-sm flex items-center justify-center gap-3 w-full sm:w-auto mt-auto">
                     <i class="fa-solid fa-play"></i> Ver Transmisión
                 </a>
             </div>
         </div>
 
-        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 opacity-90 border-l-4 border-white/50 pl-3">Películas y Archivo</h3>
-        
+        <h3
+            class="text-xl sm:text-2xl font-black text-white uppercase tracking-widest mb-6 opacity-90 border-l-4 border-white/50 pl-3">
+            Películas y Archivo</h3>
+
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            <!-- 8 Peliculas -->
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/9iKawBQB0BU" allowfullscreen></iframe></div><h3 class="font-bold text-white">La Pasión de Cristo</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/fegvqAIHAPc" allowfullscreen></iframe></div><h3 class="font-bold text-white">Jesús de Nazaret</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/k8MFQKqaJFc" allowfullscreen></iframe></div><h3 class="font-bold text-white">Jesús (1979)</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/X8VmyRU2taY" allowfullscreen></iframe></div><h3 class="font-bold text-white">Evangelio s/ San Mateo</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/SfT2k4QoafY" allowfullscreen></iframe></div><h3 class="font-bold text-white">Hechos de los Apóstoles</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/lwavNS0f7N0" allowfullscreen></iframe></div><h3 class="font-bold text-white">Apocalipsis</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/iRXxEBTiR90" allowfullscreen></iframe></div><h3 class="font-bold text-white">Pablo, Apóstol de Cristo</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/EZLdPMNDK3k" allowfullscreen></iframe></div><h3 class="font-bold text-white">Pedro</h3></div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/9iKawBQB0BU"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">La Pasión de Cristo</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/fegvqAIHAPc"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Jesús de Nazaret</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/k8MFQKqaJFc"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Jesús (1979)</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/X8VmyRU2taY"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Evangelio s/ San Mateo</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/SfT2k4QoafY"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Hechos de los Apóstoles</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/lwavNS0f7N0"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Apocalipsis</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/iRXxEBTiR90"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Pablo, Apóstol de Cristo</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/EZLdPMNDK3k"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white">Pedro</h3>
+            </div>
         </div>
     </div>
 
 
-    <!-- SUBPAGE: PREDICACIONES -->
     <div id="page-predicaciones" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
         <div class="flex justify-start items-center mb-8 w-full">
-            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+            <button onclick="goHome()"
+                class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
                 <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-globe text-2xl sm:text-3xl text-green-300"></i>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Prédicas</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">
+                        Prédicas</h2>
                 </div>
             </button>
         </div>
-        
-        <!-- Pestañas de Pastores -->
-        <div class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-2xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-            <button onclick="switchPredTab('latam')" id="btn-tab-latam" class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
+
+        <div
+            class="glass p-1.5 rounded-2xl mb-10 flex flex-row w-full max-w-2xl mx-auto shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+            <button onclick="switchPredTab('latam')" id="btn-tab-latam"
+                class="w-1/2 py-3 rounded-xl font-bold bg-white/20 border border-white/30 text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
                 <span class="text-xl">🌎</span> LATAM
             </button>
-            <button onclick="switchPredTab('euro')" id="btn-tab-euro" class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
+            <button onclick="switchPredTab('euro')" id="btn-tab-euro"
+                class="w-1/2 py-3 rounded-xl font-bold text-white/50 hover:text-white transition-all text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 sm:gap-3">
                 <span class="text-xl">🇪🇸</span> ESPAÑA
             </button>
         </div>
 
         <div id="tab-latam" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            <!-- Predicaciones Latam -->
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/Eqqlm9BMZ4E" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">La Marca de la Bestia</h3><p class="text-sm text-gray-300">Esteban Bohr</p></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/yQRxgESDvpo" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">El Santuario</h3><p class="text-sm text-gray-300">Andrés Portes</p></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/mwN7RPRJxgc" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Escrito Está</h3><p class="text-sm text-gray-300">Robert Costa</p></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/6myZ1CxWTfU" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Nuevo Tiempo</h3><p class="text-sm text-gray-300">Joel Flores</p></div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/Eqqlm9BMZ4E"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">La Marca de la Bestia</h3>
+                <p class="text-sm text-gray-300">Esteban Bohr</p>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/yQRxgESDvpo"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">El Santuario</h3>
+                <p class="text-sm text-gray-300">Andrés Portes</p>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/mwN7RPRJxgc"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">Escrito Está</h3>
+                <p class="text-sm text-gray-300">Robert Costa</p>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/6myZ1CxWTfU"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">Nuevo Tiempo</h3>
+                <p class="text-sm text-gray-300">Joel Flores</p>
+            </div>
         </div>
-        
+
         <div id="tab-euro" class="hidden grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            <!-- Predicaciones Europa -->
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/jZL-0XoQsQE" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Daniel Bosqued</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/7R1c-2ivvGM" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Carlos Rando</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/idKjHrAPUHo" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Roberto Badenas</h3></div>
-            <div class="glass p-4 rounded-2xl"><div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/UfmfsK8E8N8" allowfullscreen></iframe></div><h3 class="font-bold text-white leading-tight">Juan Carlos Basterra</h3></div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/jZL-0XoQsQE"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">Daniel Bosqued</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/7R1c-2ivvGM"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">Carlos Rando</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/idKjHrAPUHo"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">Roberto Badenas</h3>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="iframe-container mb-3"><iframe src="https://www.youtube.com/embed/UfmfsK8E8N8"
+                        allowfullscreen></iframe></div>
+                <h3 class="font-bold text-white leading-tight">Juan Carlos Basterra</h3>
+            </div>
         </div>
     </div>
 
-    <!-- SUBPAGE: LITERATURA -->
     <div id="page-literatura" class="page relative z-10 w-full min-h-screen px-4 pb-20 pt-8 max-w-7xl mx-auto">
         <div class="flex justify-start items-center mb-10 w-full">
-            <button onclick="goHome()" class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
+            <button onclick="goHome()"
+                class="flex items-center gap-3 sm:gap-4 bg-transparent hover:-translate-x-2 transition-transform duration-300 group cursor-pointer focus:outline-none">
                 <i class="fa-solid fa-chevron-left text-2xl sm:text-3xl text-white/70 group-hover:text-white"></i>
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-book-open text-2xl sm:text-3xl text-yellow-300"></i>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">Lectura</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md">
+                        Lectura</h2>
                 </div>
             </button>
         </div>
-        
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            <!-- Biblia Online (YouVersion) -->
-            <a href="https://www.bible.com/es/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex justify-center items-center">
+            <a href="https://www.bible.com/es/" target="_blank"
+                class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div
+                    class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex justify-center items-center">
                     <i class="fa-solid fa-book-bible text-5xl text-purple-200 drop-shadow-md"></i>
                 </div>
-                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Santa Biblia</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs">YouVersion Online</p>
+                <h2
+                    class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">
+                    Santa Biblia</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs">YouVersion
+                    Online</p>
             </a>
-            
-            <!-- Escritos EGW -->
-            <a href="https://m.egwwritings.org/es" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex justify-center items-center relative">
+
+            <a href="https://m.egwwritings.org/es" target="_blank"
+                class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div
+                    class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex justify-center items-center relative">
                     <i class="fa-solid fa-feather-pointed text-5xl text-blue-200 drop-shadow-md"></i>
                 </div>
-                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">Escritos EGW</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs">Sitio Oficial EGW</p>
+                <h2
+                    class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center drop-shadow-md">
+                    Escritos EGW</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs">Sitio
+                    Oficial EGW</p>
             </a>
 
-            <!-- Escuela Sabática -->
-            <a href="https://sabbath-school.adventech.io/es/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex justify-center items-center relative">
+            <a href="https://sabbath-school.adventech.io/es/" target="_blank"
+                class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div
+                    class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex justify-center items-center relative">
                     <i class="fa-solid fa-book-open-reader text-5xl text-green-200 drop-shadow-md"></i>
                 </div>
-                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">Escuela Sabática</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">Lección de Estudiantes</p>
+                <h2
+                    class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">
+                    Escuela Sabática</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">Lección
+                    de Estudiantes</p>
             </a>
 
-            <!-- 28 Creencias -->
-            <a href="https://institucional.adventistas.org/es/nuestras-crencias/" target="_blank" class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
-                <div class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex justify-center items-center relative">
-                    <img src="images/logo_adventista_oficial.png" alt="Logo Adventista" class="w-32 h-auto sm:w-44 brightness-0 invert opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" style="clip-path: inset(0 0 32% 0); transform: translateY(15%) scale(1.2);">
+            <a href="https://institucional.adventistas.org/es/nuestras-crencias/" target="_blank"
+                class="glass p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 group shadow-xl relative overflow-hidden rounded-[2rem] transition-all hover:-translate-y-2">
+                <div
+                    class="w-40 h-40 sm:w-56 sm:h-56 rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 group-hover:scale-[1.08] transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] border-white/20 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex justify-center items-center relative">
+                    <img src="images/logo_adventista_oficial.png" alt="Logo Adventista"
+                        class="w-32 h-auto sm:w-44 brightness-0 invert opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                        style="clip-path: inset(0 0 32% 0); transform: translateY(15%) scale(1.2);">
                 </div>
-                <h2 class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">28 Creencias</h2>
-                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">Creencias Fundamentales</p>
+                <h2
+                    class="text-xl sm:text-2xl font-black text-white tracking-widest uppercase mb-2 text-center leading-tight drop-shadow-md">
+                    28 Creencias</h2>
+                <p class="text-gray-300 text-center font-medium bg-black/30 px-3 py-1 rounded-full text-xs mt-2">
+                    Creencias Fundamentales</p>
             </a>
         </div>
     </div>
 
 
-    <!-- ==================== LÓGICA JAVASCRIPT ==================== -->
     <script>
         // DOM Elements
         const homePage = document.getElementById('home-page');
@@ -1141,7 +1543,7 @@
         const asisIcon = document.getElementById('participar-icon');
         const panelOnline = document.getElementById('panel-online');
         const panelVivo = document.getElementById('panel-vivo');
-        
+
         // ---- Inicialización basada en la URL (al recargar) ----
         document.addEventListener("DOMContentLoaded", () => {
             const hash = window.location.hash.substring(1);
@@ -1155,7 +1557,7 @@
         });
 
         // ---- Navegación Subpáginas (Historial y Gestos Android) ----
-        window.addEventListener('popstate', function(event) {
+        window.addEventListener('popstate', function (event) {
             if (event.state && event.state.page && event.state.page !== 'home') {
                 showPageUI(event.state.page);
             } else {
@@ -1172,7 +1574,7 @@
         function showPageUI(pageId) {
             pages.forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + pageId);
-            if(target) {
+            if (target) {
                 target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
@@ -1199,10 +1601,10 @@
                 // Ocultar internos si se esconde por completo
                 panelOnline.classList.add('hidden');
                 panelVivo.classList.add('hidden');
-                
+
                 // Detener video oculto (restaurado)
                 document.getElementById('iframe-online').src = "";
-                
+
                 document.getElementById('btn-opt-online').classList.remove('bg-indigo-500/40', 'border-white');
                 document.getElementById('btn-opt-vivo').classList.remove('bg-emerald-500/40', 'border-white');
             }
@@ -1213,8 +1615,8 @@
             const btnVivo = document.getElementById('btn-opt-vivo');
             const iframe = document.getElementById('iframe-online');
 
-            if(type === 'online') {
-                if(!panelOnline.classList.contains('hidden')) {
+            if (type === 'online') {
+                if (!panelOnline.classList.contains('hidden')) {
                     // Si ya estaba abierto, ciérralo
                     panelOnline.classList.add('hidden');
                     btnOnline.classList.remove('bg-indigo-500/40', 'border-white');
@@ -1225,12 +1627,12 @@
                 panelOnline.classList.remove('hidden');
                 btnOnline.classList.add('bg-indigo-500/40', 'border-white');
                 btnVivo.classList.remove('bg-emerald-500/40', 'border-white');
-                
+
                 // Iniciar video
                 iframe.src = iframe.getAttribute('data-src');
                 stopRadios(); // Si había radio sonando, detenerla
             } else {
-                if(!panelVivo.classList.contains('hidden')) {
+                if (!panelVivo.classList.contains('hidden')) {
                     // Si ya estaba abierto, ciérralo
                     panelVivo.classList.add('hidden');
                     btnVivo.classList.remove('bg-emerald-500/40', 'border-white');
@@ -1251,12 +1653,12 @@
             const btnLatam = document.getElementById('btn-tab-latam');
             const btnEuro = document.getElementById('btn-tab-euro');
 
-            if(type === 'latam') {
+            if (type === 'latam') {
                 tabEuro.classList.add('hidden');
                 tabEuro.classList.remove('grid');
                 tabLatam.classList.remove('hidden');
                 tabLatam.classList.add('grid');
-                
+
                 btnLatam.classList.add('bg-white/20', 'border-white/30', 'text-white');
                 btnLatam.classList.remove('border-transparent', 'text-white/50');
                 btnEuro.classList.remove('bg-white/20', 'border-white/30', 'text-white');
@@ -1266,7 +1668,7 @@
                 tabLatam.classList.remove('grid');
                 tabEuro.classList.remove('hidden');
                 tabEuro.classList.add('grid');
-                
+
                 btnEuro.classList.add('bg-white/20', 'border-white/30', 'text-white');
                 btnEuro.classList.remove('border-transparent', 'text-white/50');
                 btnLatam.classList.remove('bg-white/20', 'border-white/30', 'text-white');
@@ -1392,7 +1794,7 @@
             const formContainer = document.getElementById('form-literatura');
             const btn = document.getElementById('btn-pedir');
             const col = document.getElementById('col-literatura');
-            
+
             if (formContainer.classList.contains('hidden')) {
                 // Mostrar Formulario
                 formContainer.classList.remove('hidden');
@@ -1415,7 +1817,7 @@
             const formContainer = document.getElementById('form-oracion');
             const btn = document.getElementById('btn-orar');
             const col = document.getElementById('col-oracion');
-            
+
             if (formContainer.classList.contains('hidden')) {
                 // Mostrar Formulario
                 formContainer.classList.remove('hidden');
@@ -1438,7 +1840,7 @@
             const formContainer = document.getElementById('form-estudios');
             const btn = document.getElementById('btn-estudios');
             const col = document.getElementById('col-estudios');
-            
+
             if (formContainer.classList.contains('hidden')) {
                 // Mostrar Formulario
                 formContainer.classList.remove('hidden');
@@ -1460,7 +1862,7 @@
             const video = document.getElementById('jesus-video');
 
             // Si ya está reproduciendo, no hacer nada
-            if(video.style.opacity === '1') return;
+            if (video.style.opacity === '1') return;
 
             // Entrada al video inmediata, sin transición (Corte limpio)
             video.style.transition = 'none';
@@ -1475,13 +1877,13 @@
 
             // Transición suave y lenta (Crossfade Dissolve) para el retorno a la imagen base
             video.style.transition = 'opacity 1.5s ease-in-out';
-            
+
             // Se desvanece el video y emerge sutilmente la imagen base original que está debajo
             video.style.opacity = '0';
         }
 
         // Activar el video en el PRIMER click en cualquier parte de la página
-        document.body.addEventListener('click', function() {
+        document.body.addEventListener('click', function () {
             playJesusVideo();
         }, { once: true });
 
@@ -1545,13 +1947,13 @@
         }
 
         // ---- Detener radios al reproducir un embed de video ----
-        window.addEventListener('blur', function() {
+        window.addEventListener('blur', function () {
             // Cuando la ventana pierde el foco (ej: clic en iframe de YouTube)
             if (document.activeElement instanceof HTMLIFrameElement) {
                 stopRadios();
             }
         });
-        
+
         // Refuerzo: detener radios si el usuario pone el cursor sobre un reproductor de video
         document.addEventListener('DOMContentLoaded', () => {
             initCantosScroller();
@@ -1562,4 +1964,5 @@
         });
     </script>
 </body>
+
 </html>
